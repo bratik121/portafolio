@@ -1,0 +1,16 @@
+.section__tittle::after {
+	content: "";
+	width: 17.5rem;
+	height: 1px;
+	top: 50%;
+	transform: translateX(5%);
+	position: absolute;
+}
+.section__tittle::before {
+	content: "";
+	width: 17.5rem;
+	height: 1px;
+	top: 50%;
+	transform: translateX(-105%);
+	position: absolute;
+}

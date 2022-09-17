@@ -1,0 +1,11 @@
+.header__socials::after {
+	content: "";
+	width: 1px;
+	height: 2rem;
+	transform: translateX(750%);
+}
+
+.me {
+	border-radius: 30rem 30rem 0 0;
+	padding: 5rem 1.5rem 1.5rem 1.5rem;
+}

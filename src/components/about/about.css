@@ -1,0 +1,69 @@
+:root {
+	--colsSize: 35% 50%;
+}
+.about__container {
+	display: grid;
+	/* grid-template-columns: 35% 50%;  */
+
+	overflow: visible;
+}
+
+.about__me {
+	border-radius: 2rem;
+	aspect-ratio: 1/1;
+	overflow: visible;
+}
+
+.about__me-image {
+	border-radius: 2rem;
+	overflow: hidden;
+}
+
+.about__card {
+	/* From https://css.glass */
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(6.3px);
+	-webkit-backdrop-filter: blur(6.3px);
+	padding: 3px;
+}
+
+.card__icon {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+.about__p {
+	/* margin: 2rem 0 2.6rem; */
+}
+
+/*Text Slider css*/
+
+.text__slider__button::after {
+	content: "";
+	width: 13px;
+	height: 5px;
+	position: absolute;
+	top: 40;
+	transform: translate(-6.5px, -3px);
+	cursor: pointer;
+	transition: ease all 0.3s;
+}
+
+.actual {
+	opacity: 0;
+}
+
+.active-anim {
+	opacity: 1;
+	animation: animatedSlider 0.55s;
+}
+
+@keyframes animatedSlider {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

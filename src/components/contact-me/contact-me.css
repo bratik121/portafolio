@@ -1,0 +1,66 @@
+:root {
+	--colsSize2: 25% 65%;
+}
+.inputBox {
+	position: relative;
+	width: 100%;
+}
+
+.inputBox input {
+	border-radius: 5px;
+	width: 100%;
+	padding: 10px;
+	outline: none;
+	font-size: 1em;
+}
+
+.inputBox span {
+	top: 1px;
+	position: absolute;
+	padding: 10px;
+	left: 5px;
+	pointer-events: none;
+	font-size: 1em;
+	transition: all 0.3s ease, background 1ms;
+}
+
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span {
+	top: 0;
+	left: 10px;
+	transform: translateY(-50%);
+	font-size: 0.85em;
+	padding: 0 10px;
+	letter-spacing: 0.15em;
+	background: inherit;
+}
+
+.cotact-area {
+	outline: none;
+	border-radius: 5px;
+	resize: none;
+}
+.cotact-area:valid,
+.cotact-area:focus {
+	outline: none;
+}
+
+.semi-c-t {
+	width: 9rem;
+	height: 13rem; /* as the half of the width */
+	border-top-left-radius: 110px; /* 100px of height + 10px of border */
+	border-top-right-radius: 110px; /* 100px of height + 10px of border */
+	border-bottom: 0;
+}
+.semi-c-b {
+	width: 9rem;
+	height: 13rem; /* as the half of the width */
+	border-bottom-left-radius: 110px; /* 100px of height + 10px of border */
+	border-bottom-right-radius: 110px; /* 100px of height + 10px of border */
+	border-top: 0;
+}
+
+.link__container {
+	border-radius: 50%;
+	transition: ease all 0.3s;
+}

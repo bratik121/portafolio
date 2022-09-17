@@ -1,0 +1,22 @@
+.item-content {
+	transition: ease all 0.3s;
+	cursor: pointer;
+	bottom: 0;
+}
+.item-buttons {
+	opacity: 0;
+	transition: ease all 0.3s;
+}
+
+.item-content:hover {
+	height: 55%;
+}
+.item-content:hover > .item-buttons {
+	opacity: 1;
+}
+.item-content.active {
+	height: 55%;
+}
+.item-content.active > .item-buttons {
+	opacity: 1;
+}
