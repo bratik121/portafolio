@@ -18,7 +18,7 @@ function App() {
 		<div className={`App w-full h-full  ${dark ? "dark" : ""}`}>
 			<div
 				className="bg-blanco text-rojo-200 
-              dark:bg-negro-200 dark:text-naranja-200 overflow-hidden"
+              dark:bg-negro-200 dark:text-naranja-200 overflow-hidden w-full relative"
 			>
 				<Header />
 				<Nav setTheme={setTheme} />

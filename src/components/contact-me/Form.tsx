@@ -115,7 +115,7 @@ function Form() {
 				ref={texto}
 			></textarea>
 			<p>{errorTexto}</p>
-			<Button label="Enviar" />
+			<Button label="Enviar" clase="primary" />
 		</form>
 	);
 }

@@ -27,7 +27,7 @@ function ContactMe() {
 					</div>
 					<div className="semi-c-b flex items-center justify-center bg-gradient-to-b from-transparent dark:to-naranja-200  to-rojo-200  ">
 						<a
-							href="https://t.me/DimeBrii"
+							href="https://wa.me/+584242883068"
 							target={"_blank"}
 							className="w-[60%]"
 						>

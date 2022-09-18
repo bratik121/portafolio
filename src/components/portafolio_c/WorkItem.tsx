@@ -2,20 +2,13 @@ import { AiOutlineEye } from "react-icons/ai";
 import { RiGitRepositoryLine } from "react-icons/ri";
 import { useState } from "react";
 function WorkItem(props: any) {
-	const [active, setActive] = useState(false);
-	const clickHandler = () => {
-		setActive(!active);
-	};
 	return (
 		<article className="work__item border w-[260px] h-[210px] border-rojo-200 dark:border-naranja-200 relative rounded-lg overflow-hidden ">
 			<div className="item-image w-full h-[60%] overflow-hidden ">
 				<img className="h-auto" src={props.url} alt={props.tittle} />
 			</div>
 			<div
-				className={`item-content absolute  w-full h-[40%]  bg-blanco dark:bg-negro-200 overflow-hidden px-2 ${
-					active ? "active" : ""
-				}`}
-				onClick={clickHandler}
+				className={`item-content absolute  w-full h-[40%]  bg-blanco dark:bg-negro-200 overflow-hidden px-2 `}
 			>
 				<h3 className="item-tittle font-bold">{props.tittle}</h3>
 				<p className="item-description text-xs text-negro-200 dark:text-blanco">
@@ -27,7 +20,6 @@ function WorkItem(props: any) {
 						href="www.youtube.com"
 						target={"_blank"}
 						className="flex items-center text-rojo-200 dark:text-naranja-200 hover:text-rojo-500 dark:hover:text-naranja-500"
-						onClick={clickHandler}
 					>
 						<AiOutlineEye /> Visitar
 					</a>
@@ -35,7 +27,6 @@ function WorkItem(props: any) {
 						href="www.youtube.com"
 						target={"_blank"}
 						className="flex items-center text-rojo-200 dark:text-naranja-200 hover:text-rojo-500 dark:hover:text-naranja-500"
-						onClick={clickHandler}
 					>
 						<RiGitRepositoryLine />
 						Repositorio

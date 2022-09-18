@@ -27,7 +27,7 @@ function About() {
 				</div>
 				{/* El contenido del about */}
 				<div className="about__content">
-					<div className="abut__cards grid grid-cols-2 md:grid-cols-3 gap-5">
+					<div className="abut__cards grid grid-cols-2 md:grid-cols-3 gap-5 justify-items-center">
 						<article
 							className="about__card justify-around text-center flex flex-col items-center bg-[rgba(240,28,60,0.16)] w-[8rem] md:w-[9.5rem]
 						border border-rojo-200 dark:border-naranja-200 dark:bg-[rgba(240,128,60,0.16)] aspect-square"

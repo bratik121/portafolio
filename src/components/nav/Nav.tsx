@@ -8,8 +8,8 @@ function Nav(props: any) {
 	const [navActive, setNavActive] = useState("#");
 	return (
 		<nav
-			className="nav flex w-max py-3 px-6 gap-3 rounded-3xl z-30 fixed left-[4%] bottom-[12rem] 
-		md:left-[37.25%] md:bottom-8 bg-[rgba(0,0,0,0.1)] dark:bg-[rgba(255,255,255,0.1)] "
+			className="nav flex w-max py-3 px-6 gap-3 rounded-3xl z-30 fixed  bottom-[3rem] 
+		 md:bottom-8 bg-[rgba(0,0,0,0.1)] dark:bg-[rgba(255,255,255,0.1)] "
 		>
 			{/* Navegation Links */}
 			<a

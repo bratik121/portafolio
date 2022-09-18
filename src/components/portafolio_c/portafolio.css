@@ -14,9 +14,3 @@
 .item-content:hover > .item-buttons {
 	opacity: 1;
 }
-.item-content.active {
-	height: 55%;
-}
-.item-content.active > .item-buttons {
-	opacity: 1;
-}
