@@ -24,7 +24,7 @@
 	transition: all 0.3s ease, background 1ms;
 }
 
-.inputBox input:valid ~ span,
+.inputBox input.inUse ~ span,
 .inputBox input:focus ~ span {
 	top: 0;
 	left: 10px;

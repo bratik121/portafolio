@@ -1,10 +1,16 @@
 import "./contact-me.css";
 import Tittles from "../../elements/Tittles";
+import Modal from "../../elements/Modal";
 import { FaTelegramPlane } from "react-icons/fa";
+import { useState } from "react";
 import { ImWhatsapp } from "react-icons/im";
 import Form from "./Form";
 
 function ContactMe() {
+	const [modalSate, setModalSate] = useState(false);
+	const modalSateSetter = (value: boolean) => {
+		setModalSate(value);
+	};
 	return (
 		<section
 			className="md:h-screen w-[75%] mx-auto flex flex-col items-center"
@@ -21,7 +27,7 @@ function ContactMe() {
 							className="w-[60%]"
 						>
 							<div className="link__container w-full aspect-square bg-blanco dark:bg-negro-200 flex items-center justify-center">
-								<FaTelegramPlane className="z-40 text-4xl" />
+								<FaTelegramPlane className="z-30 text-4xl" />
 							</div>
 						</a>
 					</div>
@@ -32,14 +38,17 @@ function ContactMe() {
 							className="w-[60%]"
 						>
 							<div className="link__container w-full aspect-square bg-blanco dark:bg-negro-200 flex items-center justify-center">
-								<ImWhatsapp className="z-40 text-4xl" />
+								<ImWhatsapp className="z-30 text-4xl" />
 							</div>
 						</a>
 					</div>
 				</div>
 				{/* Escribir correo */}
-				<Form />
+				<Form modalSateSetter={modalSateSetter} />
 			</div>
+			{modalSate && (
+				<Modal tittle="Correo enviado!" modalSateSetter={modalSateSetter} />
+			)}
 		</section>
 	);
 }

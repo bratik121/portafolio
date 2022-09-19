@@ -1,4 +1,4 @@
-import { notCV } from "../validatios";
+import { notCV } from "../data/validations";
 
 function ButtonLink(props: any) {
 	return (

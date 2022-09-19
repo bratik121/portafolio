@@ -9,7 +9,7 @@ function Portafolio() {
 			id="portafolio"
 		>
 			<Tittles main={"Trabajos y pruebas"} last="recientes" />
-			<div className="portafolio__container w-full grid grid-cols-1 md:grid-cols-3 justify-items-center gap-2 md:gap-6 h-[73%] mt-2 md:mt-6 p-2 ">
+			<div className="portafolio__container w-full grid grid-cols-1 md:grid-cols-3 justify-items-center gap-6 h-[73%] mt-2 md:mt-6 p-2 ">
 				<WorkItem
 					tittle="Titulo"
 					description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem

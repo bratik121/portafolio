@@ -5,3 +5,4 @@ export const validEmail = (email: string) =>
 	);
 
 export const validText = (text: string) => !text.match(/^[a-z]+$/i);
+export const notCV = (href: string) => href.includes("#");

@@ -3,7 +3,7 @@ import Button from "../../elements/Button";
 import { useRef, useState } from "react";
 import { notEmpty, validText, validEmail } from "../../data/validations";
 import emailjs from "@emailjs/browser";
-function Form() {
+function Form(props: any) {
 	const nombre = useRef() as React.MutableRefObject<HTMLInputElement>;
 	const correo = useRef() as React.MutableRefObject<HTMLInputElement>;
 	const texto = useRef() as React.MutableRefObject<HTMLTextAreaElement>;
@@ -74,15 +74,13 @@ function Form() {
 	};
 	const sendMessage = (e: any) => {
 		e.preventDefault();
-		console.log("hola");
 		let flags = 0;
 		flags += validateName();
 		flags += validateEmail();
 		flags += validateText();
-		console.log(flags);
 		if (flags === 3) {
 			sendEmail(e);
-			console.log("Correo enviando");
+			props.modalSateSetter(true);
 			truncateInputs(nombre);
 			truncateInputs(correo);
 			truncateInputs(texto);
@@ -115,7 +113,7 @@ function Form() {
 				ref={texto}
 			></textarea>
 			<p>{errorTexto}</p>
-			<Button label="Enviar" clase="primary" />
+			<Button label="Enviar" clase="primary" type="submit" />
 		</form>
 	);
 }

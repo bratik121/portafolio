@@ -10,7 +10,7 @@ function Button(props: any) {
 		  dark:hover:bg-blanco dark:hover:text-naranja-200 dark:hover:border-blanco
 			rounded-md transition duration-[0.3s] `}
 			onClick={props.clickHandler}
-			type="submit"
+			type={props.type}
 		>
 			{props.label}
 		</button>

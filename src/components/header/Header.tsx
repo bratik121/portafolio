@@ -1,6 +1,5 @@
 import "./header.css";
 import CV from "../../assets/CURRICULUM BRYANT MITCHELL.pdf";
-import mirio from "../../assets/mirio.png";
 import me from "../../assets/Brii.png";
 import ButtonLink from "../../elements/ButtonLink";
 import Tittles from "../../elements/Tittles";
@@ -20,7 +19,7 @@ function Header() {
 					<ButtonLink label="Descargar CV" href={CV} clase="secondary" />
 					<ButtonLink label="Hablemos" href="#contact-me" clase="primary" />
 				</div>
-				<div className="me w-[22rem] h-[36rem] md:h-[38rem] bg-gradient-to-b from-rojo-200 dark:from-naranja-200 to-transparent  transition duration-[0.4s] mt-7 overflow-hidden">
+				<div className="me w-[22rem]  h-[38rem] bg-gradient-to-b from-rojo-200 dark:from-naranja-200 to-transparent  transition duration-[0.4s] mt-7 overflow-hidden">
 					<img src={me} alt="my picture" />
 				</div>
 				<Socials />
