@@ -1,8 +1,11 @@
 import { AiOutlineClose, AiOutlineCheckCircle } from "react-icons/ai";
+import { motion } from "framer-motion";
 import Button from "./Button";
 function Modal(props: any) {
 	return (
-		<div
+		<motion.div
+			initial={{ opacity: 0, y: "-100vh" }}
+			animate={{ opacity: 1, y: 0 }}
 			className={`modal-bg w-screen h-screen bg-[rgba(0,0,0,0.3)] dark:bg-[rgba(100,100,100,0.3)] absolute z-40 flex items-center justify-center`}
 		>
 			<div className="modal h-[21rem] w-[17rem] bg-blanco dark:bg-negro-200 flex flex-col p-3 rounded-lg justify-between">
@@ -30,7 +33,7 @@ function Modal(props: any) {
 					/>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 }
 

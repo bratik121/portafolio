@@ -8,7 +8,7 @@ function ContactInputs(props: any) {
 				value={props.value}
 				id={props.id}
 				className={`bg-blanco dark:bg-negro-200 border border-rojo-200 dark:border-naranja-200 ${
-					inputText == "" ? "" : "inUse"
+					inputText === "" ? "" : "inUse"
 				}`}
 				ref={props.refers}
 				name={props.nombre}
