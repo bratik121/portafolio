@@ -1,11 +1,43 @@
 import "./about.css";
+import { useState } from "react";
 import { IoMdSchool } from "react-icons/io";
 import { IoBarChartSharp } from "react-icons/io5";
 import { RiComputerFill } from "react-icons/ri";
 import mirio from "../../assets/mirio.png";
 import Tittles from "../../elements/Tittles";
 import TextSlider from "./TextSlider";
+import { skills, hobbies } from "../../data/about";
 function About() {
+	const [indexHobbies, setIndexHobbies] = useState<number>(0);
+	const [indexSkills, setIndexSkills] = useState<number>(0);
+	const nextItem = (
+		index: number,
+		setter: React.Dispatch<React.SetStateAction<number>>,
+		array: string[]
+	) => {
+		if (index !== array.length - 1) {
+			setter(index + 1);
+		} else {
+			setter(0);
+		}
+	};
+	const prevtItem = (
+		index: number,
+		setter: React.Dispatch<React.SetStateAction<number>>,
+		array: string[]
+	) => {
+		if (index !== 0) {
+			setter(index - 1);
+		} else {
+			setter(array.length - 1);
+		}
+	};
+	const setHobbieIndex = (index: number) => {
+		setIndexHobbies(index);
+	};
+	const setSkillIndex = (index: number) => {
+		setIndexSkills(index);
+	};
 	return (
 		<section
 			className="h-screen w-[75%] mx-auto relative flex flex-col items-center"
@@ -39,12 +71,12 @@ function About() {
 								</h5>
 							</div>
 							<small className="text-gris-500 dark:text-gris-200">
-								+3 Años estudiando
+								4 Años estudiando
 							</small>
 						</article>
 						<article
 							className="about__card justify-around text-center flex flex-col items-center bg-[rgba(240,28,60,0.16)] w-[8rem] md:w-[9.5rem]
-						border border-rojo-200 dark:border-naranja-200 dark:bg-[rgba(240,128,60,0.16)] aspect-square"
+						border border-rojo-200 dark:border-naranja-200 dark:bg-[rgba(240,128,60,0.16)] aspect-square relative overflow-hidden"
 						>
 							<div className="card__tittle flex flex-col items-center text-center">
 								<RiComputerFill className="card__icon" />
@@ -53,17 +85,26 @@ function About() {
 								</h5>
 							</div>
 							<TextSlider
-								list={[
-									"Programar",
-									"Tocar guitarra",
-									"Video juegos",
-									"Ver peliculas",
-								]}
+								list={hobbies}
+								index={indexHobbies}
+								setIndex={setHobbieIndex}
 							/>
+							<div
+								className="left-boton absolute h-full w-[22%]  left-0 "
+								onClick={() => {
+									prevtItem(indexHobbies, setIndexHobbies, hobbies);
+								}}
+							></div>
+							<div
+								className="right-boton absolute h-full w-[22%]  right-0 "
+								onClick={() => {
+									nextItem(indexHobbies, setIndexHobbies, hobbies);
+								}}
+							></div>
 						</article>
 						<article
 							className="about__card justify-around text-center flex flex-col items-center bg-[rgba(240,28,60,0.16)] w-full md:w-[9.5rem] 
-						 border border-rojo-200 dark:border-naranja-200 dark:bg-[rgba(240,128,60,0.16)] col-span-2 md:col-span-1 md:aspect-square"
+						 border border-rojo-200 dark:border-naranja-200 dark:bg-[rgba(240,128,60,0.16)] col-span-2 md:col-span-1 md:aspect-square relative overflow-hidden"
 						>
 							<div className="card__tittle flex flex-col items-center text-center">
 								<IoBarChartSharp className="card__icon" />
@@ -72,13 +113,22 @@ function About() {
 								</h5>
 							</div>
 							<TextSlider
-								list={[
-									"Ingles avanzado",
-									"Trabajo en Equipo",
-									"Gestion de conflictos",
-									"Negociar",
-								]}
+								list={skills}
+								index={indexSkills}
+								setIndex={setSkillIndex}
 							/>
+							<div
+								className="left-boton absolute h-full  w-[28%] md:w-[22%]  left-0"
+								onClick={() => {
+									prevtItem(indexSkills, setIndexSkills, skills);
+								}}
+							></div>
+							<div
+								className="right-boton absolute h-full w-[28%]  md:w-[22%]  right-0"
+								onClick={() => {
+									nextItem(indexSkills, setIndexSkills, skills);
+								}}
+							></div>
 						</article>
 						<p className=" about__p text-gris-500 text-justify dark:text-gris-200 col-span-2	 md:col-span-3">
 							Lorem ipsum dolor sit amet consectetur adipisicing elit.
