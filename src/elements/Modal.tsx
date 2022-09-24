@@ -6,7 +6,7 @@ function Modal(props: any) {
 		<motion.div
 			initial={{ opacity: 0, y: "-100vh" }}
 			animate={{ opacity: 1, y: 0 }}
-			className={`modal-bg w-screen h-screen bg-[rgba(0,0,0,0.3)] dark:bg-[rgba(100,100,100,0.3)] absolute z-40 flex items-center justify-center`}
+			className={`modal-bg w-screen h-screen bg-[rgba(0,0,0,0.3)] dark:bg-[rgba(100,100,100,0.3)] fixed bottom-0 z-40 flex items-center justify-center `}
 		>
 			<div className="modal h-[21rem] w-[17rem] bg-blanco dark:bg-negro-200 flex flex-col p-3 rounded-lg justify-between">
 				<div className="w-full flex justify-end">

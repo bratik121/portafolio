@@ -1,6 +1,7 @@
 import "./portafolio.css";
 import Tittles from "../../elements/Tittles";
 import WorkItem from "./WorkItem";
+import { proyects } from "../../data/portafolio";
 
 function Portafolio() {
 	return (
@@ -10,42 +11,18 @@ function Portafolio() {
 		>
 			<Tittles main={"Trabajos y pruebas"} last="recientes" />
 			<div className="portafolio__container w-full grid grid-cols-1 md:grid-cols-3 justify-items-center gap-6 h-[73%] mt-2 md:mt-6 p-2 ">
-				<WorkItem
-					tittle="Titulo"
-					description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-					distinctio."
-					url="https://i0.wp.com/elestilolibre.com/wp-content/uploads/2020/06/wos-e1565634010844.jpg?fit=850%2C710&ssl=1"
-				/>
-				<WorkItem
-					tittle="Titulo"
-					description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-					distinctio."
-					url="https://i0.wp.com/elestilolibre.com/wp-content/uploads/2020/06/wos-e1565634010844.jpg?fit=850%2C710&ssl=1"
-				/>
-				<WorkItem
-					tittle="Titulo"
-					description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-					distinctio."
-					url="https://i0.wp.com/elestilolibre.com/wp-content/uploads/2020/06/wos-e1565634010844.jpg?fit=850%2C710&ssl=1"
-				/>
-				<WorkItem
-					tittle="Titulo"
-					description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-					distinctio."
-					url="https://i0.wp.com/elestilolibre.com/wp-content/uploads/2020/06/wos-e1565634010844.jpg?fit=850%2C710&ssl=1"
-				/>
-				<WorkItem
-					tittle="Titulo"
-					description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-					distinctio."
-					url="https://i0.wp.com/elestilolibre.com/wp-content/uploads/2020/06/wos-e1565634010844.jpg?fit=850%2C710&ssl=1"
-				/>
-				<WorkItem
-					tittle="Titulo"
-					description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-					distinctio."
-					url="https://i0.wp.com/elestilolibre.com/wp-content/uploads/2020/06/wos-e1565634010844.jpg?fit=850%2C710&ssl=1"
-				/>
+				{proyects.map((proyect, index) => {
+					return (
+						<WorkItem
+							tittle={proyect.tittle}
+							image={proyect.image}
+							description={proyect.description}
+							repository={proyect.repository}
+							url={proyect.url}
+							key={index}
+						/>
+					);
+				})}
 			</div>
 		</section>
 	);

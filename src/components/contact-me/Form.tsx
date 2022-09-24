@@ -9,6 +9,16 @@ function Form(props: any) {
 	const texto = useRef() as React.MutableRefObject<HTMLTextAreaElement>;
 	const form = useRef() as React.MutableRefObject<HTMLFormElement>;
 
+	const [inputName, setInputName] = useState("");
+	const [inputEmail, setInputEmail] = useState("");
+
+	const nameSetter = (string: string) => {
+		setInputName(string);
+	};
+
+	const emailSetter = (string: string) => {
+		setInputEmail(string);
+	};
 	const sendEmail = (e: any) => {
 		emailjs
 			.sendForm(
@@ -83,6 +93,8 @@ function Form(props: any) {
 			props.modalSateSetter(true);
 			truncateInputs(nombre);
 			truncateInputs(correo);
+			nameSetter("");
+			emailSetter("");
 			truncateInputs(texto);
 		}
 	};
@@ -95,6 +107,8 @@ function Form(props: any) {
 				refers={nombre}
 				error={errorNombre}
 				nombre="nombre"
+				inputText={inputName}
+				setInputText={nameSetter}
 			/>
 			<ContactInputs
 				type="text"
@@ -102,6 +116,8 @@ function Form(props: any) {
 				refers={correo}
 				error={errorCorreo}
 				nombre="correo"
+				inputText={inputEmail}
+				setInputText={emailSetter}
 			/>
 			<textarea
 				className="cotact-area w-[full] bg-blanco dark:bg-negro-200 border border-rojo-200 dark:border-naranja-200 p-3 placeholder:text-gris-500 dark:placeholder:text-gris-200"

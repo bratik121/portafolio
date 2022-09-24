@@ -6,7 +6,7 @@ import { RiComputerFill } from "react-icons/ri";
 import mirio from "../../assets/mirio.png";
 import Tittles from "../../elements/Tittles";
 import TextSlider from "./TextSlider";
-import { skills, hobbies } from "../../data/about";
+import { skills, hobbies, about } from "../../data/about";
 function About() {
 	const [indexHobbies, setIndexHobbies] = useState<number>(0);
 	const [indexSkills, setIndexSkills] = useState<number>(0);
@@ -60,6 +60,7 @@ function About() {
 				{/* El contenido del about */}
 				<div className="about__content">
 					<div className="abut__cards grid grid-cols-2 md:grid-cols-3 gap-5 justify-items-center">
+						{/* Estudios */}
 						<article
 							className="about__card justify-around text-center flex flex-col items-center bg-[rgba(240,28,60,0.16)] w-[8rem] md:w-[9.5rem]
 						border border-rojo-200 dark:border-naranja-200 dark:bg-[rgba(240,128,60,0.16)] aspect-square"
@@ -74,6 +75,7 @@ function About() {
 								4 Años estudiando
 							</small>
 						</article>
+						{/* Hobbies */}
 						<article
 							className="about__card justify-around text-center flex flex-col items-center bg-[rgba(240,28,60,0.16)] w-[8rem] md:w-[9.5rem]
 						border border-rojo-200 dark:border-naranja-200 dark:bg-[rgba(240,128,60,0.16)] aspect-square relative overflow-hidden"
@@ -102,6 +104,7 @@ function About() {
 								}}
 							></div>
 						</article>
+						{/* Habilidades */}
 						<article
 							className="about__card justify-around text-center flex flex-col items-center bg-[rgba(240,28,60,0.16)] w-full md:w-[9.5rem] 
 						 border border-rojo-200 dark:border-naranja-200 dark:bg-[rgba(240,128,60,0.16)] col-span-2 md:col-span-1 md:aspect-square relative overflow-hidden"
@@ -130,14 +133,13 @@ function About() {
 								}}
 							></div>
 						</article>
-						<p className=" about__p text-gris-500 text-justify dark:text-gris-200 col-span-2	 md:col-span-3">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit.
-							Reiciendis hic in alias dolor. Saepe beatae molestias cum dolores
-							totam nemo fugiat aperiam inventore modi dignissimos! Officia
-							commodi maxime et sint magni id placeat expedita deleniti! Nulla
-							voluptatem asperiores eveniet fugit laboriosam harum totam atque,
-							ut ipsam aliquam quia dolorum quasi corporis fuga minima optio
-						</p>
+						{/* Informacion */}
+						<div className="w-full col-span-2  md:col-span-3">
+							<h3 className="font-semibold mb-2">Presentacion</h3>
+							<p className=" about__p text-gris-500 text-justify dark:text-gris-200 	">
+								{about}
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>

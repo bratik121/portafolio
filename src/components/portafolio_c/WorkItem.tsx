@@ -5,7 +5,7 @@ function WorkItem(props: any) {
 	return (
 		<article className="work__item border w-[260px] h-[210px] border-rojo-200 dark:border-naranja-200 relative rounded-lg overflow-hidden ">
 			<div className="item-image w-full h-[60%] overflow-hidden ">
-				<img className="h-auto" src={props.url} alt={props.tittle} />
+				<img className="" src={props.image} alt={props.tittle} />
 			</div>
 			<div
 				className={`item-content absolute  w-full h-[40%]  bg-blanco dark:bg-negro-200 overflow-hidden px-2 `}
@@ -17,14 +17,14 @@ function WorkItem(props: any) {
 				</p>
 				<div className="item-buttons w-full flex justify-around items-center mt-2">
 					<a
-						href="www.youtube.com"
+						href={props.url}
 						target={"_blank"}
 						className="flex items-center text-rojo-200 dark:text-naranja-200 hover:text-rojo-500 dark:hover:text-naranja-500"
 					>
 						<AiOutlineEye /> Visitar
 					</a>
 					<a
-						href="www.youtube.com"
+						href={props.repository}
 						target={"_blank"}
 						className="flex items-center text-rojo-200 dark:text-naranja-200 hover:text-rojo-500 dark:hover:text-naranja-500"
 					>
