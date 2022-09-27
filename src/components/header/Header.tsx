@@ -19,8 +19,8 @@ function Header() {
 					<ButtonLink label="Descargar CV" href={CV} clase="secondary" />
 					<ButtonLink label="Hablemos" href="#contact-me" clase="primary" />
 				</div>
-				<div className="me w-[22rem]  h-[38rem] bg-gradient-to-b from-rojo-200 dark:from-naranja-200 to-transparent  transition duration-[0.4s] mt-7 overflow-hidden">
-					<img src={me} alt="my picture" />
+				<div className="me w-[22rem] flex justify-center  h-[38rem] bg-gradient-to-b from-rojo-200 dark:from-naranja-200 to-transparent  transition duration-[0.4s] mt-7 overflow-hidden">
+					<img src={me} alt="my picture" className="w-[80%]" />
 				</div>
 				<Socials />
 			</div>

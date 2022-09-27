@@ -1,12 +1,21 @@
+import { motion } from "framer-motion";
 function TextSlider(props: any) {
+	const smallVariant = {
+		hidden: { opacity: 0 },
+		show: { opacity: 1, transition: { duration: 0.7, ease: "easeInOut" } },
+	};
 	const clickHandler = (index: number) => {
 		props.setIndex(index);
 	};
 	return (
 		<div className="flex flex-col items-center">
-			<small className="actual active-anim text-gris-500 dark:text-gris-200">
+			<motion.small
+				className="actual active-anim text-gris-500 dark:text-gris-200"
+				variants={smallVariant}
+				key={props.index}
+			>
 				{props.list[props.index]}
-			</small>
+			</motion.small>
 			<div className="flex justify-around">
 				{props.list.map((element: string, index: number) => {
 					return (

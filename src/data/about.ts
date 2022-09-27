@@ -1,8 +1,7 @@
-export const about: string = `
-¡Hola! Me llamo Bryant Mitchell, soy un estudiante de la univerdad Catolica Andrés Bello, estoy a dos semestres de graduarme
-. Me encanta la programacion, sobre todo el area del diseño, ser capaz de proveer a los usuarios
-de una experciencia agradeble e innovadora `;
-
+type about = {
+	tittle: string;
+	content: string;
+};
 export const hobbies: string[] = [
 	"Programar",
 	"Musica",
@@ -15,4 +14,20 @@ export const skills: string[] = [
 	"Trabajo en Equipo",
 	"Gestion de conflictos",
 	"Negociar",
+];
+
+export const aboutList: about[] = [
+	{
+		tittle: "Presentacion",
+		content: `¡Hola! Me llamo Bryant Mitchell, soy un estudiante de la univerdad Catolica Andrés Bello, estoy a dos semestres de graduarme
+       .  `,
+	},
+	{
+		tittle: "Objetivos",
+		content: `De entre mis objetivos destaco comprometerme a portarme de la mejor manera posible, ser un buen compañero de trabajo y`,
+	},
+	{
+		tittle: "Intereses",
+		content: `De entre mis objetivos destaco comprometerme a portarme de la mejor manera posible, ser un buen compañero de trabajo y`,
+	},
 ];

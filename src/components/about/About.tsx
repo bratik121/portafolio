@@ -6,7 +6,8 @@ import { RiComputerFill } from "react-icons/ri";
 import mirio from "../../assets/mirio.png";
 import Tittles from "../../elements/Tittles";
 import TextSlider from "./TextSlider";
-import { skills, hobbies, about } from "../../data/about";
+import InfoSlider from "./InfoSlider";
+import { skills, hobbies } from "../../data/about";
 function About() {
 	const [indexHobbies, setIndexHobbies] = useState<number>(0);
 	const [indexSkills, setIndexSkills] = useState<number>(0);
@@ -134,12 +135,7 @@ function About() {
 							></div>
 						</article>
 						{/* Informacion */}
-						<div className="w-full col-span-2  md:col-span-3">
-							<h3 className="font-semibold mb-2">Presentacion</h3>
-							<p className=" about__p text-gris-500 text-justify dark:text-gris-200 	">
-								{about}
-							</p>
-						</div>
+						<InfoSlider />
 					</div>
 				</div>
 			</div>
