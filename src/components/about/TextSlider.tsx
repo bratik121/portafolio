@@ -12,6 +12,8 @@ function TextSlider(props: any) {
 			<motion.small
 				className="actual active-anim text-gris-500 dark:text-gris-200"
 				variants={smallVariant}
+				initial="hidden"
+				animate="show"
 				key={props.index}
 			>
 				{props.list[props.index]}

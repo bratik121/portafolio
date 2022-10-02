@@ -1,6 +1,6 @@
-type about = {
+export type about = {
 	tittle: string;
-	content: string;
+	content: string[];
 };
 export const hobbies: string[] = [
 	"Programar",
@@ -19,15 +19,28 @@ export const skills: string[] = [
 export const aboutList: about[] = [
 	{
 		tittle: "Presentacion",
-		content: `¡Hola! Me llamo Bryant Mitchell, soy un estudiante de la univerdad Catolica Andrés Bello, estoy a dos semestres de graduarme
-       .  `,
+		content: [
+			"¡Hola! Me llamo Bryant Mitchell, soy un estudiante de la universidad Católica Andrés Bello, estoy a dos semestres de graduarme.",
+			"Soy una persona con mucha iniciativa, con un gran potencial para crecer, capaz de adaptarse a cualquier situación y solucionar los problemas que se presenten.",
+		],
 	},
 	{
 		tittle: "Objetivos",
-		content: `De entre mis objetivos destaco comprometerme a portarme de la mejor manera posible, ser un buen compañero de trabajo y`,
+		content: [
+			`Laborar en una empresa dinámica mientras termino la carrera de Ingeniería
+		Informática; que me ayude a avanzar en el desarrollo de mis habilidades, destrezas
+		y conocimientos como desarrollador y programador web. Siempre garantizando una buena experiencia para  el  usuario y un gran rendimiento del software.
+		`,
+		],
 	},
 	{
 		tittle: "Intereses",
-		content: `De entre mis objetivos destaco comprometerme a portarme de la mejor manera posible, ser un buen compañero de trabajo y`,
+		content: [
+			"Diseño de interfaces y de experiencias de usuario (Ui/Ux).",
+			"Artuitecturas para el flujo de datos (Flux-Redux)",
+			"Inteligencia artificial (IA)",
+			"Desarrollo de video juegos",
+			"Desarrollo de aplicaciones móviles",
+		],
 	},
 ];
