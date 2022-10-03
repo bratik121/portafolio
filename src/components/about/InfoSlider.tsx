@@ -26,10 +26,16 @@ function InfoSlider() {
 			setIndex(0);
 		}
 	};
+	const autoScroll = () => {
+		setTimeout(() => {
+			nextItem(index);
+		}, 5000);
+	};
+
 	return (
 		<div className="w-full col-span-2  md:col-span-3 flex flex-col items-center">
 			<motion.div
-				className="w-full"
+				className="w-full hover:cursor-pointer"
 				variants={containerVariant}
 				initial="hidden"
 				animate="show"
@@ -39,7 +45,7 @@ function InfoSlider() {
 				}}
 			>
 				<h3 className="font-semibold mb-2">{aboutList[index].tittle}</h3>
-				<ul className=" about__p text-gris-500 text-justify dark:text-gris-200 list-disc px-4 ">
+				<ul className=" about__p text-gris-500 text-justify dark:text-gris-200 list-disc px-4 w-full">
 					{aboutList[index].content.map((content: string, indexLi: number) => {
 						return (
 							<li

@@ -63,8 +63,8 @@
 /*Info slider*/
 .info__slider__button::after {
 	content: "";
-	width: 6px;
-	height: 6px;
+	width: 8px;
+	height: 8px;
 	position: absolute;
 	border-radius: 50%;
 	top: 40;

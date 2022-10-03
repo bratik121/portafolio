@@ -59,7 +59,7 @@ function About() {
 					</div>
 				</div>
 				{/* El contenido del about */}
-				<div className="about__content">
+				<div className="about__content w-full">
 					<div className="abut__cards grid grid-cols-2 md:grid-cols-3 gap-5 justify-items-center">
 						{/* Estudios */}
 						<article
