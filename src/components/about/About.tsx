@@ -3,7 +3,7 @@ import { useState } from "react";
 import { IoMdSchool } from "react-icons/io";
 import { IoBarChartSharp } from "react-icons/io5";
 import { RiComputerFill } from "react-icons/ri";
-import mirio from "../../assets/mirio.png";
+import about from "../../assets/Aboutme.png";
 import Tittles from "../../elements/Tittles";
 import TextSlider from "./TextSlider";
 import InfoSlider from "./InfoSlider";
@@ -41,7 +41,7 @@ function About() {
 	};
 	return (
 		<section
-			className="h-screen w-[75%] mx-auto relative flex flex-col items-center"
+			className="md:h-screen w-[75%] mx-auto relative flex flex-col items-center"
 			id="about"
 		>
 			{/* Titulos */}
@@ -50,12 +50,12 @@ function About() {
 			<div className="about__container md:mt-8 grid grid-cols-1 justify-items-center  md:grid-cols-[length:var(--colsSize)] gap-7 md:gap-[15%]">
 				{/* Color de fondo de la imagen > la imagen*/}
 				<div
-					className="about__me  f-full grid place-items-center w-[60%] md:w-full
+					className="about__me  grid place-items-center w-[60%] md:w-full
 				bg-gradient-to-tr from-rojo-200 to-transparent dark:from-naranja-200 "
 				>
 					{/* Contenedor de la imagen */}
-					<div className="about__me-image w-full f-full rotate-12 hover:rotate-0 bg-black transition dur">
-						<img src={mirio} alt="Bryant uwu" />
+					<div className="about__me-image w-full h-full rotate-12 hover:rotate-0 hover:shadow-lg bg-black transition duration-300">
+						<img src={about} alt="Bryant uwu" />
 					</div>
 				</div>
 				{/* El contenido del about */}

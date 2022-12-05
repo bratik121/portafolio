@@ -26,11 +26,6 @@ function InfoSlider() {
 			setIndex(0);
 		}
 	};
-	const autoScroll = () => {
-		setTimeout(() => {
-			nextItem(index);
-		}, 5000);
-	};
 
 	return (
 		<div className="w-full col-span-2  md:col-span-3 flex flex-col items-center">
