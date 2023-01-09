@@ -55,7 +55,11 @@ function About() {
 				>
 					{/* Contenedor de la imagen */}
 					<div className="about__me-image w-full h-full rotate-12 hover:rotate-0 hover:shadow-lg bg-black transition duration-300">
-						<img src={about} alt="Bryant uwu" />
+						<img
+							className="about__me-image__image"
+							src={about}
+							alt="Bryant uwu"
+						/>
 					</div>
 				</div>
 				{/* El contenido del about */}

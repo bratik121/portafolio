@@ -12,7 +12,6 @@ function WorkItem(props: any) {
 			>
 				<h3 className="item-tittle font-bold">{props.tittle}</h3>
 				<p className="item-description text-xs text-negro-200 dark:text-blanco">
-					{" "}
 					{props.description}
 				</p>
 				<div className="item-buttons w-full flex justify-around items-center mt-2">

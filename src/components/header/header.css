@@ -9,3 +9,13 @@
 	border-radius: 30rem 30rem 0 0;
 	padding: 5rem 1.5rem 1.5rem 1.5rem;
 }
+
+.img__header {
+	border-radius: 50rem 50rem 0 0;
+
+	mask-image: linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 1) 96%,
+		rgba(0, 0, 0, 0) 100%
+	);
+}
