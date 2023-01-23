@@ -37,7 +37,7 @@ export const aboutList: about[] = [
 		tittle: "Intereses",
 		content: [
 			"Diseño de interfaces y de experiencias de usuario (Ui/Ux).",
-			"Artuitecturas para el flujo de datos (Flux-Redux)",
+			"Arquitecturas para el flujo de datos (Flux-Redux)",
 			"Inteligencia artificial (IA)",
 			"Desarrollo de video juegos",
 			"Desarrollo de aplicaciones móviles",

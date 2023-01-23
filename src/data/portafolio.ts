@@ -7,12 +7,12 @@ export type poryect = {
 };
 export const proyects: poryect[] = [
 	{
-		tittle: "Proyecto 1",
+		tittle: "Briigser",
 		description:
-			"Una breve descripcion sobre lo que es y lo que contiene el proyecto 1",
-		image: "https://picsum.photos/260/124",
-		repository: "",
-		url: "",
+			"Pagina para buscar una gran variedad de gifs, desarrollada con react, typercript y tailwind.",
+		image: "../../../src/assets/proyects/Briggser.png",
+		repository: "https://github.com/bratik121/gifBrowser",
+		url: "https://bratik121.github.io/gifBrowser/",
 	},
 	{
 		tittle: "Proyecto 2",
