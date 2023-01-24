@@ -10,7 +10,7 @@ export const proyects: poryect[] = [
 		tittle: "Briigser",
 		description:
 			"Pagina para buscar una gran variedad de gifs, desarrollada con react, typercript y tailwind.",
-		image: "../../../src/assets/Briigser.png",
+		image: "https://i.postimg.cc/cJ430FJP/Briigser.png",
 		repository: "https://github.com/bratik121/gifBrowser",
 		url: "https://bratik121.github.io/gifBrowser/",
 	},
