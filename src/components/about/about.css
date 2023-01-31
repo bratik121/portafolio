@@ -57,15 +57,6 @@
 	border-radius: 3px;
 }
 
-.actual {
-	opacity: 0;
-}
-
-.active-anim {
-	opacity: 1;
-	animation: animatedSlider 0.55s;
-}
-
 /*Info slider*/
 .info__slider__button::after {
 	content: "";
