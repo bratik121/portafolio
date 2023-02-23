@@ -15,12 +15,12 @@ export const proyects: poryect[] = [
 		url: "https://bratik121.github.io/gifBrowser/",
 	},
 	{
-		tittle: "Proyecto 2",
+		tittle: "Prueba React",
 		description:
-			"Una breve descripcion sobre lo que es y lo que contiene el proyecto 2",
-		image: "https://picsum.photos/259/125",
-		repository: "",
-		url: "",
+			"Prueba de react, se utilizan diversos frameworks y se implementan diversas funcionalidades. (no es responsive)",
+		image: "https://i.postimg.cc/WbrCB7NK/ndice.png",
+		repository: "https://github.com/bratik121/PruebaProlesys",
+		url: "https://test-bryant-prolesys.vercel.app/",
 	},
 	{
 		tittle: "Proyecto 3",

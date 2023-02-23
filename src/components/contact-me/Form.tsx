@@ -45,18 +45,18 @@ function Form(props: any) {
 		element.current.value = "";
 	};
 	const validateName = (): number => {
-		if (notEmpty(nombre.current.value)) {
-			if (validText(nombre.current.value)) {
-				setErrorNombre("Caracteres invalidos");
-				return 0;
+			if (notEmpty(nombre.current.value)) {
+				if (validText(nombre.current.value)) {
+					setErrorNombre("Caracteres invalidos");
+					return 0;
+				} else {
+					setErrorNombre("");
+					return 1;
+				}
 			} else {
-				setErrorNombre("");
-				return 1;
+				setErrorNombre("Introduzca un nombre!");
+				return 0;
 			}
-		} else {
-			setErrorNombre("Introduzca un nombre!");
-			return 0;
-		}
 	};
 	const validateEmail = (): number => {
 		if (notEmpty(correo.current.value)) {
