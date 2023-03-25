@@ -17,7 +17,7 @@ export const proyects: poryect[] = [
 	{
 		tittle: "Prueba React",
 		description:
-			"Prueba de react, se utilizan diversos frameworks y se implementan diversas funcionalidades. (no es responsive)",
+			"Prueba de react, se utilizan diversas librerias y se implementan diversas funcionalidades. (no es responsive)",
 		image: "https://i.postimg.cc/WbrCB7NK/ndice.png",
 		repository: "https://github.com/bratik121/PruebaProlesys",
 		url: "https://test-bryant-prolesys.vercel.app/",

@@ -28,7 +28,7 @@ function InfoSlider() {
 	};
 
 	return (
-		<div className="w-full col-span-2  md:col-span-3 flex flex-col items-center min-h-[256px] justify-between">
+		<div className="w-full col-span-2  md:col-span-3 flex flex-col items-center min-h-[256px] justify-around">
 			<AnimatePresence>
 				<motion.div
 					className="w-full hover:cursor-pointer"
@@ -58,7 +58,7 @@ function InfoSlider() {
 				</motion.div>
 			</AnimatePresence>
 			{/* Slider Controls */}
-			<div className="flex justify-around  w-[20%] mt-2">
+			<div className="flex justify-around  w-[20%]	">
 				{aboutList.map((element: about, indexE: number) => {
 					return (
 						<span

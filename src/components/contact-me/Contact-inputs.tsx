@@ -1,4 +1,3 @@
-import { useState } from "react";
 function ContactInputs(props: any) {
 	return (
 		<div className="inputBox bg-blanco dark:bg-negro-200">

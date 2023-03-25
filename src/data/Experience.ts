@@ -40,6 +40,11 @@ export const experienciasP: experiencia[] = [
 export const experienciasD: experiencia[] = [
 	{
 		percent: 80,
+		label: "React",
+		description: "Libreria",
+	},
+	{
+		percent: 80,
 		label: "Bootstrap",
 		description: "Framework",
 	},
@@ -49,18 +54,18 @@ export const experienciasD: experiencia[] = [
 		description: "Framework",
 	},
 	{
-		percent: 70,
-		label: "React",
+		percent: 80,
+		label: "Redux",
 		description: "Libreria",
-	},
-	{
-		percent: 50,
-		label: "Vue",
-		description: "Framework",
 	},
 	{
 		percent: 70,
 		label: "Git-Github",
 		description: "Control de versiones",
+	},
+	{
+		percent: 50,
+		label: "Vue",
+		description: "Framework",
 	},
 ];

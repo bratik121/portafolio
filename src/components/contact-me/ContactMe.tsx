@@ -1,8 +1,31 @@
 import "./contact-me.css";
+import { motion as m } from "framer-motion";
 import Tittles from "../../elements/Tittles";
 import { FaTelegramPlane } from "react-icons/fa";
 import { ImWhatsapp } from "react-icons/im";
 import Form from "./Form";
+
+const pillVariant = {
+	hidden: {
+		opacity: 0,
+		x: -250,
+	},
+	show: {
+		opacity: 1,
+		x: 0,
+	},
+};
+
+const formVariant = {
+	hidden: {
+		opacity: 0,
+		x: 250,
+	},
+	show: {
+		opacity: 1,
+		x: 0,
+	},
+};
 
 function ContactMe({ modalSateSetter }: { modalSateSetter: any }) {
 	return (
@@ -13,7 +36,14 @@ function ContactMe({ modalSateSetter }: { modalSateSetter: any }) {
 			<Tittles main="Contacta conmigo" />
 			<div className="contact__container grid grid-cols-1 md:grid-cols-[length:var(--colsSize2)] gap-8 md:gap-[5%] w-full">
 				{/* Otras redes */}
-				<div className="apps flex justify-center flex-col items-center">
+				<m.div
+					className="apps flex justify-center flex-col items-center"
+					variants={pillVariant}
+					initial="hidden"
+					whileInView="show"
+					viewport={{ once: true }}
+				>
+					{/* Pildora - Telegram */}
 					<div className="semi-c-t flex items-center justify-center bg-gradient-to-b from-rojo-200 dark:from-naranja-200  to-transparent  ">
 						<a
 							href="https://t.me/DimeBrii"
@@ -25,6 +55,7 @@ function ContactMe({ modalSateSetter }: { modalSateSetter: any }) {
 							</div>
 						</a>
 					</div>
+					{/* Pildora - Whatsapp */}
 					<div className="semi-c-b flex items-center justify-center bg-gradient-to-b from-transparent dark:to-naranja-200  to-rojo-200  ">
 						<a
 							href="https://wa.me/+584242883068"
@@ -36,9 +67,16 @@ function ContactMe({ modalSateSetter }: { modalSateSetter: any }) {
 							</div>
 						</a>
 					</div>
-				</div>
+				</m.div>
 				{/* Escribir correo */}
-				<Form modalSateSetter={modalSateSetter} />
+				<m.div
+					variants={formVariant}
+					initial="hidden"
+					whileInView="show"
+					viewport={{ once: true }}
+				>
+					<Form modalSateSetter={modalSateSetter} />
+				</m.div>
 			</div>
 		</section>
 	);
