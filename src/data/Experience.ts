@@ -60,6 +60,11 @@ export const experienciasD: experiencia[] = [
 	},
 	{
 		percent: 70,
+		label: "Svelte",
+		description: "Framework",
+	},
+	{
+		percent: 70,
 		label: "Git-Github",
 		description: "Control de versiones",
 	},

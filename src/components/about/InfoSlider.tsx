@@ -28,7 +28,7 @@ function InfoSlider() {
 	};
 
 	return (
-		<div className="w-full col-span-2  md:col-span-3 flex flex-col items-center min-h-[256px] justify-around">
+		<div className="w-full col-span-2  md:col-span-3 flex flex-col items-center min-h-[256px] justify-around mt-4">
 			<AnimatePresence>
 				<motion.div
 					className="w-full hover:cursor-pointer"
