@@ -9,7 +9,7 @@ import Modal from "../src/elements/Modal";
 import "./App.css";
 
 function App() {
-	const [dark, setDark] = useState(false);
+	const [dark, setDark] = useState(true);
 	const setTheme = () => {
 		setDark(!dark);
 	};
