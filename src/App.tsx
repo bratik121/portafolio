@@ -17,7 +17,7 @@ export const langContext = createContext({} as contextType);
 function App() {
 	const [dark, setDark] = useState(true);
 	const [modalSate, setModalSate] = useState(false);
-	const [lang, setLang] = useState("En");
+	const [lang, setLang] = useState("Es");
 
 	const setTheme = () => {
 		setDark(!dark);
