@@ -40,7 +40,10 @@ function App() {
 					<Portafolio />
 					<ContactMe modalSateSetter={modalSateSetter} />
 					{modalSate && (
-						<Modal tittle="Correo enviado!" modalSateSetter={modalSateSetter} />
+						<Modal
+							title={lang === "Es" ? "Correo enviado!" : "Email sent!"}
+							modalSateSetter={modalSateSetter}
+						/>
 					)}
 				</div>
 			</div>

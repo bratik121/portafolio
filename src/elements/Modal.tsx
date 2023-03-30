@@ -1,7 +1,10 @@
 import { AiOutlineClose, AiOutlineCheckCircle } from "react-icons/ai";
 import { motion } from "framer-motion";
 import Button from "./Button";
+import { useContext } from "react";
+import { langContext } from "../App";
 function Modal(props: any) {
+	const { lang } = useContext(langContext);
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: "-100vh" }}
@@ -18,14 +21,14 @@ function Modal(props: any) {
 					/>
 				</div>
 				<div className="title w-full text-center">
-					<h1 className="text-2xl">{props.tittle}</h1>
+					<h1 className="text-2xl">{props.title}</h1>
 				</div>
 				<div className="body w-full flex justify-center">
 					<AiOutlineCheckCircle className="text-[6rem]" />
 				</div>
 				<div className="footer w-full flex justify-center">
 					<Button
-						label="Entendido"
+						label={lang === "Es" ? "Entendido" : "Understood"}
 						clase="primary"
 						clickHandler={() => {
 							props.modalSateSetter(false);
