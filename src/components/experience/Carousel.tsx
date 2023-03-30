@@ -4,14 +4,15 @@ import {
 	MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
 import { motion } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
-import { experiencia } from "../../data/Experience";
-
+import { useRef, useEffect, useState, useContext } from "react";
+import { experiencia } from "../../data/experience";
+import { langContext } from "../../App";
 function Carousel(props: any) {
 	const [width, setWidth] = useState<number>(0);
 	const [index, setIndex] = useState<number>(0);
 	const carosel = useRef() as React.MutableRefObject<HTMLDivElement>;
 	const [spaces, setSpaces] = useState<number[]>([]);
+	const { lang } = useContext(langContext);
 	useEffect(() => {
 		setWidth(carosel.current.scrollWidth - carosel.current.offsetWidth);
 		if (spaces.length === 0) {
@@ -69,7 +70,7 @@ function Carousel(props: any) {
 											<ProgressCard
 												area={experiencia.label}
 												percent={experiencia.percent}
-												description={experiencia.description}
+												description={experiencia.description[lang]}
 											/>
 										</motion.div>
 									);

@@ -1,7 +1,9 @@
 import "./experience.css";
+import { useContext } from "react";
 import { motion as m } from "framer-motion";
 import Tittles from "../../elements/Tittles";
-import { experienciasP, experienciasD } from "../../data/Experience";
+import { langContext } from "../../App";
+import { experienciasP, experienciasD } from "../../data/experience";
 import Carousel from "./Carousel";
 
 const titleVariant = {
@@ -41,6 +43,7 @@ const carouselVariant = {
 };
 
 function Experience() {
+	const { lang } = useContext(langContext);
 	return (
 		<section
 			className="h-screen w-[75%] mx-auto flex flex-col items-center"
@@ -52,7 +55,7 @@ function Experience() {
 				variants={titleVariant}
 				viewport={{ once: true }}
 			>
-				<Tittles main="Conocimientos" />
+				<Tittles main={lang === "Es" ? "Conocimientos" : "Knowledge"} />
 			</m.div>
 			{/* Contendor de los carruseles */}
 			<m.div

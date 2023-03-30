@@ -1,5 +1,7 @@
 import "./about.css";
+import { useContext } from "react";
 import { motion as m } from "framer-motion";
+import { langContext } from "../../App";
 import about from "../../assets/Aboutme.png";
 import Tittles from "../../elements/Tittles";
 import AboutCards from "./AboutCards";
@@ -20,16 +22,15 @@ const imgVariant = {
 	},
 };
 
-const infoVariant = {};
-
 function About() {
+	const { lang } = useContext(langContext);
 	return (
 		<section
 			className="md:h-screen w-[75%] mx-auto relative flex flex-col items-center"
 			id="about"
 		>
 			{/* Titulos */}
-			<Tittles main="Acerca de mi" />
+			<Tittles main={lang === "Es" ? "Acerca de mi" : "About me"} />
 			{/* contenedor Grid principal */}
 			<div className="about__container md:mt-8 grid grid-cols-1 justify-items-center  md:grid-cols-[length:var(--colsSize)] gap-7 md:gap-[15%]">
 				{/* Color de fondo de la imagen > la imagen*/}

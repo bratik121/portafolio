@@ -1,6 +1,7 @@
 import { aboutList, about } from "../../data/about";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { langContext } from "../../App";
 
 const containerVariant = {
 	hidden: {
@@ -19,8 +20,9 @@ const containerVariant = {
 
 function InfoSlider() {
 	const [index, setIndex] = useState<number>(0);
+	const { lang } = useContext(langContext);
 	const nextItem = (index: number) => {
-		if (index !== aboutList.length - 1) {
+		if (index !== aboutList[lang].length - 1) {
 			setIndex(index + 1);
 		} else {
 			setIndex(0);
@@ -29,7 +31,7 @@ function InfoSlider() {
 
 	return (
 		<div className="w-full col-span-2  md:col-span-3 flex flex-col items-center min-h-[256px] justify-around mt-4">
-			<AnimatePresence>
+			<AnimatePresence exitBeforeEnter>
 				<motion.div
 					className="w-full hover:cursor-pointer"
 					variants={containerVariant}
@@ -40,9 +42,9 @@ function InfoSlider() {
 						nextItem(index);
 					}}
 				>
-					<h3 className="font-semibold mb-2">{aboutList[index].tittle}</h3>
+					<h3 className="font-semibold mb-2">{aboutList[lang][index].title}</h3>
 					<ul className=" about__p text-gris-500 text-justify dark:text-gris-200 list-disc px-4 w-full">
-						{aboutList[index].content.map(
+						{aboutList[lang][index].content.map(
 							(content: string, indexLi: number) => {
 								return (
 									<li
@@ -59,7 +61,7 @@ function InfoSlider() {
 			</AnimatePresence>
 			{/* Slider Controls */}
 			<div className="flex justify-around  w-[20%]	">
-				{aboutList.map((element: about, indexE: number) => {
+				{aboutList[lang].map((element: about, indexE: number) => {
 					return (
 						<span
 							key={indexE}

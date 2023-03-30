@@ -1,5 +1,7 @@
-import { useState } from "react";
 import "./header.css";
+import { useContext } from "react";
+import { langContext } from "../../App";
+import { headerContent } from "../../data/header";
 import CV from "../../assets/CURRICULUM BRYANT MITCHELL.pdf";
 import me from "../../assets/final.png";
 import ButtonLink from "../../elements/ButtonLink";
@@ -58,6 +60,7 @@ const bottonVariant = {
 function Header() {
 	const { scrollYProgress } = useScroll();
 	let y = useTransform(scrollYProgress, [0, 0.01], [0, 1]);
+	const { lang } = useContext(langContext);
 
 	return (
 		<header>
@@ -71,9 +74,9 @@ function Header() {
 					viewport={{ once: true }}
 				>
 					<Tittles
-						first="Hola, soy"
-						main="Bryant Mitchell"
-						last="Desarrollador Frontend"
+						first={headerContent[lang].first}
+						main={headerContent[lang].main}
+						last={headerContent[lang].last}
 					/>
 				</motion.div>
 
@@ -84,8 +87,16 @@ function Header() {
 					variants={bottonVariant}
 					viewport={{ once: true }}
 				>
-					<ButtonLink label="Descargar CV" href={CV} clase="secondary" />
-					<ButtonLink label="Hablemos" href="#contact-me" clase="primary" />
+					<ButtonLink
+						label={lang === "Es" ? "Descargar Cv" : "Download Cv"}
+						href={CV}
+						clase="secondary"
+					/>
+					<ButtonLink
+						label={lang === "Es" ? "Hablemos" : "Let's talk"}
+						href="#contact-me"
+						clase="primary"
+					/>
 				</motion.div>
 				<motion.div
 					className="me w-[22rem] flex justify-center  h-[38rem] bg-gradient-to-b from-rojo-200 dark:from-naranja-200 to-transparent  transition duration-[0.4s] mt-7 overflow-hidden"
