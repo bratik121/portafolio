@@ -1,4 +1,5 @@
 type description = { [key: string]: string };
+
 export type experiencia = {
 	percent: number;
 	label: string;
@@ -9,7 +10,7 @@ export const experienciasP: experiencia[] = [
 	{
 		percent: 95,
 		label: "Html",
-		description: { Es: "Lengua", En: "Language" },
+		description: { Es: "Lenguaje", En: "Language" },
 	},
 	{
 		percent: 70,

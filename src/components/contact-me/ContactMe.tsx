@@ -1,10 +1,11 @@
 import "./contact-me.css";
 import { motion as m } from "framer-motion";
+import { useContext } from "react";
 import Tittles from "../../elements/Tittles";
 import { FaTelegramPlane } from "react-icons/fa";
 import { ImWhatsapp } from "react-icons/im";
 import Form from "./Form";
-
+import { langContext } from "../../App";
 const pillVariant = {
 	hidden: {
 		opacity: 0,
@@ -28,12 +29,13 @@ const formVariant = {
 };
 
 function ContactMe({ modalSateSetter }: { modalSateSetter: any }) {
+	const { lang } = useContext(langContext);
 	return (
 		<section
 			className="md:h-screen w-[75%] mx-auto flex flex-col items-center"
 			id="contact-me"
 		>
-			<Tittles main="Contacta conmigo" />
+			<Tittles main={lang === "Es" ? "Contacta conmigo" : "Contact me"} />
 			<div className="contact__container grid grid-cols-1 md:grid-cols-[length:var(--colsSize2)] gap-8 md:gap-[5%] w-full">
 				{/* Otras redes */}
 				<m.div
@@ -75,7 +77,7 @@ function ContactMe({ modalSateSetter }: { modalSateSetter: any }) {
 					whileInView="show"
 					viewport={{ once: true }}
 				>
-					<Form modalSateSetter={modalSateSetter} />
+					<Form modalSateSetter={modalSateSetter} lang={lang} />
 				</m.div>
 			</div>
 		</section>

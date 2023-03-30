@@ -1,8 +1,10 @@
 import "./portafolio.css";
 import { lazy, Suspense } from "react";
+import { useContext } from "react";
 import { motion as m } from "framer-motion";
 import Tittles from "../../elements/Tittles";
 import { proyects } from "../../data/portafolio";
+import { langContext } from "../../App";
 const WorkItem = lazy(() => import("./WorkItem"));
 
 const containerVariant = {
@@ -23,12 +25,16 @@ const cardVariant = {
 };
 
 function Portafolio() {
+	const { lang } = useContext(langContext);
 	return (
 		<section
 			className="md:h-screen w-[75%] mx-auto flex flex-col items-center "
 			id="portafolio"
 		>
-			<Tittles main={"Proyectos"} last="recientes" />
+			<Tittles
+				main={lang === "Es" ? "Proyectos" : "Proyects"}
+				last={lang === "Es" ? "recientes" : ""}
+			/>
 			<m.div
 				className="portafolio__container w-full grid grid-cols-1 md:grid-cols-3 justify-items-center gap-6 h-[73%] mt-2 md:mt-6 p-2 "
 				variants={containerVariant}
@@ -49,9 +55,9 @@ function Portafolio() {
 							>
 								{/* Cards de los proyectos */}
 								<WorkItem
-									tittle={proyect.tittle}
+									title={proyect.title[lang]}
 									image={proyect.image}
-									description={proyect.description}
+									description={proyect.description[lang]}
 									repository={proyect.repository}
 									url={proyect.url}
 									key={index}

@@ -45,18 +45,18 @@ function Form(props: any) {
 		element.current.value = "";
 	};
 	const validateName = (): number => {
-			if (notEmpty(nombre.current.value)) {
-				if (validText(nombre.current.value)) {
-					setErrorNombre("Caracteres invalidos");
-					return 0;
-				} else {
-					setErrorNombre("");
-					return 1;
-				}
-			} else {
-				setErrorNombre("Introduzca un nombre!");
+		if (notEmpty(nombre.current.value)) {
+			if (validText(nombre.current.value)) {
+				setErrorNombre("Caracteres invalidos");
 				return 0;
+			} else {
+				setErrorNombre("");
+				return 1;
 			}
+		} else {
+			setErrorNombre("Introduzca un nombre!");
+			return 0;
+		}
 	};
 	const validateEmail = (): number => {
 		if (notEmpty(correo.current.value)) {
@@ -103,7 +103,7 @@ function Form(props: any) {
 		<form className="p-4 flex flex-col gap-3" ref={form} onSubmit={sendMessage}>
 			<ContactInputs
 				type="text"
-				label="Nombre"
+				label={props.lang === "Es" ? "Nombre" : "Name"}
 				refers={nombre}
 				error={errorNombre}
 				nombre="nombre"
@@ -112,7 +112,7 @@ function Form(props: any) {
 			/>
 			<ContactInputs
 				type="text"
-				label="Correo"
+				label={props.lang === "Es" ? "Correo" : "Email"}
 				refers={correo}
 				error={errorCorreo}
 				nombre="correo"
@@ -125,11 +125,15 @@ function Form(props: any) {
 				id=""
 				cols={30}
 				rows={7}
-				placeholder="Contenido"
+				placeholder={props.lang === "Es" ? "Contenido" : "Content"}
 				ref={texto}
 			></textarea>
 			<p>{errorTexto}</p>
-			<Button label="Enviar" clase="primary" type="submit" />
+			<Button
+				label={props.lang === "Es" ? "Enviar" : "Send"}
+				clase="primary"
+				type="submit"
+			/>
 		</form>
 	);
 }
