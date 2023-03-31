@@ -2,13 +2,16 @@ import { countryCodes } from "./countries";
 
 export const getCountry = async (langSetter: Function) => {
 	try {
-		const res = await fetch(
+		/*	const res = await fetch(
 			"http://api.ipapi.com/api/check?access_key=f855afb0167ce82ec6fa16530234dd24"
+		);*/
+		const res = await fetch(
+			"https://ip-geolocation.whoisxmlapi.com/api/v1?apiKey=at_aK795SzqxgsVRVtOinJKtwW5cSXgk"
 		);
 		const data = await res.json();
 		console.log(data);
-		const { country_code } = data;
-		if (countryCodes.includes(country_code)) {
+		const { country } = data.location;
+		if (countryCodes.includes(country)) {
 			langSetter("Es");
 		} else {
 			langSetter("En");

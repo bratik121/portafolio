@@ -37,7 +37,7 @@ export const proyects: proyect[] = [
 		url: "https://test-bryant-prolesys.vercel.app/",
 	},
 	{
-		title: { Es: "Proyecto 3", En: "Proyect " },
+		title: { Es: "Proyecto 3", En: "Project 3" },
 		description: {
 			Es: "Una breve descripcion sobre lo que es y lo que contiene el proyecto 3",
 			En: "A brief description of what project 3 is and what it contains",
@@ -47,7 +47,7 @@ export const proyects: proyect[] = [
 		url: "",
 	},
 	{
-		title: { Es: "Proyecto 4", En: "Proyect 4" },
+		title: { Es: "Proyecto 4", En: "Project 4" },
 		description: {
 			Es: "Una breve descripcion sobre lo que es y lo que contiene el proyecto 4",
 			En: "A brief description of what project 4 is and what it contains",
@@ -57,7 +57,7 @@ export const proyects: proyect[] = [
 		url: "",
 	},
 	{
-		title: { Es: "Proyecto 5", En: "Proyect 5" },
+		title: { Es: "Proyecto 5", En: "Project 5" },
 		description: {
 			Es: "Una breve descripcion sobre lo que es y lo que contiene el proyecto 5",
 			En: "A brief description of what project 5 is and what it contains",
@@ -67,7 +67,7 @@ export const proyects: proyect[] = [
 		url: "",
 	},
 	{
-		title: { Es: "Proyecto 6", En: "Proyect 6" },
+		title: { Es: "Proyecto 6", En: "Project 6" },
 		description: {
 			Es: "Una breve descripcion sobre lo que es y lo que contiene el proyecto 6",
 			En: "A brief description of what project 6 is and what it contains",
