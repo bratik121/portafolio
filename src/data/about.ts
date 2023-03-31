@@ -64,7 +64,7 @@ export const aboutList: aboutAtribute = {
 		{
 			title: "Objectives",
 			content: [
-				"To work in a dynamic company while finishing my degree in Computer Engineering, which helps me advance in the development of my skills, abilities, and knowledge as a web developer and programmer. Always ensuring a good user experience and high software performance.",
+				"I am seeking a high impact company where I can further develop my skills, abilities, and knowledge as a web developer and programmer while completing my degree in Software Engineering. My aim is to ensure the delivery of high-performance software while prioritizing an exceptional user experience.",
 			],
 		},
 		{
@@ -79,49 +79,3 @@ export const aboutList: aboutAtribute = {
 		},
 	],
 };
-
-/*
-
-export const hobbies: string[] = [
-	"Programar",
-	"Musica",
-	"Video juegos",
-	"Volleyball",
-];
-
-export const skills: string[] = [
-	"Ingles avanzado",
-	"Trabajo en Equipo",
-	"Gestion de conflictos",
-	"Negociar",
-];
-
-export const aboutList: about[] = [
-	{
-		title: "Presentacion",
-		content: [
-			"¡Hola! Me llamo Bryant Mitchell, soy un estudiante de la universidad Católica Andrés Bello, estoy a dos semestres de graduarme.",
-			"Soy una persona con mucha iniciativa, con un gran potencial para crecer, capaz de adaptarse a cualquier situación y solucionar los problemas que se presenten.",
-		],
-	},
-	{
-		title: "Objetivos",
-		content: [
-			`Laborar en una empresa dinámica mientras termino la carrera de Ingeniería
-		Informática; que me ayude a avanzar en el desarrollo de mis habilidades, destrezas
-		y conocimientos como desarrollador y programador web. Siempre garantizando una buena experiencia para  el  usuario y un gran rendimiento del software.
-		`,
-		],
-	},
-	{
-		title: "Intereses",
-		content: [
-			"Diseño de interfaces y de experiencias de usuario (Ui/Ux).",
-			"Arquitecturas para el flujo de datos (Flux-Redux)",
-			"Inteligencia artificial (IA)",
-			"Desarrollo de video juegos",
-			"Desarrollo de aplicaciones móviles",
-		],
-	},
-];
-*/

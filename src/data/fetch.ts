@@ -9,7 +9,6 @@ export const getCountry = async (langSetter: Function) => {
 			"https://ip-geolocation.whoisxmlapi.com/api/v1?apiKey=at_aK795SzqxgsVRVtOinJKtwW5cSXgk"
 		);
 		const data = await res.json();
-		console.log(data);
 		const { country } = data.location;
 		if (countryCodes.includes(country)) {
 			langSetter("Es");

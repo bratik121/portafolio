@@ -32,7 +32,7 @@ function Portafolio() {
 			id="portafolio"
 		>
 			<Tittles
-				main={lang === "Es" ? "Proyectos" : "Proyects"}
+				main={lang === "Es" ? "Proyectos" : "Projects"}
 				last={lang === "Es" ? "recientes" : ""}
 			/>
 			<m.div
