@@ -88,7 +88,7 @@ function Header() {
 					viewport={{ once: true }}
 				>
 					<ButtonLink
-						label={lang === "Es" ? "Descargar Cv" : "Download Cv"}
+						label={lang === "Es" ? "Descargar CV" : "Download CV"}
 						href={CV}
 						clase="secondary"
 					/>

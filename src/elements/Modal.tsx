@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Button from "./Button";
 import { useContext } from "react";
 import { langContext } from "../App";
+
 function Modal(props: any) {
 	const { lang } = useContext(langContext);
 	return (
