@@ -7,6 +7,7 @@ import ContactMe from "./components/contact-me/ContactMe";
 import Experience from "./components/experience/Experience";
 import Portafolio from "./components/portafolio_c/Portafolio";
 import Modal from "../src/elements/Modal";
+import Loading from "./elements/Loading";
 import { getCountry } from "./data/fetch";
 
 type contextType = {
@@ -33,29 +34,34 @@ function App() {
 
 	return (
 		<langContext.Provider value={{ lang }}>
-			{lang === "" ? (
-				<>cargando</>
-			) : (
-				<div className={`App w-full h-full  ${dark ? "dark" : ""}`}>
-					<div
-						className="main-contianer bg-blanco text-rojo-200 
+			<div className={`App w-full h-full  ${dark ? "dark" : ""}`}>
+				<div
+					className="main-contianer bg-blanco text-rojo-200 
               dark:bg-negro-200 dark:text-naranja-200 overflow-hidden w-full relative"
-					>
-						<Header />
-						<Nav setTheme={setTheme} />
-						<About />
-						<Experience />
-						<Portafolio />
-						<ContactMe modalSateSetter={modalSateSetter} />
-						{modalSate && (
-							<Modal
-								title={lang === "Es" ? "Correo enviado!" : "Email sent!"}
-								modalSateSetter={modalSateSetter}
-							/>
-						)}
-					</div>
+				>
+					{lang === "" ? (
+						<div className="h-screen flex justify-center items-center">
+							<Loading />
+						</div>
+					) : (
+						<>
+							{" "}
+							<Header />
+							<Nav setTheme={setTheme} />
+							<About />
+							<Experience />
+							<Portafolio />
+							<ContactMe modalSateSetter={modalSateSetter} />
+							{modalSate && (
+								<Modal
+									title={lang === "Es" ? "Correo enviado!" : "Email sent!"}
+									modalSateSetter={modalSateSetter}
+								/>
+							)}
+						</>
+					)}
 				</div>
-			)}
+			</div>
 		</langContext.Provider>
 	);
 }
