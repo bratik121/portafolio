@@ -12,8 +12,8 @@ export type proyect = {
 export const proyects: proyect[] = [
 	{
 		title: {
-			Es: "Briiger",
-			En: "Briiger",
+			Es: "Briigser",
+			En: "Briigser",
 		},
 		description: {
 			Es: "Pagina para buscar una gran variedad de gifs, desarrollada con react, typercript y tailwind.",
