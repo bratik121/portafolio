@@ -11,6 +11,16 @@ export type proyect = {
 };
 export const proyects: proyect[] = [
 	{
+		title: { Es: "Infinity Energy", En: "Infinity Energy" },
+		description: {
+			Es: "Conjunto de paginas webs desarrolladas con react, tailwind y otras librerias.",
+			En: "Collection of web pages developed using React, Tailwind, and other libraries.",
+		},
+		image: "https://i.postimg.cc/gjHwQtth/Infinity-Energy-Land.png",
+		repository: "",
+		url: "https://www.infinityenergyusa.com/",
+	},
+	{
 		title: {
 			Es: "Briigser",
 			En: "Briigser",
@@ -35,16 +45,6 @@ export const proyects: proyect[] = [
 		image: "https://i.postimg.cc/WbrCB7NK/ndice.png",
 		repository: "https://github.com/bratik121/PruebaProlesys",
 		url: "https://test-bryant-prolesys.vercel.app/",
-	},
-	{
-		title: { Es: "Proyecto 3", En: "Project 3" },
-		description: {
-			Es: "Una breve descripcion sobre lo que es y lo que contiene el proyecto 3",
-			En: "A brief description of what project 3 is and what it contains",
-		},
-		image: "https://picsum.photos/261/125",
-		repository: "",
-		url: "",
 	},
 	{
 		title: { Es: "Proyecto 4", En: "Project 4" },
