@@ -1,89 +1,62 @@
-import ProgressCard from "./ProgressCard";
+import { useRef } from "react";
+import { useReducedMotion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import {
 	MdOutlineKeyboardArrowLeft,
 	MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
-import { motion } from "framer-motion";
-import { useRef, useEffect, useState, useContext } from "react";
-import { experiencia } from "../../data/experience";
-import { langContext } from "../../App";
-function Carousel(props: any) {
-	const [width, setWidth] = useState<number>(0);
-	const [index, setIndex] = useState<number>(0);
-	const carosel = useRef() as React.MutableRefObject<HTMLDivElement>;
-	const [spaces, setSpaces] = useState<number[]>([]);
-	const { lang } = useContext(langContext);
-	useEffect(() => {
-		setWidth(carosel.current.scrollWidth - carosel.current.offsetWidth);
-		if (spaces.length === 0) {
-			props.experiencias.forEach((element: experiencia, index: number) => {
-				if (index === 0) {
-					spaces.push(index);
-				} else {
-					spaces.push(spaces[index - 1] - 235);
-				}
-			});
-			spaces.splice(spaces.length - 3, spaces.length);
-			spaces.push(-(carosel.current.scrollWidth - carosel.current.offsetWidth));
-		}
-	}, []);
+import type { Experiencia } from "../../data/experience";
+import ProgressCard from "./ProgressCard";
 
-	const moveRight = () => {
-		if (index !== spaces.length - 1) {
-			setIndex(index + 1);
-		} else {
-			setIndex(0);
-		}
-	};
-	const moveLeft = () => {
-		if (index !== 0) {
-			setIndex(index - 1);
-		} else if (index === 0) {
-			setIndex(spaces.length - 1);
-		}
+type CarouselProps = {
+	experiencias: Experiencia[];
+};
+
+function Carousel({ experiencias }: CarouselProps) {
+	const { t } = useTranslation();
+	const reduceMotion = useReducedMotion();
+	const track = useRef<HTMLDivElement>(null);
+
+	const scrollByCard = (direction: -1 | 1) => {
+		track.current?.scrollBy({
+			left: direction * 256,
+			behavior: reduceMotion ? "auto" : "smooth",
+		});
 	};
 
 	return (
-		<div className="w-full flex flex-col ">
-			<h3 className="text-center text-xl italic mb-4">{props.tittle}</h3>
-			<div className="w-full flex items-center">
-				<MdOutlineKeyboardArrowLeft
-					className="hidden md:block w-[5%] text-4xl hover:cursor-pointer"
-					onClick={moveLeft}
-				/>
-				<div className="w-[90%]">
-					<motion.div
-						className="carousel flex w-[100%] items-center overflow-hidden"
-						ref={carosel}
-					>
-						<motion.div
-							className={`inner-carousel flex w-full cursor-grab`}
-							animate={{ x: spaces[index] }}
-							drag="x"
-							dragConstraints={{ right: 0, left: -width }}
-							dragElastic={0.15}
-						>
-							{props.experiencias.map(
-								(experiencia: experiencia, index: number) => {
-									return (
-										<motion.div className="mx-2 " key={index}>
-											<ProgressCard
-												area={experiencia.label}
-												percent={experiencia.percent}
-												description={experiencia.description[lang]}
-											/>
-										</motion.div>
-									);
-								}
-							)}
-						</motion.div>
-					</motion.div>
-				</div>
-				<MdOutlineKeyboardArrowRight
-					className="hidden md:block w-[5%] text-4xl hover:cursor-pointer"
-					onClick={moveRight}
-				/>
+		<div className="flex items-center gap-3">
+			<button
+				type="button"
+				onClick={() => scrollByCard(-1)}
+				aria-label={t("experience.previous")}
+				className="hidden h-10 w-10 shrink-0 items-center justify-center border border-negro-500/15 text-2xl text-gris-500 transition-colors hover:border-rojo-200 hover:text-rojo-200 dark:border-blanco/15 dark:text-gris-200 dark:hover:border-naranja-200 dark:hover:text-naranja-200 md:flex"
+			>
+				<MdOutlineKeyboardArrowLeft aria-hidden="true" />
+			</button>
+
+			<div
+				ref={track}
+				role="region"
+				aria-label={t("experience.title")}
+				tabIndex={0}
+				className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+			>
+				{experiencias.map((experiencia) => (
+					<div key={experiencia.label} className="snap-start shrink-0">
+						<ProgressCard {...experiencia} />
+					</div>
+				))}
 			</div>
+
+			<button
+				type="button"
+				onClick={() => scrollByCard(1)}
+				aria-label={t("experience.next")}
+				className="hidden h-10 w-10 shrink-0 items-center justify-center border border-negro-500/15 text-2xl text-gris-500 transition-colors hover:border-rojo-200 hover:text-rojo-200 dark:border-blanco/15 dark:text-gris-200 dark:hover:border-naranja-200 dark:hover:text-naranja-200 md:flex"
+			>
+				<MdOutlineKeyboardArrowRight aria-hidden="true" />
+			</button>
 		</div>
 	);
 }

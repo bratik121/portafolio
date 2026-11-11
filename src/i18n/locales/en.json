@@ -1,0 +1,143 @@
+{
+	"nav": {
+		"mainLabel": "Main navigation",
+		"home": "Home",
+		"about": "About",
+		"experience": "Skills",
+		"projects": "Projects",
+		"contact": "Contact",
+		"toggleTheme": "Toggle theme"
+	},
+	"header": {
+		"first": "Hi, I am",
+		"name": {
+			"first": "Bryant",
+			"last": "Mitchell"
+		},
+		"role": "Frontend Developer",
+		"downloadCV": "Download CV",
+		"talk": "Let's talk",
+		"portraitAlt": "Portrait of Bryant Mitchell"
+	},
+	"about": {
+		"title": "About me",
+		"portraitAlt": "Bryant Mitchell",
+		"cards": {
+			"studies": {
+				"title": "Studies",
+				"value": "4 years studying"
+			},
+			"hobbies": {
+				"title": "Hobbies"
+			},
+			"skills": {
+				"title": "Skills"
+			}
+		},
+		"hobbies": ["Programming", "Music", "Video games", "Volleyball"],
+		"skills": [
+			"Advanced English",
+			"Teamwork",
+			"Conflict management",
+			"Negotiation"
+		],
+		"slides": {
+			"intro": {
+				"title": "Introduction",
+				"content": [
+					"Hello, my name is Bryant Mitchell. I am a student at Universidad Católica Andrés Bello, and I am two semesters away from graduation.",
+					"I am an individual with a lot of initiative, great potential for growth, and capable of adapting to any situation and solving problems as they arise."
+				]
+			},
+			"objectives": {
+				"title": "Objectives",
+				"content": [
+					"I am seeking a high impact company where I can further develop my skills, abilities, and knowledge as a web developer and programmer while completing my degree in Software Engineering. My aim is to ensure the delivery of high-performance software while prioritizing an exceptional user experience."
+				]
+			},
+			"interests": {
+				"title": "Interests",
+				"content": [
+					"User interface and experience (UI/UX) design",
+					"Data flow architectures (Flux-Redux)",
+					"Artificial intelligence (AI)",
+					"Video game development",
+					"Mobile application development"
+				]
+			}
+		}
+	},
+	"experience": {
+		"title": "Knowledge",
+		"types": {
+			"language": "Language",
+			"library": "Library",
+			"framework": "Framework",
+			"tool": "Tool"
+		},
+		"previous": "See previous skills",
+		"next": "See more skills"
+	},
+	"projects": {
+		"title": "Projects",
+		"subtitle": "",
+		"visit": "Visit",
+		"repository": "Repository",
+		"loading": "Loading…",
+		"imageAlt": "Screenshot of the {{title}} project",
+		"items": {
+			"infinityEnergy": {
+				"title": "Infinity Energy",
+				"description": "Collection of web pages developed using React, Tailwind, and other libraries."
+			},
+			"briigser": {
+				"title": "Briigser",
+				"description": "Page to search a wide variety of gifs, developed with React, TypeScript, and Tailwind."
+			},
+			"reactTest": {
+				"title": "React Test",
+				"description": "React test, using various libraries and implementing different functionalities. (not responsive)"
+			},
+			"project4": {
+				"title": "Project 4",
+				"description": "A brief description of what project 4 is and what it contains"
+			},
+			"project5": {
+				"title": "Project 5",
+				"description": "A brief description of what project 5 is and what it contains"
+			},
+			"project6": {
+				"title": "Project 6",
+				"description": "A brief description of what project 6 is and what it contains"
+			}
+		}
+	},
+	"contact": {
+		"title": "Contact me",
+		"telegram": "Message me on Telegram",
+		"whatsapp": "Message me on WhatsApp",
+		"form": {
+			"name": "Name",
+			"email": "Email",
+			"message": "Content",
+			"send": "Send"
+		},
+		"errors": {
+			"invalidName": "Invalid characters",
+			"nameRequired": "Enter a name.",
+			"invalidEmail": "Invalid email",
+			"emailRequired": "Enter an email.",
+			"messageRequired": "Enter a message."
+		}
+	},
+	"modal": {
+		"successTitle": "Email sent!",
+		"understood": "Understood",
+		"close": "Close"
+	},
+	"footer": {
+		"copyright": "© 2026 Bryant Mitchell",
+		"backToTop": "Back to top"
+	},
+	"loading": "Loading…"
+}

@@ -1,78 +1,26 @@
-type description = { [key: string]: string };
+export type SkillType = "language" | "library" | "framework" | "tool";
 
-export type experiencia = {
+export type Experiencia = {
 	percent: number;
 	label: string;
-	description: description;
+	type: SkillType;
 };
 
-export const experienciasP: experiencia[] = [
-	{
-		percent: 95,
-		label: "Html",
-		description: { Es: "Lenguaje", En: "Language" },
-	},
-	{
-		percent: 70,
-		label: "Css",
-		description: { Es: "Lenguaje", En: "Language" },
-	},
-	{
-		percent: 80,
-		label: "JavaScript",
-		description: { Es: "Lenguaje", En: "Language" },
-	},
-	{
-		percent: 75,
-		label: "TypeScript",
-		description: { Es: "Lenguaje", En: "Language" },
-	},
-	{
-		percent: 80,
-		label: "Java",
-		description: { Es: "Lenguaje", En: "Language" },
-	},
-	{
-		percent: 60,
-		label: "PL/SQL",
-		description: { Es: "Lenguaje", En: "Language" },
-	},
+export const experienciasP: Experiencia[] = [
+	{ percent: 95, label: "HTML", type: "language" },
+	{ percent: 70, label: "CSS", type: "language" },
+	{ percent: 80, label: "JavaScript", type: "language" },
+	{ percent: 75, label: "TypeScript", type: "language" },
+	{ percent: 80, label: "Java", type: "language" },
+	{ percent: 60, label: "PL/SQL", type: "language" },
 ];
 
-export const experienciasD: experiencia[] = [
-	{
-		percent: 80,
-		label: "React",
-		description: { Es: "Libreria", En: "Library" },
-	},
-	{
-		percent: 80,
-		label: "Bootstrap",
-		description: { Es: "Framework", En: "Framework" },
-	},
-	{
-		percent: 80,
-		label: "Tailwind",
-		description: { Es: "Framework", En: "Framework" },
-	},
-	{
-		percent: 80,
-		label: "Redux",
-		description: { Es: "Libreria", En: "Library" },
-	},
-	{
-		percent: 70,
-		label: "Svelte",
-		description: { Es: "Framework", En: "Framework" },
-	},
-	{
-		percent: 70,
-		label: "Git-Github",
-		description: { Es: "Herramienta", En: "Tool" },
-	},
-	{
-		percent: 50,
-		label: "Vue",
-		description: { Es: "Framework", En: "Framework" },
-	},
+export const experienciasD: Experiencia[] = [
+	{ percent: 80, label: "React", type: "library" },
+	{ percent: 80, label: "Bootstrap", type: "framework" },
+	{ percent: 80, label: "Tailwind", type: "framework" },
+	{ percent: 80, label: "Redux", type: "library" },
+	{ percent: 70, label: "Svelte", type: "framework" },
+	{ percent: 70, label: "GitHub", type: "tool" },
+	{ percent: 50, label: "Vue", type: "framework" },
 ];

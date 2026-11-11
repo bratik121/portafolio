@@ -1,41 +1,77 @@
-function ProgressCard(props: any) {
-	let percent: number = 440 - (props.percent * 440) / 100;
-	const style_p = {
-		"--num": percent,
-		"--percent": props.percent,
-	} as React.CSSProperties;
+import { motion, useReducedMotion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import type { Experiencia } from "../../data/experience";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+function ProgressCard({ percent, label, type }: Experiencia) {
+	const { t } = useTranslation();
+	const reduceMotion = useReducedMotion();
+	const finalOffset = 1 - percent / 100;
 
 	return (
-		<div className="experience-card relative w-[220px] h-[250px] flex justify-center items-center rounded-lg shadow-[inset_0_0_14px_-5px_#161925] dark:shadow-[inset_0_0_14px_-1px_#FDFFFC]">
-			<div
-				className="percent w-[150px] aspect-square relative "
-				style={style_p}
-			>
-				<div className="dot  before:bg-rojo-200 before:dark:bg-naranja-200 before:shadow-[0_0_10px_rgb(153,13,53)] dark:before:shadow-[0_0_10px_rgb(254,144,60)]"></div>
-				<svg className="w-[150px] aspect-square relative  rotate-[270deg]">
+		<article className="flex w-[240px] flex-col items-center gap-4 py-5">
+			<div className="relative aspect-square w-[170px]">
+				<svg
+					viewBox="0 0 140 140"
+					className="h-full w-full -rotate-90"
+					aria-hidden="true"
+				>
 					<circle
 						cx="70"
 						cy="70"
-						r="70"
-						className="w-full h-full fill-transparent stroke-2 stroke-[rgba(22,25,37,0.7)] dark:stroke-[rgba(253,255,252,0.66)]   translate-x-[5px] translate-y-[5px] "
-					></circle>
-					<circle
-						cx="70"
-						cy="70"
-						r="70"
-						className="circle-2 -full h-full fill-transparent stroke-2 stroke-rojo-200 dark:stroke-naranja-200  translate-x-[5px] translate-y-[5px]  "
-					></circle>
+						r="62"
+						fill="none"
+						strokeWidth="1.5"
+						className="stroke-negro-500/15 dark:stroke-blanco/15"
+					/>
+					{reduceMotion ? (
+						<circle
+							cx="70"
+							cy="70"
+							r="62"
+							fill="none"
+							strokeWidth="2"
+							strokeLinecap="round"
+							pathLength={1}
+							strokeDasharray={1}
+							strokeDashoffset={finalOffset}
+							className="stroke-rojo-200 dark:stroke-naranja-200"
+						/>
+					) : (
+						<motion.circle
+							cx="70"
+							cy="70"
+							r="62"
+							fill="none"
+							strokeWidth="2"
+							strokeLinecap="round"
+							pathLength={1}
+							strokeDasharray={1}
+							initial={{ strokeDashoffset: 1 }}
+							whileInView={{ strokeDashoffset: finalOffset }}
+							viewport={{ once: true, amount: 0.5 }}
+							transition={{ duration: 1.2, ease: EASE }}
+							className="stroke-rojo-200 dark:stroke-naranja-200"
+						/>
+					)}
 				</svg>
+
+				<div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
+					<p className="text-[2.75rem] font-medium leading-none tracking-[-0.03em]">
+						{percent}
+						<span className="text-base">%</span>
+					</p>
+					<p className="max-w-[9rem] text-center text-sm text-gris-500 dark:text-gris-200">
+						{label}
+					</p>
+				</div>
 			</div>
-			<div className="experience__card__label absolute inset-0 flex justify-center items-center flex-col">
-				<h2 className="text-xl flex items-center gap-1 ">
-					{props.percent}
-					<span className="text-sm">%</span>
-				</h2>
-				<p className="capitalize text-center tracking-widest  ">{props.area}</p>
-			</div>
-			<p className="absolute bottom-0 -translate-y-4">{props.description}</p>
-		</div>
+
+			<p className="text-xs text-gris-500 dark:text-gris-200">
+				{t(`experience.types.${type}`)}
+			</p>
+		</article>
 	);
 }
 

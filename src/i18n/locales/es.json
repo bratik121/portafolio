@@ -1,0 +1,143 @@
+{
+	"nav": {
+		"mainLabel": "Navegación principal",
+		"home": "Inicio",
+		"about": "Acerca de mí",
+		"experience": "Conocimientos",
+		"projects": "Proyectos",
+		"contact": "Contacto",
+		"toggleTheme": "Cambiar tema"
+	},
+	"header": {
+		"first": "Hola, soy",
+		"name": {
+			"first": "Bryant",
+			"last": "Mitchell"
+		},
+		"role": "Desarrollador Frontend",
+		"downloadCV": "Descargar CV",
+		"talk": "Hablemos",
+		"portraitAlt": "Retrato de Bryant Mitchell"
+	},
+	"about": {
+		"title": "Acerca de mí",
+		"portraitAlt": "Bryant Mitchell",
+		"cards": {
+			"studies": {
+				"title": "Estudios",
+				"value": "4 años estudiando"
+			},
+			"hobbies": {
+				"title": "Hobbies"
+			},
+			"skills": {
+				"title": "Habilidades"
+			}
+		},
+		"hobbies": ["Programar", "Música", "Videojuegos", "Voleibol"],
+		"skills": [
+			"Inglés avanzado",
+			"Trabajo en equipo",
+			"Gestión de conflictos",
+			"Negociar"
+		],
+		"slides": {
+			"intro": {
+				"title": "Presentación",
+				"content": [
+					"¡Hola! Me llamo Bryant Mitchell, soy un estudiante de la Universidad Católica Andrés Bello, estoy a dos semestres de graduarme.",
+					"Soy una persona con mucha iniciativa, con un gran potencial para crecer, capaz de adaptarse a cualquier situación y solucionar los problemas que se presenten."
+				]
+			},
+			"objectives": {
+				"title": "Objetivos",
+				"content": [
+					"Laborar en una empresa dinámica mientras termino la carrera de Ingeniería Informática; que me ayude a avanzar en el desarrollo de mis habilidades, destrezas y conocimientos como desarrollador y programador web. Siempre garantizando una buena experiencia para el usuario y un gran rendimiento del software."
+				]
+			},
+			"interests": {
+				"title": "Intereses",
+				"content": [
+					"Diseño de interfaces y de experiencias de usuario (UI/UX).",
+					"Arquitecturas para el flujo de datos (Flux-Redux)",
+					"Inteligencia artificial (IA)",
+					"Desarrollo de videojuegos",
+					"Desarrollo de aplicaciones móviles"
+				]
+			}
+		}
+	},
+	"experience": {
+		"title": "Conocimientos",
+		"types": {
+			"language": "Lenguaje",
+			"library": "Librería",
+			"framework": "Framework",
+			"tool": "Herramienta"
+		},
+		"previous": "Ver habilidades anteriores",
+		"next": "Ver más habilidades"
+	},
+	"projects": {
+		"title": "Proyectos",
+		"subtitle": "recientes",
+		"visit": "Visitar",
+		"repository": "Repositorio",
+		"loading": "Cargando…",
+		"imageAlt": "Captura del proyecto {{title}}",
+		"items": {
+			"infinityEnergy": {
+				"title": "Infinity Energy",
+				"description": "Conjunto de páginas web desarrolladas con React, Tailwind y otras librerías."
+			},
+			"briigser": {
+				"title": "Briigser",
+				"description": "Página para buscar una gran variedad de gifs, desarrollada con React, TypeScript y Tailwind."
+			},
+			"reactTest": {
+				"title": "Prueba React",
+				"description": "Prueba de React, se utilizan diversas librerías y se implementan diversas funcionalidades. (no es responsive)"
+			},
+			"project4": {
+				"title": "Proyecto 4",
+				"description": "Una breve descripción sobre lo que es y lo que contiene el proyecto 4"
+			},
+			"project5": {
+				"title": "Proyecto 5",
+				"description": "Una breve descripción sobre lo que es y lo que contiene el proyecto 5"
+			},
+			"project6": {
+				"title": "Proyecto 6",
+				"description": "Una breve descripción sobre lo que es y lo que contiene el proyecto 6"
+			}
+		}
+	},
+	"contact": {
+		"title": "Contacta conmigo",
+		"telegram": "Escríbeme por Telegram",
+		"whatsapp": "Escríbeme por WhatsApp",
+		"form": {
+			"name": "Nombre",
+			"email": "Correo",
+			"message": "Contenido",
+			"send": "Enviar"
+		},
+		"errors": {
+			"invalidName": "Caracteres inválidos",
+			"nameRequired": "Introduzca un nombre.",
+			"invalidEmail": "Correo inválido",
+			"emailRequired": "Introduzca un correo.",
+			"messageRequired": "Introduzca un contenido."
+		}
+	},
+	"modal": {
+		"successTitle": "¡Correo enviado!",
+		"understood": "Entendido",
+		"close": "Cerrar"
+	},
+	"footer": {
+		"copyright": "© 2026 Bryant Mitchell",
+		"backToTop": "Volver arriba"
+	},
+	"loading": "Cargando…"
+}

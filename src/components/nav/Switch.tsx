@@ -1,17 +1,36 @@
-import { BsSunFill, BsFillMoonFill } from "react-icons/bs";
-function Switch(props: any) {
+import { BsFillMoonFill, BsSunFill } from "react-icons/bs";
+import { useTranslation } from "react-i18next";
+
+type SwitchProps = {
+	dark: boolean;
+	setTheme: () => void;
+};
+
+function Switch({ dark, setTheme }: SwitchProps) {
+	const { t } = useTranslation();
+
 	return (
 		<button
-			className="switch flex bg-[rgba(22,25,37,0.7)] dark:bg-[rgba(253,255,252,0.75)] 
-			relative cursor-pointer px-1 items-center
-            after:left-0  dark:after:translate-x-[138%] after:bg-blanco dark:after:bg-negro-200"
-			onClick={props.setTheme}
+			type="button"
+			role="switch"
+			aria-checked={dark}
+			aria-label={t("nav.toggleTheme")}
+			onClick={setTheme}
+			className="relative ml-1 flex h-8 w-14 shrink-0 items-center rounded-full border border-negro-500/15 bg-negro-500/5 transition-colors dark:border-blanco/15 dark:bg-blanco/10"
 		>
-			<span className="switch__span w-7 h-7 ">
-				<BsSunFill />
-			</span>
-			<span className="switch__span w-7 h-7 ">
-				<BsFillMoonFill />
+			<span
+				aria-hidden="true"
+				className={`absolute left-1 flex h-6 w-6 items-center justify-center rounded-full transition-transform duration-300 motion-reduce:transition-none ${
+					dark
+						? "translate-x-6 bg-naranja-200 text-negro-500"
+						: "translate-x-0 bg-rojo-200 text-blanco"
+				}`}
+			>
+				{dark ? (
+					<BsFillMoonFill className="text-xs" />
+				) : (
+					<BsSunFill className="text-xs" />
+				)}
 			</span>
 		</button>
 	);

@@ -1,62 +1,56 @@
-import "./about.css";
-import { useContext } from "react";
-import { motion as m } from "framer-motion";
-import { langContext } from "../../App";
-import about from "../../assets/Aboutme.png";
-import Tittles from "../../elements/Tittles";
+import { motion, useReducedMotion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import aboutImage from "../../assets/Aboutme.png";
+import Reveal from "../../elements/Reveal";
+import SectionTitle from "../../elements/SectionTitle";
 import AboutCards from "./AboutCards";
-
 import InfoSlider from "./InfoSlider";
 
-const imgVariant = {
-	hidden: {
-		opacity: 0,
-		x: -100,
-	},
-	visible: {
-		opacity: 1,
-		x: 0,
-		transition: {
-			duration: 0.5,
-		},
-	},
-};
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 function About() {
-	const { lang } = useContext(langContext);
+	const { t } = useTranslation();
+	const reduceMotion = useReducedMotion();
+
 	return (
-		<section
-			className="md:h-screen w-[75%] mx-auto relative flex flex-col items-center"
-			id="about"
-		>
-			{/* Titulos */}
-			<Tittles main={lang === "Es" ? "Acerca de mi" : "About me"} />
-			{/* contenedor Grid principal */}
-			<div className="about__container md:mt-8 grid grid-cols-1 justify-items-center  md:grid-cols-[length:var(--colsSize)] gap-7 md:gap-[15%]">
-				{/* Color de fondo de la imagen > la imagen*/}
-				<m.div
-					className="about__me  grid place-items-center w-[60%] md:w-full
-				bg-gradient-to-tr from-rojo-200 to-transparent dark:from-naranja-200 "
-					variants={imgVariant}
-					initial="hidden"
-					whileInView={"visible"}
-					viewport={{ once: true }}
-				>
-					{/* Contenedor de la imagen */}
-					<div className="about__me-image w-full h-full rotate-12 hover:rotate-0 hover:shadow-lg bg-black transition duration-300">
-						<img
-							className="about__me-image__image"
-							src={about}
-							alt="Bryant uwu"
-						/>
+		<section id="about" className="py-24 md:py-32">
+			<div className="shell">
+				<Reveal>
+					<SectionTitle title={t("about.title")} />
+				</Reveal>
+
+				<div className="mt-12 grid grid-cols-12 gap-x-6 gap-y-12 md:mt-16">
+					<div className="col-span-12 md:col-span-4">
+						<motion.div
+							className="relative mx-auto w-[min(78vw,20rem)] md:mx-0 md:w-full"
+							initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true, amount: 0.3 }}
+							transition={{ duration: 0.7, ease: EASE }}
+						>
+							<div
+								aria-hidden="true"
+								className="arch absolute inset-0 -translate-x-3 translate-y-3 bg-rojo-200/10 dark:bg-naranja-200/10"
+							/>
+							<div className="arch relative overflow-hidden bg-negro-500/5 dark:bg-blanco/5">
+								<img
+									src={aboutImage}
+									alt={t("about.portraitAlt")}
+									className="aspect-[4/5] w-full object-cover object-[85%_0%]"
+									loading="lazy"
+								/>
+							</div>
+						</motion.div>
 					</div>
-				</m.div>
-				{/* El contenido del about */}
-				<div className="about__content w-full ">
-					{/* Informacion - Cards */}
-					<AboutCards />
-					{/* Informacion - Texto */}
-					<InfoSlider />
+
+					<div className="col-span-12 md:col-span-7 md:col-start-6">
+						<Reveal>
+							<AboutCards />
+						</Reveal>
+						<Reveal delay={0.1} className="mt-10">
+							<InfoSlider />
+						</Reveal>
+					</div>
 				</div>
 			</div>
 		</section>

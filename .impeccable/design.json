@@ -1,0 +1,272 @@
+{
+	"schemaVersion": 2,
+	"generatedAt": "2026-11-11T06:04:07Z",
+	"title": "Design System: Bryant Mitchell Portfolio",
+	"extensions": {
+		"colorMeta": {
+			"blanco": {
+				"role": "neutral",
+				"displayName": "Paper White",
+				"canonical": "#FDFFFC",
+				"tonalRamp": ["#141310", "#2B2A26", "#45433E", "#615F59", "#807D76", "#A3A09A", "#CBC9C4", "#FDFFFC"]
+			},
+			"negro-500": {
+				"role": "neutral",
+				"displayName": "Ink Black",
+				"canonical": "#07020D",
+				"tonalRamp": ["#07020D", "#161925", "#2A2C3A", "#434456", "#5F6071", "#7F8090", "#B0B1BD", "#E8E8EE"]
+			},
+			"negro-200": {
+				"role": "neutral",
+				"displayName": "Carbon Surface",
+				"canonical": "#161925",
+				"tonalRamp": ["#0B0711", "#161925", "#242735", "#363948", "#4B4E5E", "#696C7B", "#9A9CA9", "#D9DAE1"]
+			},
+			"rojo-200": {
+				"role": "primary",
+				"displayName": "Oxblood Signal",
+				"canonical": "#990D35",
+				"tonalRamp": ["#3B0312", "#5A061C", "#780A29", "#990D35", "#B83352", "#D05D75", "#E695A5", "#F7D5DC"]
+			},
+			"rojo-500": {
+				"role": "primary",
+				"displayName": "Deep Oxblood",
+				"canonical": "#6B0925",
+				"tonalRamp": ["#2A0410", "#430618", "#54071E", "#6B0925", "#8A1635", "#A93250", "#C75F78", "#E9B2C1"]
+			},
+			"naranja-200": {
+				"role": "primary",
+				"displayName": "Signal Orange",
+				"canonical": "#F0803C",
+				"tonalRamp": ["#4A1F06", "#7A360B", "#AB4D13", "#D9661F", "#F0803C", "#F6A06C", "#FAC3A1", "#FDE5D6"]
+			},
+			"naranja-500": {
+				"role": "primary",
+				"displayName": "Warm Orange",
+				"canonical": "#F59458",
+				"tonalRamp": ["#4F240B", "#7C3B12", "#A8521C", "#CF6A2A", "#F59458", "#F8AE7F", "#FBCCAD", "#FEE9DA"]
+			},
+			"gris-500": {
+				"role": "neutral",
+				"displayName": "Graphite",
+				"canonical": "#5B5E5D",
+				"tonalRamp": ["#1D1F1F", "#2F3131", "#434545", "#5B5E5D", "#767978", "#949796", "#B9BBBB", "#E1E2E2"]
+			},
+			"gris-200": {
+				"role": "neutral",
+				"displayName": "Warm Mist",
+				"canonical": "#959C9A",
+				"tonalRamp": ["#2B2E2D", "#454847", "#5F6261", "#797C7B", "#959C9A", "#B4BAB8", "#D3D7D6", "#EEF0EF"]
+			}
+		},
+		"typographyMeta": {
+			"display": {
+				"displayName": "Display",
+				"purpose": "Hero name only, two offset lines at poster scale."
+			},
+			"headline": {
+				"displayName": "Headline",
+				"purpose": "Section titles above hairline rules."
+			},
+			"title": {
+				"displayName": "Title",
+				"purpose": "Project names and modal headings."
+			},
+			"metric": {
+				"displayName": "Metric",
+				"purpose": "Percentage values inside skill rings."
+			},
+			"body": {
+				"displayName": "Body",
+				"purpose": "Prose and interface copy, capped at 65ch."
+			},
+			"label": {
+				"displayName": "Label",
+				"purpose": "Form labels, errors, metadata, and icon captions."
+			}
+		},
+		"shadows": [
+			{
+				"name": "floating-navigation",
+				"value": "0 12px 32px -16px rgba(7, 2, 13, 0.45)",
+				"purpose": "The only floating surface: the fixed bottom navigation pill."
+			}
+		],
+		"motion": [
+			{
+				"name": "ease-editorial",
+				"value": "cubic-bezier(0.16, 1, 0.3, 1)",
+				"purpose": "Primary easing for reveals, the hero assembly, and the portrait wipe."
+			},
+			{
+				"name": "duration-state",
+				"value": "300ms",
+				"purpose": "Color and small state transitions."
+			},
+			{
+				"name": "duration-reveal",
+				"value": "600ms",
+				"purpose": "Section reveals and ring drawing."
+			},
+			{
+				"name": "duration-hero",
+				"value": "1000ms",
+				"purpose": "Portrait clip reveal and image settle."
+			},
+			{
+				"name": "stagger-letter",
+				"value": "35ms",
+				"purpose": "Character stagger in the hero name assembly."
+			}
+		],
+		"breakpoints": [
+			{ "name": "sm", "value": "640px" },
+			{ "name": "md", "value": "768px" },
+			{ "name": "lg", "value": "1024px" },
+			{ "name": "xl", "value": "1280px" }
+		]
+	},
+	"components": [
+		{
+			"name": "Primary Button - Paper",
+			"kind": "button",
+			"refersTo": "button-primary",
+			"description": "Filled oxblood action for light surfaces; hover inverts to outline.",
+			"html": "<button class=\"ds-btn-primary\" type=\"button\">Download CV</button>",
+			"css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 12px 20px; border: 1px solid #990D35; border-radius: 2px; background: #990D35; color: #FDFFFC; font-family: \"Familjen Grotesk\", system-ui, sans-serif; font-size: 14px; font-weight: 500; line-height: 1.2; cursor: pointer; transition: background-color 300ms ease, color 300ms ease; } .ds-btn-primary:hover { background: transparent; color: #990D35; } .ds-btn-primary:focus-visible { outline: 2px solid #990D35; outline-offset: 3px; }"
+		},
+		{
+			"name": "Primary Button - Ink",
+			"kind": "button",
+			"refersTo": "button-primary-dark",
+			"description": "Filled signal-orange action for dark surfaces; hover inverts to outline.",
+			"html": "<button class=\"ds-btn-primary-ink\" type=\"button\">Let's talk</button>",
+			"css": ".ds-btn-primary-ink { display: inline-flex; align-items: center; justify-content: center; padding: 12px 20px; border: 1px solid #F0803C; border-radius: 2px; background: #F0803C; color: #07020D; font-family: \"Familjen Grotesk\", system-ui, sans-serif; font-size: 14px; font-weight: 500; line-height: 1.2; cursor: pointer; transition: background-color 300ms ease, color 300ms ease; } .ds-btn-primary-ink:hover { background: transparent; color: #F0803C; } .ds-btn-primary-ink:focus-visible { outline: 2px solid #F0803C; outline-offset: 3px; }"
+		},
+		{
+			"name": "Secondary Button - Paper",
+			"kind": "button",
+			"refersTo": "button-secondary",
+			"description": "Hairline outline action; hover moves the border and text to oxblood.",
+			"html": "<button class=\"ds-btn-secondary\" type=\"button\">View projects</button>",
+			"css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; padding: 12px 20px; border: 1px solid rgba(7, 2, 13, 0.3); border-radius: 2px; background: transparent; color: #07020D; font-family: \"Familjen Grotesk\", system-ui, sans-serif; font-size: 14px; font-weight: 500; line-height: 1.2; cursor: pointer; transition: border-color 300ms ease, color 300ms ease; } .ds-btn-secondary:hover { border-color: #990D35; color: #990D35; } .ds-btn-secondary:focus-visible { outline: 2px solid #990D35; outline-offset: 3px; }"
+		},
+		{
+			"name": "Navigation Pill",
+			"kind": "nav",
+			"refersTo": "nav-pill",
+			"description": "Floating bottom navigation with five 36px icon targets and a theme switch.",
+			"html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a class=\"ds-nav-link is-active\" href=\"#\" aria-label=\"Home\" aria-current=\"page\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z\"/></svg></a><a class=\"ds-nav-link\" href=\"#\" aria-label=\"About\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5zM4 5.5V21\"/></svg></a><a class=\"ds-nav-link\" href=\"#\" aria-label=\"Skills\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M14.5 6.5a4.5 4.5 0 0 0-5.9 5.9L3 18l3 3 5.6-5.6a4.5 4.5 0 0 0 5.9-5.9l-2.8 2.8-2.1-2.1z\"/></svg></a><a class=\"ds-nav-link\" href=\"#\" aria-label=\"Projects\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"1\"/><path d=\"M9 7V5h6v2M3 12h18\"/></svg></a><a class=\"ds-nav-link\" href=\"#\" aria-label=\"Contact\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 5h16v12H9l-5 4z\"/></svg></a><button class=\"ds-switch\" type=\"button\" role=\"switch\" aria-checked=\"true\" aria-label=\"Toggle theme\"><span class=\"ds-switch-knob\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z\"/></svg></span></button></nav>",
+			"css": ".ds-nav { display: inline-flex; align-items: center; gap: 4px; padding: 6px; border: 1px solid rgba(7, 2, 13, 0.15); border-radius: 999px; background: rgba(253, 255, 252, 0.94); box-shadow: 0 12px 32px -16px rgba(7, 2, 13, 0.45); } .ds-nav-link { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 999px; color: #5B5E5D; text-decoration: none; transition: color 200ms ease, background-color 200ms ease; } .ds-nav-link:hover { color: #07020D; } .ds-nav-link.is-active { color: #990D35; background: rgba(153, 13, 53, 0.12); } .ds-nav-link svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; } .ds-switch { position: relative; display: flex; align-items: center; width: 56px; height: 32px; margin-left: 4px; padding: 0; border: 1px solid rgba(7, 2, 13, 0.15); border-radius: 999px; background: rgba(7, 2, 13, 0.05); cursor: pointer; } .ds-switch-knob { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; margin-left: 3px; border-radius: 999px; background: #F0803C; color: #07020D; transform: translateX(24px); } .ds-switch-knob svg { width: 12px; height: 12px; fill: currentColor; } .ds-switch:focus-visible { outline: 2px solid #990D35; outline-offset: 3px; }"
+		},
+		{
+			"name": "Text Field",
+			"kind": "input",
+			"refersTo": "field",
+			"description": "Underlined text field with a small always-visible label and accent focus rule.",
+			"html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Email</span><input class=\"ds-field-input\" type=\"email\" name=\"email\" autocomplete=\"email\" /></label>",
+			"css": ".ds-field { display: block; max-width: 420px; color: #07020D; font-family: \"Familjen Grotesk\", system-ui, sans-serif; } .ds-field-label { display: block; margin-bottom: 4px; color: #5B5E5D; font-size: 12px; line-height: 1.5; } .ds-field-input { display: block; width: 100%; padding: 8px 0; border: 0; border-bottom: 1px solid rgba(7, 2, 13, 0.25); border-radius: 0; background: transparent; color: #07020D; font-family: \"Familjen Grotesk\", system-ui, sans-serif; font-size: 16px; font-weight: 400; line-height: 1.7; outline: none; transition: border-color 200ms ease; } .ds-field-input:focus { border-bottom-color: #990D35; } .ds-field-input:focus-visible { outline: 2px solid #990D35; outline-offset: 3px; }"
+		},
+		{
+			"name": "Project Card",
+			"kind": "card",
+			"refersTo": "project-card",
+			"description": "Soft-arch screenshot, title, 65ch description, and an accent link. No card shadow or lift.",
+			"html": "<article class=\"ds-work\"><div class=\"ds-work-image\" role=\"img\" aria-label=\"Project screenshot placeholder\"><span>01</span></div><h3 class=\"ds-work-title\">Infinity Energy</h3><p class=\"ds-work-copy\">Collection of web pages developed using React, Tailwind, and other libraries.</p><a class=\"ds-work-link\" href=\"#\">Visit</a></article>",
+			"css": ".ds-work { width: 320px; color: #07020D; font-family: \"Familjen Grotesk\", system-ui, sans-serif; } .ds-work-image { display: flex; align-items: flex-end; justify-content: flex-start; aspect-ratio: 16 / 10; padding: 16px; overflow: hidden; border-radius: 50% 50% 0 0 / 9% 9% 0 0; background: #161925; color: #959C9A; font-size: 12px; transition: transform 700ms ease-out; } .ds-work:hover .ds-work-image { transform: scale(1.03); } .ds-work-title { margin: 20px 0 0; font-size: 24px; font-weight: 500; line-height: 1.2; letter-spacing: -0.02em; } .ds-work-copy { margin: 8px 0 0; max-width: 65ch; color: #5B5E5D; font-size: 14px; line-height: 1.7; } .ds-work-link { display: inline-block; margin-top: 16px; color: #990D35; font-size: 14px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; } .ds-work-link:focus-visible { outline: 2px solid #990D35; outline-offset: 3px; }"
+		},
+		{
+			"name": "Contact Arch Link",
+			"kind": "custom",
+			"refersTo": "contact-arch",
+			"description": "A filled upright arch as a contact target; hover inverts to an outline.",
+			"html": "<a class=\"ds-contact\" href=\"#\" aria-label=\"Message me on Telegram\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m21.5 3.5-19 7.2 7.1 2.6 2.6 7.2 2.8-5.4 6.5-11.6zM9.6 13.3l8.1-6.1-5.5 7.4\"/></svg></a>",
+			"css": ".ds-contact { display: inline-flex; align-items: center; justify-content: center; width: 96px; height: 160px; border: 1px solid #990D35; border-radius: 999px 999px 0 0; background: #990D35; color: #FDFFFC; text-decoration: none; transition: background-color 300ms ease, color 300ms ease; } .ds-contact:hover { background: transparent; color: #990D35; } .ds-contact:focus-visible { outline: 2px solid #990D35; outline-offset: 3px; } .ds-contact svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }"
+		},
+		{
+			"name": "Success Modal",
+			"kind": "custom",
+			"refersTo": "modal",
+			"description": "Flat paper dialog with a hairline border, check icon, and one primary action over a dimmed backdrop.",
+			"html": "<div class=\"ds-modal-stage\"><div class=\"ds-modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"ds-modal-title\"><div class=\"ds-modal-top\"><button class=\"ds-modal-close\" type=\"button\" aria-label=\"Close\">&times;</button></div><div class=\"ds-modal-body\"><svg class=\"ds-modal-icon\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><circle cx=\"24\" cy=\"24\" r=\"20\"/><path d=\"m15 24 6 6 12-13\"/></svg><h2 class=\"ds-modal-title\" id=\"ds-modal-title\">Email sent!</h2><button class=\"ds-modal-action\" type=\"button\">Understood</button></div></div></div>",
+			"css": ".ds-modal-stage { display: flex; align-items: center; justify-content: center; padding: 32px; background: rgba(7, 2, 13, 0.4); font-family: \"Familjen Grotesk\", system-ui, sans-serif; } .ds-modal { width: 100%; max-width: 384px; padding: 24px; border: 1px solid rgba(7, 2, 13, 0.15); background: #FDFFFC; color: #07020D; } .ds-modal-top { display: flex; justify-content: flex-end; } .ds-modal-close { padding: 0; border: 0; background: transparent; color: #5B5E5D; font-size: 24px; line-height: 1; cursor: pointer; } .ds-modal-close:hover { color: #990D35; } .ds-modal-close:focus-visible, .ds-modal-action:focus-visible { outline: 2px solid #990D35; outline-offset: 3px; } .ds-modal-body { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 16px; text-align: center; } .ds-modal-icon { width: 60px; height: 60px; fill: none; stroke: #990D35; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; } .ds-modal-title { margin: 0; font-size: 24px; font-weight: 500; line-height: 1.2; } .ds-modal-action { display: inline-flex; align-items: center; justify-content: center; padding: 12px 20px; border: 1px solid #990D35; border-radius: 2px; background: #990D35; color: #FDFFFC; font-family: \"Familjen Grotesk\", system-ui, sans-serif; font-size: 14px; font-weight: 500; line-height: 1.2; cursor: pointer; transition: background-color 300ms ease, color 300ms ease; } .ds-modal-action:hover { background: transparent; color: #990D35; }"
+		}
+	],
+	"narrative": {
+		"northStar": "The Editorial Arch",
+		"overview": "This is a developer portfolio composed like a printed page: a strict grid, oversized grotesque type, paper-white and ink-black grounds, and one deep chromatic signal per theme. The page should feel authored rather than assembled, with the confidence of a Swiss poster and the quiet precision of a well-set book.\n\nThe arch is the one recurring figure. It appears upright around portraits and contact links, and softened around project screenshots so the curve never competes with the work. Everything else earns its place through proportion, hairlines, and whitespace rather than decoration.\n\nMotion is a single authored gesture followed by restrained detail: the name assembles, the portrait reveals, and the rest of the page settles into place. The system rejects centered stacks, glass cards, gradient fills, and entrance animations on every element.",
+		"keyCharacteristics": [
+			"12-column offset grid with generous negative space",
+			"One grotesque family at poster scale",
+			"Paper and ink grounds with oxblood or signal orange as the only chromatic event",
+			"Upright arch silhouette and softened arch for screenshots",
+			"Flat surfaces, hairline rules, one floating shadow",
+			"Motion with a single authored moment, fully removable for reduced motion"
+		],
+		"rules": [
+			{
+				"name": "The Paper-and-Ink Rule",
+				"body": "Every surface resolves to Paper White or Ink Black. The only chromatic events are Oxblood Signal on paper and Signal Orange on ink. No third hue enters the system.",
+				"section": "colors"
+			},
+			{
+				"name": "The One Signal Rule",
+				"body": "The accent occupies less than a tenth of any viewport. Its rarity is what makes it read as a signal rather than a theme color.",
+				"section": "colors"
+			},
+			{
+				"name": "The One Voice Rule",
+				"body": "One family carries the entire page. Never introduce a second display face, a serif, or a mono face for decoration.",
+				"section": "typography"
+			},
+			{
+				"name": "The Poster Measure Rule",
+				"body": "Display type may reach 6rem, but body copy never exceeds 65ch and never drops below 12px.",
+				"section": "typography"
+			},
+			{
+				"name": "The Offset Rule",
+				"body": "Nothing important sits in a centered stack. The second name line, the right-hand text column, and the middle project each shift off axis on purpose.",
+				"section": "layout"
+			},
+			{
+				"name": "The Quiet Gutter Rule",
+				"body": "Empty space is a structural material. Never fill a gutter with decoration just because it is available.",
+				"section": "layout"
+			},
+			{
+				"name": "The Flat-by-Default Rule",
+				"body": "Surfaces are flat at rest. A shadow is reserved for a surface that physically floats above the page; hierarchy otherwise comes from scale, tone, and rules.",
+				"section": "elevation"
+			},
+			{
+				"name": "The Upright Arch Rule",
+				"body": "The arch always opens upward and stays upright. It is a frame, never a mask over readable work.",
+				"section": "shapes"
+			},
+			{
+				"name": "The Softened Capture Rule",
+				"body": "Screenshots get the softened arch. Only portraits and contact links get the full arch.",
+				"section": "shapes"
+			}
+		],
+		"dos": [
+			"Do keep the palette to the nine existing tokens: paper, ink, carbon, oxblood, deep oxblood, signal orange, warm orange, graphite, and warm mist.",
+			"Do choose Oxblood Signal for light-theme accents and Signal Orange for dark-theme accents; never use both as a pair.",
+			"Do keep body copy at 65ch or less and use the display scale only for the name and section titles.",
+			"Do use the upright arch for portraits and contact links, and the softened arch for project screenshots.",
+			"Do preserve the 2px accent focus ring with a 3px offset on every interactive element.",
+			"Do remove transforms, clip reveals, parallax, and smooth scrolling under prefers-reduced-motion.",
+			"Do let whitespace and hairlines carry structure before adding any shadow or border weight."
+		],
+		"donts": [
+			"Don't add colors, gradients, glass cards, or a second display typeface.",
+			"Don't place project screenshots inside the full arch or crop interface content with the curve.",
+			"Don't center-stack the page or replace the offset grid with a generic card grid.",
+			"Don't animate every section entrance; motion should have one authored moment and quiet support.",
+			"Don't use shadows for hierarchy; only the floating navigation and modal backdrop earn depth.",
+			"Don't use text smaller than 12px for labels, captions, or errors.",
+			"Don't fabricate project evidence, testimonials, metrics, or imagery that does not exist."
+		]
+	}
+}

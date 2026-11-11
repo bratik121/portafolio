@@ -1,20 +1,27 @@
-import { BsLinkedin } from "react-icons/bs";
-import { BsGithub } from "react-icons/bs";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 function Socials() {
 	return (
-		<div className="header__socials hidden md:flex flex-col gap-4 absolute left-0 bottom-[2rem] after:bg-rojo-200 dark:after:bg-naranja-200">
+		<div className="pointer-events-auto flex items-center gap-4 md:flex-col md:items-start">
+			<span
+				aria-hidden="true"
+				className="hidden h-16 w-px bg-negro-500/15 dark:bg-blanco/15 md:block"
+			/>
 			<a
-				className="hover:text-rojo-500 dark:hover:text-naranja-500"
+				aria-label="LinkedIn"
+				className="text-lg text-gris-500 transition-colors hover:text-rojo-200 dark:text-gris-200 dark:hover:text-naranja-200"
 				href="https://www.linkedin.com/in/bryant-mckale-mitchell-cisneros-a59717204/"
 				target="_blank"
+				rel="noreferrer"
 			>
 				<BsLinkedin />
 			</a>
 			<a
-				className="hover:text-rojo-500 dark:hover:text-naranja-500"
+				aria-label="GitHub"
+				className="text-lg text-gris-500 transition-colors hover:text-rojo-200 dark:text-gris-200 dark:hover:text-naranja-200"
 				href="https://github.com/bratik121"
 				target="_blank"
+				rel="noreferrer"
 			>
 				<BsGithub />
 			</a>

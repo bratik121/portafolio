@@ -1,72 +1,54 @@
-import "./portafolio.css";
-import { lazy, Suspense } from "react";
-import { useContext } from "react";
-import { motion as m } from "framer-motion";
-import Tittles from "../../elements/Tittles";
+import { useRef } from "react";
+import {
+	motion,
+	useReducedMotion,
+	useScroll,
+	useTransform,
+} from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import Reveal from "../../elements/Reveal";
+import SectionTitle from "../../elements/SectionTitle";
 import { proyects } from "../../data/portafolio";
-import { langContext } from "../../App";
-const WorkItem = lazy(() => import("./WorkItem"));
-
-const containerVariant = {
-	hidden: { opacity: 0 },
-	show: {
-		opacity: 1,
-		transition: {
-			staggerChildren: 0.07,
-		},
-	},
-};
-const cardVariant = {
-	hidden: { y: 200, opacity: 0 },
-	show: {
-		opacity: 1,
-		y: 0,
-	},
-};
+import WorkItem from "./WorkItem";
 
 function Portafolio() {
-	const { lang } = useContext(langContext);
+	const { t } = useTranslation();
+	const sectionRef = useRef<HTMLElement>(null);
+	const isDesktop = useMediaQuery("(min-width: 768px)");
+	const reduceMotion = useReducedMotion();
+	const { scrollYProgress } = useScroll({
+		target: sectionRef,
+		offset: ["start end", "end start"],
+	});
+	const parallax = useTransform(scrollYProgress, [0, 1], [36, -36]);
+	const enableParallax = Boolean(isDesktop && !reduceMotion);
+
 	return (
-		<section
-			className="md:h-screen w-[75%] mx-auto flex flex-col items-center "
-			id="portafolio"
-		>
-			<Tittles
-				main={lang === "Es" ? "Proyectos" : "Projects"}
-				last={lang === "Es" ? "recientes" : ""}
-			/>
-			<m.div
-				className="portafolio__container w-full grid grid-cols-1 md:grid-cols-3 justify-items-center gap-6 h-[73%] mt-2 md:mt-6 p-2 "
-				variants={containerVariant}
-				initial="hidden"
-				whileInView="show"
-				viewport={{ once: true }}
-			>
-				{proyects.map((proyect, index) => {
-					return (
-						// Suspense en caso de que la img este cargando
-						<m.div variants={cardVariant} key={index}>
-							<Suspense
-								fallback={
-									<div className="justify-center flex items-center w-[260px] h-[210px]">
-										<h4>Cargando...</h4>
-									</div>
-								}
-							>
-								{/* Cards de los proyectos */}
-								<WorkItem
-									title={proyect.title[lang]}
-									image={proyect.image}
-									description={proyect.description[lang]}
-									repository={proyect.repository}
-									url={proyect.url}
-									key={index}
-								/>
-							</Suspense>
-						</m.div>
-					);
-				})}
-			</m.div>
+		<section ref={sectionRef} id="portafolio" className="py-24 md:py-32">
+			<div className="shell">
+				<Reveal>
+					<SectionTitle
+						title={t("projects.title")}
+						subtitle={
+							t("projects.subtitle") === "projects.subtitle"
+								? undefined
+								: t("projects.subtitle")
+						}
+					/>
+				</Reveal>
+
+				<div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-14 md:mt-16 md:grid-cols-3 md:gap-y-6">
+					{proyects.map((project, index) => (
+						<motion.div
+							key={project.id}
+							style={{ y: enableParallax && index === 1 ? parallax : 0 }}
+						>
+							<WorkItem project={project} />
+						</motion.div>
+					))}
+				</div>
+			</div>
 		</section>
 	);
 }
