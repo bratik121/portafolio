@@ -69,14 +69,26 @@
 	},
 	"experience": {
 		"title": "Knowledge",
-		"types": {
-			"language": "Language",
-			"library": "Library",
-			"framework": "Framework",
-			"tool": "Tool"
+		"marqueeLabel": "Technologies and tools",
+		"pause": "Pause",
+		"resume": "Resume",
+		"categories": {
+			"languages": "Languages",
+			"frontend": "Frontend",
+			"backend": "Backend",
+			"databases": "Databases",
+			"messaging": "Messaging",
+			"ml": "ML & AI",
+			"devops": "DevOps & cloud",
+			"tooling": "Tooling",
+			"architecture": "Architecture"
 		},
-		"previous": "See previous skills",
-		"next": "See more skills"
+		"techLabels": {
+			"hexagonal": "Hexagonal Architecture",
+			"clean-architecture": "Clean Architecture",
+			"token-auth": "Token Auth",
+			"django-tests": "Django Test Suite"
+		}
 	},
 	"projects": {
 		"title": "Projects",
@@ -85,18 +97,19 @@
 		"repository": "Repository",
 		"loading": "Loading…",
 		"imageAlt": "Screenshot of the {{title}} project",
+		"stackLabel": "Technologies",
 		"items": {
 			"infinityEnergy": {
 				"title": "Infinity Energy",
-				"description": "Collection of web pages developed using React, Tailwind, and other libraries."
+				"description": "A collection of web pages built with React, Tailwind, and other libraries, designed for a solar energy company with a clear, direct message."
 			},
 			"briigser": {
 				"title": "Briigser",
-				"description": "Page to search a wide variety of gifs, developed with React, TypeScript, and Tailwind."
+				"description": "A GIF search app built with React, TypeScript, and Tailwind, offering a fast interface to explore a wide variety of animations."
 			},
-			"reactTest": {
-				"title": "React Test",
-				"description": "React test, using various libraries and implementing different functionalities. (not responsive)"
+			"recommendai": {
+				"title": "RecomendAI · What2Watch",
+				"description": "Full-stack movie discovery platform with a machine-learning recommender, community reviews, and an AI assistant built with RAG that only suggests real titles from the catalog."
 			},
 			"project4": {
 				"title": "Project 4",

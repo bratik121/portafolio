@@ -80,9 +80,98 @@
 
 	.measure {
 		max-width: 65ch;
+		text-wrap: pretty;
 	}
 
 	.link-underline {
 		@apply underline decoration-1 underline-offset-4 transition-colors duration-200;
+	}
+
+	.marquee-mask {
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 2.5rem,
+			#000 calc(100% - 2.5rem),
+			transparent
+		);
+		-webkit-mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 2.5rem,
+			#000 calc(100% - 2.5rem),
+			transparent
+		);
+	}
+
+	/* impeccable-disable-next-line marquee -- endless technology marquee requested for this portfolio */
+	.marquee-track {
+		display: flex;
+		align-items: center;
+		width: max-content;
+		animation: marquee-left 60s linear infinite;
+		will-change: transform;
+	}
+
+	.marquee-track-reverse {
+		animation-name: marquee-right;
+		animation-duration: 75s;
+	}
+
+	.marquee-track:hover,
+	.marquee-track:focus-within,
+	.marquee-track[data-paused="true"] {
+		animation-play-state: paused;
+	}
+}
+
+@keyframes marquee-left {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@keyframes marquee-right {
+	from {
+		transform: translateX(-50%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+@media (max-width: 640px) {
+	.marquee-mask {
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 1.5rem,
+			#000 calc(100% - 1.5rem),
+			transparent
+		);
+		-webkit-mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 1.5rem,
+			#000 calc(100% - 1.5rem),
+			transparent
+		);
+	}
+
+	.marquee-track {
+		animation-duration: 75s;
+	}
+
+	.marquee-track-reverse {
+		animation-duration: 90s;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.marquee-track {
+		animation: none;
 	}
 }

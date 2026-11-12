@@ -1,6 +1,6 @@
 ---
 name: Bryant Mitchell Portfolio
-description: A Swiss editorial portfolio with an upright arch motif and one authored motion gesture.
+description: A Swiss editorial portfolio with an upright arch motif, one authored entrance, and a single continuous technology marquee.
 colors:
   blanco: "#FDFFFC"
   negro-200: "#161925"
@@ -30,12 +30,6 @@ typography:
     fontWeight: 500
     lineHeight: 1.2
     letterSpacing: "-0.02em"
-  metric:
-    fontFamily: '"Familjen Grotesk", system-ui, sans-serif'
-    fontSize: "2.75rem"
-    fontWeight: 500
-    lineHeight: 1
-    letterSpacing: "-0.03em"
   body:
     fontFamily: '"Familjen Grotesk", system-ui, sans-serif'
     fontSize: "1rem"
@@ -104,6 +98,11 @@ components:
     textColor: "{colors.negro-500}"
     rounded: "{rounded.none}"
     padding: "24px"
+  tech-chip:
+    backgroundColor: "transparent"
+    textColor: "{colors.gris-500}"
+    rounded: "{rounded.control}"
+    padding: "8px 12px"
 ---
 
 # Design System: Bryant Mitchell Portfolio
@@ -116,7 +115,7 @@ This is a developer portfolio composed like a printed page: a strict grid, overs
 
 The arch is the one recurring figure. It appears upright around portraits and contact links, and softened around project screenshots so the curve never competes with the work. Everything else earns its place through proportion, hairlines, and whitespace rather than decoration.
 
-Motion is a single authored gesture followed by restrained detail: the name assembles, the portrait reveals, and the rest of the page settles into place. The system rejects centered stacks, glass cards, gradient fills, and entrance animations on every element.
+Motion has one authored entrance followed by restrained detail: the name assembles, the portrait reveals, and the rest of the page settles into place. The technology marquee is the single continuous exception; it pauses, respects reduced motion, and never becomes the loudest thing on the page. The system rejects centered stacks, glass cards, gradient fills, and entrance animations on every element.
 
 **Key Characteristics:**
 - 12-column offset grid with generous negative space
@@ -124,7 +123,7 @@ Motion is a single authored gesture followed by restrained detail: the name asse
 - Paper and ink grounds with oxblood or signal orange as the only chromatic event
 - Upright arch silhouette and softened arch for screenshots
 - Flat surfaces, hairline rules, one floating shadow
-- Motion with a single authored moment, fully removable for reduced motion
+- One authored entrance plus a single continuous marquee, fully removable for reduced motion
 
 ## Colors
 
@@ -157,7 +156,6 @@ A two-theme palette of warm paper, near-black ink, and one saturated signal per 
 - **Display** (500, `clamp(3.25rem, 9vw, 6rem)`, 0.88): The hero name only. Tight tracking (`-0.04em`) and two offset lines.
 - **Headline** (500, `clamp(2.5rem, 5.5vw, 4.75rem)`, 0.95): Section titles above a hairline rule.
 - **Title** (500, 1.5rem, 1.2): Project names and modal headings.
-- **Metric** (500, 2.75rem, 1): Percentage values inside skill rings.
 - **Body** (400, 1rem, 1.7): Prose and interface copy. Measure is capped at 65ch.
 - **Label** (400, 0.75rem, 1.5): Form labels, error messages, metadata, and icon captions.
 
@@ -218,7 +216,7 @@ The upright arch is the signature: a full semicircular top over a rectangular ba
 - **Error:** The rule and a 12px message below the field use the active accent. The message is linked with `aria-describedby` and announced with `role="alert"`.
 
 ### Project Cards
-- **Shape:** A 16:10 image in the softened arch, followed by a 24px title, a 65ch-capped description, and inline accent links.
+- **Shape:** A 16:10 image in the softened arch, followed by a 24px title, a 65ch-capped description, a wrapped row of technology chips, and inline accent links.
 - **Hover:** The image scales to 1.03 over 700ms; the card itself does not lift or gain a shadow.
 - **Links:** Visit and repository links are underlined with a 4px offset and only render when a URL exists.
 
@@ -236,11 +234,23 @@ The upright arch is the signature: a full semicircular top over a rectangular ba
 - **Shape:** A 56x32 pill with a 24px knob and a 300ms transform.
 - **Color:** The knob uses the active accent and carries a sun or moon glyph.
 
+### Technology Chips
+- **Shape:** A 2px-radius chip with a 1px hairline, 12px horizontal and 8px vertical padding, and 12px text.
+- **Content:** A Simple Icons mark at 14px when one exists, always followed by the technology name. The icon inherits the text color and is hidden from assistive technology.
+- **Use:** Project cards wrap chips under the description; the stack section repeats them in the marquee. No chip introduces a new color.
+
+### Tech Marquee
+- **Structure:** Two rows of category groups moving in opposite directions. Each row duplicates its content once; the duplicate is `aria-hidden` so assistive technology reads each technology only once.
+- **Motion:** CSS-only `translateX` loop over 60-90 seconds, slower on small screens, with the track pausing on hover, focus, and through the visible pause control.
+- **Edges:** An alpha mask fades both ends so chips enter and leave without a hard cut.
+- **Reduced motion:** The marquee is replaced by a static, category-grouped grid with the same chips. No animation, no pause control.
+- **Accessibility:** The marquee is a labelled region; each category group exposes a `role="list"` and its chips are `role="listitem"`. The pause control is a normal button with translated text.
+
 ### Motion
 - **Hero:** Characters assemble with a 35ms stagger; the portrait reveals through a clip-path wipe while settling from 1.08 scale.
 - **Sections:** Content reveals 20px upward over 600ms when it enters the viewport, once only.
-- **Data:** Skill rings draw on entry; project parallax moves within ±36px on desktop.
-- **Reduced motion:** All transforms, clip reveals, parallax, spring smoothing, and smooth scrolling are removed. Content appears in its final state.
+- **Data:** The technology marquee loops continuously; project parallax moves within ±36px on desktop.
+- **Reduced motion:** All transforms, clip reveals, parallax, marquee movement, spring smoothing, and smooth scrolling are removed. The marquee becomes a static grid and content appears in its final state.
 
 ## Do's and Don'ts
 
@@ -250,7 +260,8 @@ The upright arch is the signature: a full semicircular top over a rectangular ba
 - **Do** keep body copy at 65ch or less and use the display scale only for the name and section titles.
 - **Do** use the upright arch for portraits and contact links, and the softened arch for project screenshots.
 - **Do** preserve the 2px accent focus ring with a 3px offset on every interactive element.
-- **Do** remove transforms, clip reveals, parallax, and smooth scrolling under `prefers-reduced-motion`.
+- **Do** remove transforms, clip reveals, parallax, marquee movement, and smooth scrolling under `prefers-reduced-motion`.
+- **Do** keep the technology marquee as the only continuous animation; it pauses on demand and shows every chip in its static fallback.
 - **Do** let whitespace and hairlines carry structure before adding any shadow or border weight.
 
 ### Don't:

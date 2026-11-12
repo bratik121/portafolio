@@ -69,14 +69,26 @@
 	},
 	"experience": {
 		"title": "Conocimientos",
-		"types": {
-			"language": "Lenguaje",
-			"library": "Librería",
-			"framework": "Framework",
-			"tool": "Herramienta"
+		"marqueeLabel": "Tecnologías y herramientas",
+		"pause": "Pausar",
+		"resume": "Reanudar",
+		"categories": {
+			"languages": "Lenguajes",
+			"frontend": "Frontend",
+			"backend": "Backend",
+			"databases": "Bases de datos",
+			"messaging": "Mensajería",
+			"ml": "ML e IA",
+			"devops": "DevOps y cloud",
+			"tooling": "Herramientas",
+			"architecture": "Arquitectura"
 		},
-		"previous": "Ver habilidades anteriores",
-		"next": "Ver más habilidades"
+		"techLabels": {
+			"hexagonal": "Arquitectura Hexagonal",
+			"clean-architecture": "Arquitectura Limpia",
+			"token-auth": "Autenticación por token",
+			"django-tests": "Suite de pruebas de Django"
+		}
 	},
 	"projects": {
 		"title": "Proyectos",
@@ -85,18 +97,19 @@
 		"repository": "Repositorio",
 		"loading": "Cargando…",
 		"imageAlt": "Captura del proyecto {{title}}",
+		"stackLabel": "Tecnologías",
 		"items": {
 			"infinityEnergy": {
 				"title": "Infinity Energy",
-				"description": "Conjunto de páginas web desarrolladas con React, Tailwind y otras librerías."
+				"description": "Conjunto de páginas web desarrolladas con React, Tailwind y otras librerías, pensadas para una empresa de energía solar con un mensaje claro y directo."
 			},
 			"briigser": {
 				"title": "Briigser",
-				"description": "Página para buscar una gran variedad de gifs, desarrollada con React, TypeScript y Tailwind."
+				"description": "Buscador de GIFs desarrollado con React, TypeScript y Tailwind, con una interfaz rápida para explorar una gran variedad de animaciones."
 			},
-			"reactTest": {
-				"title": "Prueba React",
-				"description": "Prueba de React, se utilizan diversas librerías y se implementan diversas funcionalidades. (no es responsive)"
+			"recommendai": {
+				"title": "RecomendAI · What2Watch",
+				"description": "Plataforma full-stack de descubrimiento de películas con recomendador basado en machine learning, reseñas de la comunidad y un asistente de IA con RAG que solo sugiere títulos reales del catálogo."
 			},
 			"project4": {
 				"title": "Proyecto 4",

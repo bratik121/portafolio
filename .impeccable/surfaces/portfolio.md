@@ -6,7 +6,7 @@ Single-page portfolio (`/`). Visitor mode: Experience. Language: Spanish and Eng
 
 ## Direction contract
 
-THESIS: A Swiss editorial portfolio with a pulse, refusing tiny centered stacks and fade-in-everything section entrances. The work and the name carry the page; motion is one authored gesture.
+THESIS: A Swiss editorial portfolio with a pulse, refusing tiny centered stacks and fade-in-everything section entrances. The work and the name carry the page; motion is one authored gesture, with the technology marquee as the single continuous exception.
 
 OWN-WORLD: Fixed palette of white/near-black grounds, deep red or warm orange as the single accent, warm greys for secondary text. One grotesque family at poster scale. Hairline rules, a 12-column grid, deliberate column offsets, and an arch silhouette repeated across portraits, project images and contact links. No gradients, no glass cards, no shadows standing in for hierarchy.
 

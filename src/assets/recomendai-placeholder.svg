@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+	<rect width="800" height="500" fill="#161925" />
+	<path
+		d="M250 400V230a150 150 0 0 1 300 0v170"
+		fill="none"
+		stroke="#F0803C"
+		stroke-opacity="0.3"
+		stroke-width="2"
+	/>
+	<text
+		x="400"
+		y="242"
+		text-anchor="middle"
+		fill="#FDFFFC"
+		font-family="Familjen Grotesk, Arial, sans-serif"
+		font-size="64"
+		font-weight="600"
+		letter-spacing="-2"
+	>RecomendAI</text>
+	<text
+		x="400"
+		y="286"
+		text-anchor="middle"
+		fill="#959C9A"
+		font-family="Familjen Grotesk, Arial, sans-serif"
+		font-size="18"
+		letter-spacing="4"
+	>WHAT2WATCH</text>
+	<line x1="360" y1="320" x2="440" y2="320" stroke="#F0803C" stroke-width="2" />
+</svg>

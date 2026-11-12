@@ -2,6 +2,8 @@ import { useReducedMotion } from "framer-motion";
 import { AiOutlineEye } from "react-icons/ai";
 import { RiGitRepositoryLine } from "react-icons/ri";
 import { useTranslation } from "react-i18next";
+import TechChip from "../../elements/TechChip";
+import { technologyById } from "../../data/experience";
 import type { Project } from "../../data/portafolio";
 
 type WorkItemProps = {
@@ -34,6 +36,23 @@ function WorkItem({ project }: WorkItemProps) {
 				<p className="measure mt-2 text-sm leading-relaxed text-gris-500 dark:text-gris-200">
 					{description}
 				</p>
+
+				{project.stack && project.stack.length > 0 ? (
+					<ul
+						aria-label={t("projects.stackLabel")}
+						className="mt-4 flex flex-wrap gap-2"
+					>
+						{project.stack.map((technologyId) => {
+							const technology = technologyById.get(technologyId);
+
+							return technology ? (
+								<li key={technologyId}>
+									<TechChip technology={technology} />
+								</li>
+							) : null;
+						})}
+					</ul>
+				) : null}
 
 				{project.url || project.repository ? (
 					<div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">

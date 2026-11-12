@@ -72,10 +72,6 @@
 				"displayName": "Title",
 				"purpose": "Project names and modal headings."
 			},
-			"metric": {
-				"displayName": "Metric",
-				"purpose": "Percentage values inside skill rings."
-			},
 			"body": {
 				"displayName": "Body",
 				"purpose": "Prose and interface copy, capped at 65ch."
@@ -106,7 +102,7 @@
 			{
 				"name": "duration-reveal",
 				"value": "600ms",
-				"purpose": "Section reveals and ring drawing."
+				"purpose": "Section reveals and the static reduced-motion fallback."
 			},
 			{
 				"name": "duration-hero",
@@ -117,6 +113,16 @@
 				"name": "stagger-letter",
 				"value": "35ms",
 				"purpose": "Character stagger in the hero name assembly."
+			},
+			{
+				"name": "duration-marquee",
+				"value": "60s",
+				"purpose": "One full loop of the first technology marquee row."
+			},
+			{
+				"name": "duration-marquee-reverse",
+				"value": "75s",
+				"purpose": "One full loop of the reverse technology marquee row."
 			}
 		],
 		"breakpoints": [
@@ -171,9 +177,17 @@
 			"name": "Project Card",
 			"kind": "card",
 			"refersTo": "project-card",
-			"description": "Soft-arch screenshot, title, 65ch description, and an accent link. No card shadow or lift.",
+			"description": "Soft-arch screenshot, title, 65ch description, a row of technology chips, and an accent link. No card shadow or lift.",
 			"html": "<article class=\"ds-work\"><div class=\"ds-work-image\" role=\"img\" aria-label=\"Project screenshot placeholder\"><span>01</span></div><h3 class=\"ds-work-title\">Infinity Energy</h3><p class=\"ds-work-copy\">Collection of web pages developed using React, Tailwind, and other libraries.</p><a class=\"ds-work-link\" href=\"#\">Visit</a></article>",
 			"css": ".ds-work { width: 320px; color: #07020D; font-family: \"Familjen Grotesk\", system-ui, sans-serif; } .ds-work-image { display: flex; align-items: flex-end; justify-content: flex-start; aspect-ratio: 16 / 10; padding: 16px; overflow: hidden; border-radius: 50% 50% 0 0 / 9% 9% 0 0; background: #161925; color: #959C9A; font-size: 12px; transition: transform 700ms ease-out; } .ds-work:hover .ds-work-image { transform: scale(1.03); } .ds-work-title { margin: 20px 0 0; font-size: 24px; font-weight: 500; line-height: 1.2; letter-spacing: -0.02em; } .ds-work-copy { margin: 8px 0 0; max-width: 65ch; color: #5B5E5D; font-size: 14px; line-height: 1.7; } .ds-work-link { display: inline-block; margin-top: 16px; color: #990D35; font-size: 14px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; } .ds-work-link:focus-visible { outline: 2px solid #990D35; outline-offset: 3px; }"
+		},
+		{
+			"name": "Technology Chip",
+			"kind": "custom",
+			"refersTo": "tech-chip",
+			"description": "A compact hairline chip for a technology, with an optional monochrome logo.",
+			"html": "<span class=\"ds-tech-chip\"><svg class=\"ds-tech-chip-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12z\"/></svg>React 18</span>",
+			"css": ".ds-tech-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid rgba(7, 2, 13, 0.15); border-radius: 2px; background: rgba(7, 2, 13, 0.03); color: #5B5E5D; font-family: \"Familjen Grotesk\", system-ui, sans-serif; font-size: 12px; line-height: 1; white-space: nowrap; } .ds-tech-chip-icon { width: 14px; height: 14px; flex: none; fill: currentColor; }"
 		},
 		{
 			"name": "Contact Arch Link",
@@ -194,14 +208,14 @@
 	],
 	"narrative": {
 		"northStar": "The Editorial Arch",
-		"overview": "This is a developer portfolio composed like a printed page: a strict grid, oversized grotesque type, paper-white and ink-black grounds, and one deep chromatic signal per theme. The page should feel authored rather than assembled, with the confidence of a Swiss poster and the quiet precision of a well-set book.\n\nThe arch is the one recurring figure. It appears upright around portraits and contact links, and softened around project screenshots so the curve never competes with the work. Everything else earns its place through proportion, hairlines, and whitespace rather than decoration.\n\nMotion is a single authored gesture followed by restrained detail: the name assembles, the portrait reveals, and the rest of the page settles into place. The system rejects centered stacks, glass cards, gradient fills, and entrance animations on every element.",
+		"overview": "This is a developer portfolio composed like a printed page: a strict grid, oversized grotesque type, paper-white and ink-black grounds, and one deep chromatic signal per theme. The page should feel authored rather than assembled, with the confidence of a Swiss poster and the quiet precision of a well-set book.\n\nThe arch is the one recurring figure. It appears upright around portraits and contact links, and softened around project screenshots so the curve never competes with the work. Everything else earns its place through proportion, hairlines, and whitespace rather than decoration.\n\nMotion has one authored entrance followed by restrained detail: the name assembles, the portrait reveals, and the rest of the page settles into place. The technology marquee is the single continuous exception; it pauses, respects reduced motion, and never becomes the loudest thing on the page. The system rejects centered stacks, glass cards, gradient fills, and entrance animations on every element.",
 		"keyCharacteristics": [
 			"12-column offset grid with generous negative space",
 			"One grotesque family at poster scale",
 			"Paper and ink grounds with oxblood or signal orange as the only chromatic event",
 			"Upright arch silhouette and softened arch for screenshots",
 			"Flat surfaces, hairline rules, one floating shadow",
-			"Motion with a single authored moment, fully removable for reduced motion"
+			"One authored entrance plus a single continuous marquee, fully removable for reduced motion"
 		],
 		"rules": [
 			{
@@ -248,6 +262,11 @@
 				"name": "The Softened Capture Rule",
 				"body": "Screenshots get the softened arch. Only portraits and contact links get the full arch.",
 				"section": "shapes"
+			},
+			{
+				"name": "The Continuous Exception Rule",
+				"body": "The technology marquee is the only continuous animation. It pauses on demand, never hides its content from assistive technology, and becomes a static grid under reduced motion.",
+				"section": "elevation"
 			}
 		],
 		"dos": [
@@ -256,7 +275,8 @@
 			"Do keep body copy at 65ch or less and use the display scale only for the name and section titles.",
 			"Do use the upright arch for portraits and contact links, and the softened arch for project screenshots.",
 			"Do preserve the 2px accent focus ring with a 3px offset on every interactive element.",
-			"Do remove transforms, clip reveals, parallax, and smooth scrolling under prefers-reduced-motion.",
+			"Do remove transforms, clip reveals, parallax, marquee movement, and smooth scrolling under prefers-reduced-motion.",
+			"Do keep the technology marquee as the only continuous animation; it pauses on demand and shows every chip in its static fallback.",
 			"Do let whitespace and hairlines carry structure before adding any shadow or border weight."
 		],
 		"donts": [
