@@ -30,7 +30,7 @@ function CategoryGroup({ category }: { category: TechCategory }) {
 
 	return (
 		<div className="flex items-center gap-3 border-r border-negro-500/15 pr-6 dark:border-blanco/15">
-			<span className="shrink-0 text-xs font-medium uppercase tracking-[0.18em] text-gris-500 dark:text-gris-200">
+			<span className="shrink-0 text-xs font-medium uppercase tracking-[0.18em] text-gris-500 dark:text-gris-200 pl-1.5 ">
 				{t(`experience.categories.${category}`)}
 			</span>
 			<div role="list" className="flex items-center gap-2">

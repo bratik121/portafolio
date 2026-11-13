@@ -37,7 +37,7 @@ function App() {
 	}, [dark]);
 
 	return (
-		<div className="min-h-screen overflow-x-hidden bg-blanco text-negro-500 dark:bg-negro-500 dark:text-blanco">
+		<div className="min-h-screen bg-blanco text-negro-500 dark:bg-negro-500 dark:text-blanco">
 			<ScrollProgress />
 			{lang === null ? (
 				<div className="flex min-h-screen items-center justify-center">

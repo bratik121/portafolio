@@ -72,6 +72,10 @@
 				"displayName": "Title",
 				"purpose": "Project names and modal headings."
 			},
+			"statement": {
+				"displayName": "Statement",
+				"purpose": "The Experience thesis: a 7-column offset statement with a short accent rule and a full-ink closing sentence."
+			},
 			"body": {
 				"displayName": "Body",
 				"purpose": "Prose and interface copy, capped at 65ch."
@@ -180,6 +184,14 @@
 			"description": "Soft-arch screenshot, title, 65ch description, a row of technology chips, and an accent link. No card shadow or lift.",
 			"html": "<article class=\"ds-work\"><div class=\"ds-work-image\" role=\"img\" aria-label=\"Project screenshot placeholder\"><span>01</span></div><h3 class=\"ds-work-title\">Infinity Energy</h3><p class=\"ds-work-copy\">Collection of web pages developed using React, Tailwind, and other libraries.</p><a class=\"ds-work-link\" href=\"#\">Visit</a></article>",
 			"css": ".ds-work { width: 320px; color: #07020D; font-family: \"Familjen Grotesk\", system-ui, sans-serif; } .ds-work-image { display: flex; align-items: flex-end; justify-content: flex-start; aspect-ratio: 16 / 10; padding: 16px; overflow: hidden; border-radius: 50% 50% 0 0 / 9% 9% 0 0; background: #161925; color: #959C9A; font-size: 12px; transition: transform 700ms ease-out; } .ds-work:hover .ds-work-image { transform: scale(1.03); } .ds-work-title { margin: 20px 0 0; font-size: 24px; font-weight: 500; line-height: 1.2; letter-spacing: -0.02em; } .ds-work-copy { margin: 8px 0 0; max-width: 65ch; color: #5B5E5D; font-size: 14px; line-height: 1.7; } .ds-work-link { display: inline-block; margin-top: 16px; color: #990D35; font-size: 14px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; } .ds-work-link:focus-visible { outline: 2px solid #990D35; outline-offset: 3px; }"
+		},
+		{
+			"name": "Statement",
+			"kind": "custom",
+			"refersTo": "statement",
+			"description": "Offset Experience thesis: a short accent rule, a large secondary-text lead, and a full-ink closing sentence. No container.",
+			"html": "<div class=\"ds-statement\"><span class=\"ds-statement-rule\" aria-hidden=\"true\"></span><p class=\"ds-statement-copy\">I build complete products: backends with CQRS, DDD, and hexagonal architecture, and React interfaces over Django APIs with applied machine learning. <span class=\"ds-statement-thesis\">I care as much about backend architecture as interface detail.</span></p></div>",
+			"css": ".ds-statement { width: 520px; color: #5B5E5D; font-family: \"Familjen Grotesk\", system-ui, sans-serif; } .ds-statement-rule { display: block; width: 48px; height: 1px; margin-bottom: 20px; background: #990D35; } .ds-statement-copy { margin: 0; font-size: 30px; font-weight: 400; line-height: 1.35; letter-spacing: -0.015em; } .ds-statement-thesis { display: block; margin-top: 12px; color: #07020D; font-weight: 500; }"
 		},
 		{
 			"name": "Technology Chip",

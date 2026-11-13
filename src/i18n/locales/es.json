@@ -98,6 +98,11 @@
 		"loading": "Cargando…",
 		"imageAlt": "Captura del proyecto {{title}}",
 		"stackLabel": "Tecnologías",
+		"progress": "Proyecto {{current}} de {{total}}",
+		"yearLabel": "Año",
+		"roleLabel": "Rol",
+		"stackTitle": "Stack",
+		"viewProject": "Ver proyecto",
 		"items": {
 			"infinityEnergy": {
 				"title": "Infinity Energy",
@@ -152,5 +157,9 @@
 		"copyright": "© 2026 Bryant Mitchell",
 		"backToTop": "Volver arriba"
 	},
-	"loading": "Cargando…"
+	"loading": "Cargando…",
+	"statement": {
+		"lead": "Construyo productos completos: backends con CQRS, DDD y arquitectura hexagonal, e interfaces en React sobre APIs de Django con machine learning aplicado.",
+		"highlight": "Cuido tanto la arquitectura del backend como el detalle de la interfaz."
+	}
 }

@@ -30,6 +30,12 @@ typography:
     fontWeight: 500
     lineHeight: 1.2
     letterSpacing: "-0.02em"
+  statement:
+    fontFamily: '"Familjen Grotesk", system-ui, sans-serif'
+    fontSize: "clamp(1.4rem, 2.2vw, 1.875rem)"
+    fontWeight: 400
+    lineHeight: 1.35
+    letterSpacing: "-0.015em"
   body:
     fontFamily: '"Familjen Grotesk", system-ui, sans-serif'
     fontSize: "1rem"
@@ -98,6 +104,11 @@ components:
     textColor: "{colors.negro-500}"
     rounded: "{rounded.none}"
     padding: "24px"
+  statement:
+    backgroundColor: "transparent"
+    textColor: "{colors.gris-500}"
+    rounded: "{rounded.none}"
+    padding: "0px"
   tech-chip:
     backgroundColor: "transparent"
     textColor: "{colors.gris-500}"
@@ -156,6 +167,7 @@ A two-theme palette of warm paper, near-black ink, and one saturated signal per 
 - **Display** (500, `clamp(3.25rem, 9vw, 6rem)`, 0.88): The hero name only. Tight tracking (`-0.04em`) and two offset lines.
 - **Headline** (500, `clamp(2.5rem, 5.5vw, 4.75rem)`, 0.95): Section titles above a hairline rule.
 - **Title** (500, 1.5rem, 1.2): Project names and modal headings.
+- **Statement** (400, `clamp(1.4rem, 2.2vw, 1.875rem)`, 1.35): The Experience thesis; its closing sentence is 500 weight and full ink.
 - **Body** (400, 1rem, 1.7): Prose and interface copy. Measure is capped at 65ch.
 - **Label** (400, 0.75rem, 1.5): Form labels, error messages, metadata, and icon captions.
 
@@ -233,6 +245,12 @@ The upright arch is the signature: a full semicircular top over a rectangular ba
 ### Theme Switch
 - **Shape:** A 56x32 pill with a 24px knob and a 300ms transform.
 - **Color:** The knob uses the active accent and carries a sun or moon glyph.
+
+### Statement
+- **Placement:** Directly below the Experience section title, offset to columns 6-12 on desktop and full width on tablet and mobile.
+- **Structure:** A 48px accent rule opens the block. The lead sits in secondary text at the statement scale; the closing sentence switches to 500 weight and full ink.
+- **Measure:** Capped at 65ch. The section title remains the only display-scale voice; the statement is a thesis, not a second heading.
+- **Access:** The accent rule is decorative and hidden from assistive technology. Both parts read as a single paragraph.
 
 ### Technology Chips
 - **Shape:** A 2px-radius chip with a 1px hairline, 12px horizontal and 8px vertical padding, and 12px text.

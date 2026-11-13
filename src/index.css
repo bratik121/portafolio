@@ -9,6 +9,13 @@
 		scroll-behavior: smooth;
 		scrollbar-width: thin;
 		scrollbar-color: theme("colors.rojo.200") transparent;
+		overflow-x: clip;
+	}
+
+	@supports not (overflow-x: clip) {
+		html {
+			overflow-x: hidden;
+		}
 	}
 
 	html.dark {
