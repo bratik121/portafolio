@@ -12,6 +12,8 @@ import { useTranslation } from "react-i18next";
 import type { Project } from "../../data/portafolio";
 import ProjectLinks from "../../elements/ProjectLinks";
 import ProjectStack from "../../elements/ProjectStack";
+import DeckTitle from "./components/DeckTile";
+import DeckDescription from "./components/DeckDescription";
 
 /**
  * Ajustes del canvas y del índice. Cambia estos valores para probar la
@@ -30,9 +32,6 @@ const DECK_CONFIG = {
 	/** Blur máximo de la imagen saliente, en px. 0 = sin blur. */
 	OUTGOING_BLUR: 2.5,
 	/** Tamaño del título activo en el índice. */
-	ACTIVE_TITLE_SIZE: "clamp(1.5rem, 2.1vw, 2rem)",
-	/** Tamaño de los títulos inactivos en el índice. */
-	INACTIVE_TITLE_SIZE: "clamp(0.95rem, 1.05vw, 1.05rem)",
 };
 
 const projectTitleKey = (id: string) => `projects.items.${id}.title`;
@@ -91,69 +90,6 @@ function CanvasImage({ project, index, position }: CanvasImageProps) {
 						"linear-gradient(to top, rgba(7, 2, 13, 0.45), rgba(7, 2, 13, 0))",
 				}}
 			/>
-		</motion.div>
-	);
-}
-
-type DeckTitleProps = {
-	title: string;
-	index: number;
-	active: boolean;
-	onSelect: (index: number) => void;
-};
-
-function DeckTitle({ title, index, active, onSelect }: DeckTitleProps) {
-	return (
-		<li>
-			<button
-				type="button"
-				onClick={() => onSelect(index)}
-				aria-pressed={active}
-				className="group flex w-full items-start gap-3 py-1 text-left"
-			>
-				<span
-					aria-hidden="true"
-					className={`mt-[0.55em] h-px shrink-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-						active
-							? "w-6 bg-rojo-200 dark:bg-naranja-200"
-							: "w-3 bg-negro-500/25 dark:bg-blanco/25"
-					}`}
-				/>
-				<span
-					className={`block [text-wrap:balance] font-medium leading-[1.08] tracking-[-0.02em] transition-[font-size,color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-						active
-							? "text-negro-500 dark:text-blanco"
-							: "text-gris-500 group-hover:text-negro-500 dark:text-gris-200 dark:group-hover:text-blanco"
-					}`}
-					style={{
-						fontSize: active
-							? DECK_CONFIG.ACTIVE_TITLE_SIZE
-							: DECK_CONFIG.INACTIVE_TITLE_SIZE,
-					}}
-				>
-					{title}
-				</span>
-			</button>
-		</li>
-	);
-}
-
-type DeckDescriptionProps = {
-	description: string;
-};
-
-function DeckDescription({ description }: DeckDescriptionProps) {
-	const reduceMotion = useReducedMotion();
-
-	return (
-		<motion.div
-			initial={reduceMotion ? false : { opacity: 0, y: 4 }}
-			animate={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-		>
-			<p className="measure text-sm leading-relaxed text-gris-500 dark:text-gris-200">
-				{description}
-			</p>
 		</motion.div>
 	);
 }
@@ -338,7 +274,7 @@ function ProjectsDeck({ projects }: ProjectsDeckProps) {
 					</div>
 
 					{/* Canvas: the active project, with a hairline mat. */}
-					<div className="relative mx-auto aspect-square w-full max-w-[min(100%,36vh)] rounded-[2px] bg-negro-500/[0.03] p-2 ring-1 ring-negro-500/15 dark:bg-blanco/[0.03] dark:ring-blanco/15 xl:col-span-6 xl:max-w-[min(100%,calc(100vh-9rem))] xl:p-3">
+					<div className="relative mx-auto aspect-square w-full max-w-[min(100%,36vh)] rounded-[2px] bg-negro-500/[0.03] p-2 ring-1 ring-rojo-200 dark:bg-blanco/[0.03] dark:ring-naranja-200 xl:col-span-6 xl:max-w-[min(100%,calc(100vh-9rem))] xl:p-3">
 						<div
 							className="relative h-full w-full overflow-hidden rounded-[1px] bg-negro-500/5 dark:bg-blanco/5"
 							aria-hidden="true"
