@@ -1,141 +1,67 @@
-import { useState, useContext } from "react";
-import { motion as m } from "framer-motion";
+import { useState } from "react";
 import { IoMdSchool } from "react-icons/io";
 import { IoBarChartSharp } from "react-icons/io5";
 import { RiComputerFill } from "react-icons/ri";
+import { useTranslation } from "react-i18next";
 import TextSlider from "./TextSlider";
-import { skills, hobbies } from "../../data/about";
-import { langContext } from "../../App";
 
-const containerVariant = {
-	hidden: { opacity: 0 },
-	show: {
-		opacity: 1,
-		transition: {
-			staggerChildren: 0.1,
-			delay: 0.2,
-		},
-	},
-};
-const articleVariant = {
-	hidden: { y: -300, opacity: 0 },
-	show: { y: 0, opacity: 1 },
-};
+const rowClass =
+	"grid grid-cols-[1.5rem_1fr] items-center gap-4 border-b border-negro-500/15 py-5 dark:border-blanco/15 md:grid-cols-[4rem_1fr]";
+
 function AboutCards() {
-	const [indexHobbies, setIndexHobbies] = useState<number>(0);
-	const [indexSkills, setIndexSkills] = useState<number>(0);
-	const { lang } = useContext(langContext);
-	const nextItem = (
-		index: number,
-		setter: React.Dispatch<React.SetStateAction<number>>,
-		array: string[]
-	) => {
-		if (index !== array.length - 1) {
-			setter(index + 1);
-		} else {
-			setter(0);
-		}
-	};
-	const prevtItem = (
-		index: number,
-		setter: React.Dispatch<React.SetStateAction<number>>,
-		array: string[]
-	) => {
-		if (index !== 0) {
-			setter(index - 1);
-		} else {
-			setter(array.length - 1);
-		}
-	};
-	const setHobbieIndex = (index: number) => {
-		setIndexHobbies(index);
-	};
-	const setSkillIndex = (index: number) => {
-		setIndexSkills(index);
-	};
+	const { t } = useTranslation();
+	const [hobbyIndex, setHobbyIndex] = useState(0);
+	const [skillIndex, setSkillIndex] = useState(0);
+	const hobbies = t("about.hobbies", { returnObjects: true }) as unknown as string[];
+	const skills = t("about.skills", { returnObjects: true }) as unknown as string[];
+
 	return (
-		<m.div
-			className="abut__cards grid grid-cols-2 md:grid-cols-3 gap-5 justify-items-center"
-			variants={containerVariant}
-			initial="hidden"
-			whileInView="show"
-			viewport={{ once: true }}
-		>
-			{/* Estudios */}
-			<m.article
-				className="about__card justify-around text-center flex flex-col items-center bg-[rgba(240,28,60,0.16)] w-[8rem] md:w-[9.5rem]
-				border border-rojo-200 dark:border-naranja-200 dark:bg-[rgba(240,128,60,0.16)] aspect-square"
-				variants={articleVariant}
-			>
-				<div className="card__tittle flex flex-col items-center text-center">
-					<IoMdSchool className="card__icon" />
-					<h5 className="text-negro-200 text-sm dark:text-blanco">
-						{lang === "Es" ? "Estudios" : "Studies"}
-					</h5>
-				</div>
-				<small className="text-gris-500 dark:text-gris-200">
-					{lang === "Es" ? "4 Años estudiando" : "4 Years studying"}
-				</small>
-			</m.article>
-			{/* Hobbies */}
-			<m.article
-				className="about__card justify-around text-center flex flex-col items-center bg-[rgba(240,28,60,0.16)] w-[8rem] md:w-[9.5rem]
-				border border-rojo-200 dark:border-naranja-200 dark:bg-[rgba(240,128,60,0.16)] aspect-square relative overflow-hidden"
-				variants={articleVariant}
-			>
-				<div className="card__tittle flex flex-col items-center text-center">
-					<RiComputerFill className="card__icon" />
-					<h5 className="text-negro-200 text-sm dark:text-blanco">Hobbies</h5>
-				</div>
-				<TextSlider
-					list={hobbies[lang]}
-					index={indexHobbies}
-					setIndex={setHobbieIndex}
+		<div className="border-t border-negro-500/15 dark:border-blanco/15">
+			<div className={rowClass}>
+				<IoMdSchool
+					aria-hidden="true"
+					className="text-xl text-rojo-200 dark:text-naranja-200"
 				/>
-				<div
-					className="left-boton cursor-pointer absolute h-full w-[22%]  left-0 "
-					onClick={() => {
-						prevtItem(indexHobbies, setIndexHobbies, hobbies[lang]);
-					}}
-				></div>
-				<div
-					className="right-boton cursor-pointer absolute h-full w-[22%]  right-0 "
-					onClick={() => {
-						nextItem(indexHobbies, setIndexHobbies, hobbies[lang]);
-					}}
-				></div>
-			</m.article>
-			{/* Habilidades */}
-			<m.article
-				className="about__card justify-around text-center flex flex-col items-center bg-[rgba(240,28,60,0.16)] w-full md:w-[9.5rem] 
-				 border border-rojo-200 dark:border-naranja-200 dark:bg-[rgba(240,128,60,0.16)] col-span-2 md:col-span-1 md:aspect-square relative overflow-hidden"
-				variants={articleVariant}
-			>
-				<div className="card__tittle flex flex-col items-center text-center">
-					<IoBarChartSharp className="card__icon" />
-					<h5 className="text-negro-200 text-sm dark:text-blanco">
-						{lang === "Es" ? "Habilidades" : "Skills"}
-					</h5>
+				<div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
+					<h3 className="text-sm font-medium">{t("about.cards.studies.title")}</h3>
+					<p className="text-sm text-gris-500 dark:text-gris-200">
+						{t("about.cards.studies.value")}
+					</p>
 				</div>
-				<TextSlider
-					list={skills[lang]}
-					index={indexSkills}
-					setIndex={setSkillIndex}
+			</div>
+
+			<div className={rowClass}>
+				<RiComputerFill
+					aria-hidden="true"
+					className="text-xl text-rojo-200 dark:text-naranja-200"
 				/>
-				<div
-					className="left-boton cursor-pointer absolute h-full  w-[28%] md:w-[22%]  left-0"
-					onClick={() => {
-						prevtItem(indexSkills, setIndexSkills, skills[lang]);
-					}}
-				></div>
-				<div
-					className="right-boton cursor-pointer absolute h-full w-[28%]  md:w-[22%]  right-0"
-					onClick={() => {
-						nextItem(indexSkills, setIndexSkills, skills[lang]);
-					}}
-				></div>
-			</m.article>
-		</m.div>
+				<div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+					<h3 className="text-sm font-medium">{t("about.cards.hobbies.title")}</h3>
+					<TextSlider
+						list={hobbies}
+						index={hobbyIndex}
+						setIndex={setHobbyIndex}
+						label={t("about.cards.hobbies.title")}
+					/>
+				</div>
+			</div>
+
+			<div className={rowClass}>
+				<IoBarChartSharp
+					aria-hidden="true"
+					className="text-xl text-rojo-200 dark:text-naranja-200"
+				/>
+				<div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+					<h3 className="text-sm font-medium">{t("about.cards.skills.title")}</h3>
+					<TextSlider
+						list={skills}
+						index={skillIndex}
+						setIndex={setSkillIndex}
+						label={t("about.cards.skills.title")}
+					/>
+				</div>
+			</div>
+		</div>
 	);
 }
 

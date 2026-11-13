@@ -1,41 +1,40 @@
-import { motion } from "framer-motion";
-function TextSlider(props: any) {
-	const smallVariant = {
-		hidden: { opacity: 0 },
-		show: { opacity: 1, transition: { duration: 0.7, ease: "easeInOut" } },
-	};
-	const clickHandler = (index: number) => {
-		props.setIndex(index);
-	};
+type TextSliderProps = {
+	list: string[];
+	index: number;
+	setIndex: (index: number) => void;
+	label: string;
+};
+
+function TextSlider({ list, index, setIndex, label }: TextSliderProps) {
+	const current = list[index] ?? "";
+
 	return (
-		<div className="flex flex-col items-center">
-			<motion.small
-				className="actual active-anim text-gris-500 dark:text-gris-200"
-				variants={smallVariant}
-				initial="hidden"
-				animate="show"
-				key={props.index}
+		<div className="flex flex-col items-start gap-1 md:items-end">
+			<span
+				aria-live="polite"
+				className="text-sm text-gris-500 dark:text-gris-200"
 			>
-				{props.list[props.index]}
-			</motion.small>
-			<div className="flex justify-around">
-				{props.list.map((element: string, index: number) => {
-					return (
+				{current}
+			</span>
+			<div className="flex items-center gap-1" role="group" aria-label={label}>
+				{list.map((item, itemIndex) => (
+					<button
+						key={item}
+						type="button"
+						aria-label={item}
+						aria-pressed={itemIndex === index}
+						onClick={() => setIndex(itemIndex)}
+						className="flex h-8 w-8 items-center justify-center"
+					>
 						<span
-							className={`text__slider__button w-[16px] h-[16px] text-2xl p-2 realtive
-                            ${
-															props.index === index
-																? "after:bg-rojo-200 dark:after:bg-naranja-200"
-																: "after:bg-gris-500 dark:after:bg-gris-200"
-														}
-                            `}
-							key={index}
-							onClick={() => {
-								clickHandler(index);
-							}}
-						></span>
-					);
-				})}
+							className={`block h-1.5 rounded-full transition-all duration-300 motion-reduce:transition-none ${
+								itemIndex === index
+									? "w-5 bg-rojo-200 dark:bg-naranja-200"
+									: "w-1.5 bg-negro-500/25 dark:bg-blanco/25"
+							}`}
+						/>
+					</button>
+				))}
 			</div>
 		</div>
 	);

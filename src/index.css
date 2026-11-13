@@ -1,49 +1,188 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-	font-family: "Montserrat", sans-serif;
-	line-height: 1.7;
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		scrollbar-width: thin;
+		scrollbar-color: theme("colors.rojo.200") transparent;
+		overflow-x: clip;
+	}
+
+	@supports not (overflow-x: clip) {
+		html {
+			overflow-x: hidden;
+		}
+	}
+
+	html.dark {
+		color-scheme: dark;
+		scrollbar-color: theme("colors.naranja.200") transparent;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
+
+	body {
+		@apply bg-blanco font-sans text-negro-500 antialiased dark:bg-negro-500 dark:text-blanco;
+		font-size: 16px;
+		line-height: 1.7;
+	}
+
+	::selection {
+		@apply bg-rojo-200/20 text-negro-500 dark:bg-naranja-200/30 dark:text-blanco;
+	}
+
+	:focus-visible {
+		outline: 2px solid theme("colors.rojo.200");
+		outline-offset: 3px;
+	}
+
+	.dark :focus-visible {
+		outline-color: theme("colors.naranja.200");
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: theme("colors.rojo.200");
+		border-radius: 999px;
+	}
+
+	.dark ::-webkit-scrollbar-thumb {
+		background: theme("colors.naranja.200");
+	}
 }
 
-html {
-	scroll-behavior: smooth;
+@layer components {
+	.shell {
+		@apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12;
+	}
+
+	.arch {
+		border-radius: 999px 999px 0 0;
+	}
+
+	.inverted-arch {
+		border-radius: 0 0 999px 999px;
+	}
+
+	.arch-soft {
+		border-radius: 50% 50% 0 0 / 9% 9% 0 0;
+	}
+
+	.measure {
+		max-width: 65ch;
+		text-wrap: pretty;
+	}
+
+	.link-underline {
+		@apply underline decoration-1 underline-offset-4 transition-colors duration-200;
+	}
+
+	.marquee-mask {
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 2.5rem,
+			#000 calc(100% - 2.5rem),
+			transparent
+		);
+		-webkit-mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 2.5rem,
+			#000 calc(100% - 2.5rem),
+			transparent
+		);
+	}
+
+	/* impeccable-disable-next-line marquee -- endless technology marquee requested for this portfolio */
+	.marquee-track {
+		display: flex;
+		align-items: center;
+		width: max-content;
+		animation: marquee-left 60s linear infinite;
+		will-change: transform;
+	}
+
+	.marquee-track-reverse {
+		animation-name: marquee-right;
+		animation-duration: 75s;
+	}
+
+	.marquee-track:hover,
+	.marquee-track:focus-within,
+	.marquee-track[data-paused="true"] {
+		animation-play-state: paused;
+	}
 }
 
-::-webkit-scrollbar {
-	display: none;
+@keyframes marquee-left {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-	font-weight: 500;
+@keyframes marquee-right {
+	from {
+		transform: translateX(-50%);
+	}
+	to {
+		transform: translateX(0);
+	}
 }
 
-h1 {
-	font-size: 2.5rem;
+@media (max-width: 640px) {
+	.marquee-mask {
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 1.5rem,
+			#000 calc(100% - 1.5rem),
+			transparent
+		);
+		-webkit-mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 1.5rem,
+			#000 calc(100% - 1.5rem),
+			transparent
+		);
+	}
+
+	.marquee-track {
+		animation-duration: 75s;
+	}
+
+	.marquee-track-reverse {
+		animation-duration: 90s;
+	}
 }
 
-section {
-	margin-top: 8rem;
-}
-
-img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
-html {
-	-ms-overflow-style: none; /* for Internet Explorer, Edge */
-	scrollbar-width: none; /* for Firefox */
-	overflow-y: scroll;
-}
-
-html::-webkit-scrollbar {
-	display: none; /* for Chrome, Safari, and Opera */
+@media (prefers-reduced-motion: reduce) {
+	.marquee-track {
+		animation: none;
+	}
 }

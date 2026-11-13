@@ -1,139 +1,171 @@
-import ContactInputs from "./Contact-inputs";
-import Button from "../../elements/Button";
 import { useRef, useState } from "react";
-import { notEmpty, validText, validEmail } from "../../data/validations";
+import { useTranslation } from "react-i18next";
 import emailjs from "@emailjs/browser";
-function Form(props: any) {
-	const nombre = useRef() as React.MutableRefObject<HTMLInputElement>;
-	const correo = useRef() as React.MutableRefObject<HTMLInputElement>;
-	const texto = useRef() as React.MutableRefObject<HTMLTextAreaElement>;
-	const form = useRef() as React.MutableRefObject<HTMLFormElement>;
+import Button from "../../elements/Button";
+import { notEmpty, validEmail, validText } from "../../data/validations";
+import ContactInputs from "./Contact-inputs";
+
+type FormProps = {
+	onSuccess: () => void;
+};
+
+function Form({ onSuccess }: FormProps) {
+	const { t } = useTranslation();
+	const nombre = useRef<HTMLInputElement>(null);
+	const correo = useRef<HTMLInputElement>(null);
+	const texto = useRef<HTMLTextAreaElement>(null);
+	const form = useRef<HTMLFormElement>(null);
 
 	const [inputName, setInputName] = useState("");
 	const [inputEmail, setInputEmail] = useState("");
+	const [errorNombre, setErrorNombre] = useState("");
+	const [errorCorreo, setErrorCorreo] = useState("");
+	const [errorTexto, setErrorTexto] = useState("");
 
-	const nameSetter = (string: string) => {
-		setInputName(string);
+	const sendEmail = () =>
+		emailjs.sendForm(
+			"service_rkve5ig",
+			"template_n8lks8i",
+			form.current as HTMLFormElement,
+			"IjTyyX0CCUOWFBfr2"
+		);
+
+	const truncateInputs = (element: { current: HTMLInputElement | HTMLTextAreaElement | null }) => {
+		if (element.current) element.current.value = "";
 	};
 
-	const emailSetter = (string: string) => {
-		setInputEmail(string);
-	};
-	const sendEmail = (e: any) => {
-		emailjs
-			.sendForm(
-				"service_rkve5ig",
-				"template_n8lks8i",
-				form.current,
-				"IjTyyX0CCUOWFBfr2"
-			)
-			.then(
-				(result) => {
-					console.log(result.text);
-				},
-				(error) => {
-					console.log(error.text);
-				}
-			);
-	};
-
-	const [errorNombre, setErrorNombre] = useState<string>("");
-	const [errorCorreo, setErrorCorreo] = useState<string>("");
-	const [errorTexto, setErrorTexto] = useState<string>("");
-
-	const truncateInputs = (element: any) => {
-		element.current.value = "";
-	};
 	const validateName = (): number => {
-		if (notEmpty(nombre.current.value)) {
-			if (validText(nombre.current.value)) {
-				setErrorNombre("Caracteres invalidos");
-				return 0;
-			} else {
-				setErrorNombre("");
-				return 1;
-			}
-		} else {
-			setErrorNombre("Introduzca un nombre!");
+		if (!notEmpty(nombre.current?.value ?? "")) {
+			setErrorNombre(t("contact.errors.nameRequired"));
 			return 0;
 		}
-	};
-	const validateEmail = (): number => {
-		if (notEmpty(correo.current.value)) {
-			if (validEmail(correo.current.value)) {
-				setErrorCorreo("Correo invalido");
-				return 0;
-			} else {
-				setErrorCorreo("");
 
-				return 1;
-			}
-		} else {
-			setErrorCorreo("Introduzca un correo!");
+		if (validText(nombre.current?.value ?? "")) {
+			setErrorNombre(t("contact.errors.invalidName"));
 			return 0;
 		}
+
+		setErrorNombre("");
+		return 1;
 	};
+
+	const validateEmail = (): number => {
+		if (!notEmpty(correo.current?.value ?? "")) {
+			setErrorCorreo(t("contact.errors.emailRequired"));
+			return 0;
+		}
+
+		if (validEmail(correo.current?.value ?? "")) {
+			setErrorCorreo(t("contact.errors.invalidEmail"));
+			return 0;
+		}
+
+		setErrorCorreo("");
+		return 1;
+	};
+
 	const validateText = (): number => {
-		if (notEmpty(texto.current.value)) {
-			setErrorTexto("");
-			return 1;
-		} else {
-			setErrorTexto("Introduza un Contenido");
+		if (!notEmpty(texto.current?.value ?? "")) {
+			setErrorTexto(t("contact.errors.messageRequired"));
 			return 0;
 		}
+
+		setErrorTexto("");
+		return 1;
 	};
-	const sendMessage = (e: any) => {
-		e.preventDefault();
-		let flags = 0;
-		flags += validateName();
-		flags += validateEmail();
-		flags += validateText();
-		if (flags === 3) {
-			sendEmail(e);
-			props.modalSateSetter(true);
-			truncateInputs(nombre);
-			truncateInputs(correo);
-			nameSetter("");
-			emailSetter("");
-			truncateInputs(texto);
+
+	const sendMessage = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		const flags = validateName() + validateEmail() + validateText();
+
+		if (flags !== 3) {
+			requestAnimationFrame(() => {
+				form.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
+			});
+			return;
 		}
+
+		sendEmail()
+			.then(() => {
+				onSuccess();
+				truncateInputs(nombre);
+				truncateInputs(correo);
+				truncateInputs(texto);
+				setInputName("");
+				setInputEmail("");
+			})
+			.catch((error) => {
+				console.error(error);
+			});
 	};
 
 	return (
-		<form className="p-4 flex flex-col gap-3" ref={form} onSubmit={sendMessage}>
+		<form
+			ref={form}
+			onSubmit={sendMessage}
+			noValidate
+			className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-7 sm:grid-cols-2"
+		>
 			<ContactInputs
 				type="text"
-				label={props.lang === "Es" ? "Nombre" : "Name"}
-				refers={nombre}
+				label={t("contact.form.name")}
+				refers={nombre as React.MutableRefObject<HTMLInputElement>}
 				error={errorNombre}
 				nombre="nombre"
 				inputText={inputName}
-				setInputText={nameSetter}
+				setInputText={setInputName}
+				autoComplete="name"
 			/>
 			<ContactInputs
-				type="text"
-				label={props.lang === "Es" ? "Correo" : "Email"}
-				refers={correo}
+				type="email"
+				label={t("contact.form.email")}
+				refers={correo as React.MutableRefObject<HTMLInputElement>}
 				error={errorCorreo}
 				nombre="correo"
 				inputText={inputEmail}
-				setInputText={emailSetter}
+				setInputText={setInputEmail}
+				autoComplete="email"
 			/>
-			<textarea
-				className="cotact-area w-[full] bg-blanco dark:bg-negro-200 border border-rojo-200 dark:border-naranja-200 p-3 placeholder:text-gris-500 dark:placeholder:text-gris-200"
-				name="message"
-				id=""
-				cols={30}
-				rows={7}
-				placeholder={props.lang === "Es" ? "Contenido" : "Content"}
-				ref={texto}
-			></textarea>
-			<p>{errorTexto}</p>
-			<Button
-				label={props.lang === "Es" ? "Enviar" : "Send"}
-				clase="primary"
-				type="submit"
-			/>
+
+			<div className="sm:col-span-2">
+				<label
+					htmlFor="contact-message"
+					className="block text-xs font-medium text-gris-500 dark:text-gris-200"
+				>
+					{t("contact.form.message")}
+				</label>
+				<textarea
+					id="contact-message"
+					name="message"
+					rows={5}
+					ref={texto}
+					aria-invalid={Boolean(errorTexto)}
+					aria-describedby={errorTexto ? "contact-message-error" : undefined}
+					className={`mt-1 w-full resize-y border-b bg-transparent py-2 text-base outline-none transition-colors duration-200 ${
+						errorTexto
+							? "border-rojo-200 dark:border-naranja-200"
+							: "border-negro-500/25 focus:border-rojo-200 dark:border-blanco/25 dark:focus:border-naranja-200"
+					}`}
+				/>
+				{errorTexto ? (
+					<p
+						id="contact-message-error"
+						role="alert"
+						className="mt-2 text-xs text-rojo-200 dark:text-naranja-200"
+					>
+						{errorTexto}
+					</p>
+				) : null}
+			</div>
+
+			<div className="sm:col-span-2">
+				<Button
+					type="submit"
+					label={t("contact.form.send")}
+					variant="primary"
+					className="w-full sm:w-auto"
+				/>
+			</div>
 		</form>
 	);
 }

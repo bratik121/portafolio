@@ -1,83 +1,108 @@
-import { aboutList, about } from "../../data/about";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useContext } from "react";
-import { langContext } from "../../App";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-const containerVariant = {
-	hidden: {
-		opacity: 0,
-		y: 20,
-	},
-	show: {
-		opacity: 1,
-		y: 0,
-		transition: {
-			duration: 0.5,
-			ease: "easeInOut",
-		},
-	},
-};
+const EASE = [0.16, 1, 0.3, 1] as const;
+const slides = ["intro", "objectives", "interests"] as const;
 
 function InfoSlider() {
-	const [index, setIndex] = useState<number>(0);
-	const { lang } = useContext(langContext);
-	const nextItem = (index: number) => {
-		if (index !== aboutList[lang].length - 1) {
-			setIndex(index + 1);
-		} else {
-			setIndex(0);
+	const { t } = useTranslation();
+	const reduceMotion = useReducedMotion();
+	const [index, setIndex] = useState(0);
+	const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+	const activeSlide = slides[index];
+
+	const handleKeyDown = (
+		event: React.KeyboardEvent<HTMLButtonElement>,
+		current: number
+	) => {
+		let next = current;
+
+		switch (event.key) {
+			case "ArrowRight":
+				next = (current + 1) % slides.length;
+				break;
+			case "ArrowLeft":
+				next = (current - 1 + slides.length) % slides.length;
+				break;
+			case "Home":
+				next = 0;
+				break;
+			case "End":
+				next = slides.length - 1;
+				break;
+			default:
+				return;
 		}
+
+		event.preventDefault();
+		setIndex(next);
+		tabRefs.current[next]?.focus();
 	};
 
+	const content = t(`about.slides.${activeSlide}.content`, {
+		returnObjects: true,
+	}) as unknown as string[];
+
 	return (
-		<div className="w-full col-span-2  md:col-span-3 flex flex-col items-center min-h-[256px] justify-around mt-4">
-			<AnimatePresence exitBeforeEnter>
-				<motion.div
-					className="w-full hover:cursor-pointer"
-					variants={containerVariant}
-					initial="hidden"
-					animate="show"
-					key={index}
-					onClick={() => {
-						nextItem(index);
-					}}
-				>
-					<h3 className="font-semibold mb-2">{aboutList[lang][index].title}</h3>
-					<ul className=" about__p text-gris-500 text-justify dark:text-gris-200 list-disc px-4 w-full">
-						{aboutList[lang][index].content.map(
-							(content: string, indexLi: number) => {
-								return (
-									<li
-										key={indexLi}
-										className=" marker:text-rojo-200 dark:marker:text-naranja-200"
-									>
-										<p key={indexLi}>{content}</p>
-									</li>
-								);
-							}
-						)}
-					</ul>
-				</motion.div>
-			</AnimatePresence>
-			{/* Slider Controls */}
-			<div className="flex justify-around  w-[20%]	">
-				{aboutList[lang].map((element: about, indexE: number) => {
+		<div>
+			<div
+				role="tablist"
+				aria-label={t("about.title")}
+				className="flex flex-wrap gap-x-6 gap-y-2 border-b border-negro-500/15 pb-3 dark:border-blanco/15"
+			>
+				{slides.map((slide, slideIndex) => {
+					const isActive = slideIndex === index;
+
 					return (
-						<span
-							key={indexE}
-							className={`info__slider__button w-[16px] h-[16px] text-2xl p-2 realtive 
-					${
-						index === indexE
-							? "after:bg-rojo-200 dark:after:bg-naranja-200"
-							: "after:bg-gris-500 dark:after:bg-gris-200"
-					}
-					`}
-							onClick={() => {
-								setIndex(indexE);
+						<button
+							key={slide}
+							type="button"
+							role="tab"
+							id={`about-tab-${slide}`}
+							aria-selected={isActive}
+							aria-controls="about-panel"
+							onClick={() => setIndex(slideIndex)}
+							onKeyDown={(event) => handleKeyDown(event, slideIndex)}
+							ref={(element) => {
+								tabRefs.current[slideIndex] = element;
 							}}
-						></span>
+							tabIndex={isActive ? 0 : -1}
+							className={`pb-1 text-sm transition-colors duration-200 ${
+								isActive
+									? "text-rojo-200 dark:text-naranja-200"
+									: "text-gris-500 hover:text-negro-500 dark:text-gris-200 dark:hover:text-blanco"
+							}`}
+						>
+							{t(`about.slides.${slide}.title`)}
+						</button>
 					);
 				})}
+			</div>
+
+			<div
+				id="about-panel"
+				role="tabpanel"
+				aria-labelledby={`about-tab-${activeSlide}`}
+				className="min-h-[13rem] pt-6 md:min-h-[11rem]"
+			>
+				<AnimatePresence mode="wait" initial={false}>
+					<motion.div
+						key={activeSlide}
+						initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
+						transition={{ duration: reduceMotion ? 0 : 0.35, ease: EASE }}
+					>
+						<ul className="measure list-disc space-y-2 pl-5 text-negro-500/80 marker:text-rojo-200 dark:text-blanco/80 dark:marker:text-naranja-200">
+							{content.map((paragraph, paragraphIndex) => (
+								<li key={paragraphIndex}>
+									<p>{paragraph}</p>
+								</li>
+							))}
+						</ul>
+					</motion.div>
+				</AnimatePresence>
 			</div>
 		</div>
 	);

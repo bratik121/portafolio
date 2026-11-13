@@ -1,79 +1,60 @@
-export type description = {
-	[key: string]: string;
+import recomendaiCover from "../assets/recomendai-placeholder.svg";
+import recommendAI from "../assets/Captura desde 2026-11-13 08-38-26.png";
+
+export type Project = {
+	id: string;
+	image: string;
+	role?: string;
+	year?: number | string;
+	repository?: string;
+	url?: string;
+	stack?: string[];
 };
 
-export type proyect = {
-	title: description;
-	description: description;
-	image: string;
-	repository: string;
-	url: string;
-};
-export const proyects: proyect[] = [
+export const proyects: Project[] = [
 	{
-		title: { Es: "Infinity Energy", En: "Infinity Energy" },
-		description: {
-			Es: "Conjunto de paginas webs desarrolladas con react, tailwind y otras librerias.",
-			En: "Collection of web pages developed using React, Tailwind, and other libraries.",
-		},
+		id: "infinityEnergy",
 		image: "https://i.postimg.cc/gjHwQtth/Infinity-Energy-Land.png",
-		repository: "",
+		role: "Frontend Developer",
+		year: 2024,
 		url: "https://www.infinityenergyusa.com/",
+		stack: ["react", "tailwind"],
 	},
 	{
-		title: {
-			Es: "Briigser",
-			En: "Briigser",
-		},
-		description: {
-			Es: "Pagina para buscar una gran variedad de gifs, desarrollada con react, typercript y tailwind.",
-			En: "Page to search a wide variety of gifs, developed with react, typescript, and tailwind.",
-		},
+		id: "briigser",
 		image: "https://i.postimg.cc/cJ430FJP/Briigser.png",
+		role: "Frontend Developer",
+		year: 2023,
 		repository: "https://github.com/bratik121/gifBrowser",
 		url: "https://bratik121.github.io/gifBrowser/",
+		stack: ["react", "typescript", "tailwind"],
 	},
 	{
-		title: {
-			Es: "Prueba React",
-			En: "React Test",
-		},
-		description: {
-			Es: "Prueba de react, se utilizan diversas librerias y se implementan diversas funcionalidades. (no es responsive)",
-			En: "React test, using various libraries and implementing different functionalities. (not responsive)",
-		},
-		image: "https://i.postimg.cc/WbrCB7NK/ndice.png",
-		repository: "https://github.com/bratik121/PruebaProlesys",
-		url: "https://test-bryant-prolesys.vercel.app/",
+		// TODO: replace the placeholder cover with the RecomendAI capture and add url/repository when available.
+		id: "recommendai",
+		image: recommendAI,
+		role: "Full-Stack Developer",
+		year: 2025,
+		stack: [
+			"django",
+			"react",
+			"typescript",
+			"postgresql",
+			"scikitlearn",
+			"gemini",
+			"tailwind",
+		],
 	},
 	{
-		title: { Es: "Proyecto 4", En: "Project 4" },
-		description: {
-			Es: "Una breve descripcion sobre lo que es y lo que contiene el proyecto 4",
-			En: "A brief description of what project 4 is and what it contains",
-		},
+		id: "project4",
 		image: "https://picsum.photos/260/126",
-		repository: "",
-		url: "",
 	},
 	{
-		title: { Es: "Proyecto 5", En: "Project 5" },
-		description: {
-			Es: "Una breve descripcion sobre lo que es y lo que contiene el proyecto 5",
-			En: "A brief description of what project 5 is and what it contains",
-		},
+		id: "project5",
 		image: "https://picsum.photos/262/125",
-		repository: "",
-		url: "",
 	},
 	{
-		title: { Es: "Proyecto 6", En: "Project 6" },
-		description: {
-			Es: "Una breve descripcion sobre lo que es y lo que contiene el proyecto 6",
-			En: "A brief description of what project 6 is and what it contains",
-		},
+		id: "project6",
 		image: "https://picsum.photos/261/124",
-		repository: "",
-		url: "",
 	},
 ];

@@ -1,36 +1,46 @@
-import { AiOutlineEye } from "react-icons/ai";
-import { RiGitRepositoryLine } from "react-icons/ri";
-import { useState } from "react";
-function WorkItem(props: any) {
+import { useReducedMotion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import ProjectFacts from "../../elements/ProjectFacts";
+import ProjectLinks from "../../elements/ProjectLinks";
+import ProjectStack from "../../elements/ProjectStack";
+import type { Project } from "../../data/portafolio";
+
+type WorkItemProps = {
+	project: Project;
+};
+
+function WorkItem({ project }: WorkItemProps) {
+	const { t } = useTranslation();
+	const reduceMotion = useReducedMotion();
+	const titleKey = `projects.items.${project.id}.title`;
+	const descriptionKey = `projects.items.${project.id}.description`;
+	const title = t(titleKey);
+	const description = t(descriptionKey);
+
 	return (
-		<article className="work__item border w-[260px] h-[210px] border-rojo-200 dark:border-naranja-200 relative rounded-lg overflow-hidden ">
-			<div className="item-image w-full h-[60%] overflow-hidden ">
-				<img className="" src={props.image} alt={props.title} />
+		<article className="group flex h-full flex-col">
+			<div className="arch-soft overflow-hidden bg-negro-500/5 dark:bg-blanco/5">
+				<img
+					src={project.image}
+					alt={t("projects.imageAlt", { title })}
+					loading="lazy"
+					className={`aspect-[16/10] w-full object-cover ${
+						reduceMotion
+							? ""
+							: "transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+					}`}
+				/>
 			</div>
-			<div
-				className={`item-content absolute  w-full h-[40%]  bg-blanco dark:bg-negro-200 overflow-hidden px-2 `}
-			>
-				<h3 className="item-title font-bold">{props.title}</h3>
-				<p className="item-description text-xs text-negro-200 dark:text-blanco">
-					{props.description}
+
+			<div className="mt-5 flex flex-1 flex-col">
+				<h3 className="text-2xl font-medium tracking-[-0.02em]">{title}</h3>
+				<p className="measure mt-2 text-sm leading-relaxed text-gris-500 dark:text-gris-200">
+					{description}
 				</p>
-				<div className="item-buttons w-full flex justify-around items-center mt-2">
-					<a
-						href={props.url}
-						target={"_blank"}
-						className="flex items-center text-rojo-200 dark:text-naranja-200 hover:text-rojo-500 dark:hover:text-naranja-500"
-					>
-						<AiOutlineEye /> Visitar
-					</a>
-					<a
-						href={props.repository}
-						target={"_blank"}
-						className="flex items-center text-rojo-200 dark:text-naranja-200 hover:text-rojo-500 dark:hover:text-naranja-500"
-					>
-						<RiGitRepositoryLine />
-						Repositorio
-					</a>
-				</div>
+
+				<ProjectFacts project={project} className="mt-4" />
+				<ProjectStack project={project} className="mt-4" />
+				<ProjectLinks project={project} className="mt-4" />
 			</div>
 		</article>
 	);
