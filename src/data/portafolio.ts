@@ -1,4 +1,5 @@
 import recomendaiCover from "../assets/recomendai-placeholder.svg";
+import recommendAI from "../assets/Captura desde 2026-11-13 08-38-26.png";
 
 export type Project = {
 	id: string;
@@ -31,7 +32,7 @@ export const proyects: Project[] = [
 	{
 		// TODO: replace the placeholder cover with the RecomendAI capture and add url/repository when available.
 		id: "recommendai",
-		image: recomendaiCover,
+		image: recommendAI,
 		role: "Full-Stack Developer",
 		year: 2025,
 		stack: [

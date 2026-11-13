@@ -50,33 +50,37 @@ function ContactMe({ onSuccess }: ContactMeProps) {
 						transition={{ duration: 0.6, ease: EASE }}
 					>
 						<ul className="divide-y divide-negro-500/15 border-y border-negro-500/15 dark:divide-blanco/15 dark:border-blanco/15">
-							{channels.map(({ name, description, label, href, icon: Icon }) => (
-								<li key={name}>
-									<a
-										href={href}
-										target="_blank"
-										rel="noreferrer"
-										aria-label={label}
-										className="group flex items-center gap-4 py-4 sm:gap-5 md:py-5"
-									>
-										<span className="arch flex h-24 w-16 shrink-0 items-center justify-center border border-negro-500/25 text-rojo-200 transition-colors duration-300 group-hover:border-rojo-200 group-hover:bg-rojo-200 group-hover:text-blanco dark:border-blanco/25 dark:text-naranja-200 dark:group-hover:border-naranja-200 dark:group-hover:bg-naranja-200 dark:group-hover:text-negro-500 sm:h-28 sm:w-20">
-											<Icon aria-hidden="true" className="text-2xl" />
-										</span>
-										<span className="min-w-0 flex-1">
-											<span className="block text-2xl font-medium tracking-[-0.02em]">
-												{name}
+							{channels.map(
+								({ name, description, label, href, icon: Icon }, index) => (
+									<li key={name}>
+										<a
+											href={href}
+											target="_blank"
+											rel="noreferrer"
+											aria-label={label}
+											className="group flex items-center gap-4 py-4 sm:gap-5 md:py-5"
+										>
+											<span
+												className={`${!index ? "arch" : "inverted-arch"} flex h-24 w-16 shrink-0 items-center justify-center border border-negro-500/25 text-rojo-200 transition-colors duration-300 group-hover:border-rojo-200 group-hover:bg-rojo-200 group-hover:text-blanco dark:border-blanco/25 dark:text-naranja-200 dark:group-hover:border-naranja-200 dark:group-hover:bg-naranja-200 dark:group-hover:text-negro-500 sm:h-28 sm:w-20`}
+											>
+												<Icon aria-hidden="true" className="text-2xl" />
 											</span>
-											<span className="mt-1 block text-xs text-gris-500 dark:text-gris-200">
-												{description}
+											<span className="min-w-0 flex-1">
+												<span className="block text-2xl font-medium tracking-[-0.02em]">
+													{name}
+												</span>
+												<span className="mt-1 block text-xs text-gris-500 dark:text-gris-200">
+													{description}
+												</span>
 											</span>
-										</span>
-										<FiArrowUpRight
-											aria-hidden="true"
-											className="shrink-0 text-xl text-gris-500 transition-colors duration-300 group-hover:text-rojo-200 dark:text-gris-200 dark:group-hover:text-naranja-200 md:hidden lg:block"
-										/>
-									</a>
-								</li>
-							))}
+											<FiArrowUpRight
+												aria-hidden="true"
+												className="shrink-0 text-xl text-gris-500 transition-colors duration-300 group-hover:text-rojo-200 dark:text-gris-200 dark:group-hover:text-naranja-200 md:hidden lg:block"
+											/>
+										</a>
+									</li>
+								)
+							)}
 						</ul>
 					</motion.div>
 

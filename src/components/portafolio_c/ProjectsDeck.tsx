@@ -1,6 +1,7 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import {
+	AnimatePresence,
 	motion,
 	useMotionValue,
 	useMotionValueEvent,
@@ -33,6 +34,9 @@ const DECK_CONFIG = {
 	OUTGOING_BLUR: 2.5,
 	/** Tamaño del título activo en el índice. */
 };
+
+/** Margen para considerar que hemos llegado al final (floats). */
+const END_EPSILON = 0.999;
 
 const projectTitleKey = (id: string) => `projects.items.${id}.title`;
 const projectDescriptionKey = (id: string) =>
@@ -100,6 +104,11 @@ function ProjectsDeck({ projects }: ProjectsDeckProps) {
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const [activeIndex, setActiveIndex] = useState(0);
 
+	// Lightbox
+	const [lightboxOpen, setLightboxOpen] = useState(false);
+	const triggerRef = useRef<HTMLButtonElement>(null);
+	const closeButtonRef = useRef<HTMLButtonElement>(null);
+
 	const progress = useMotionValue(0);
 	const position = useTransform<number, number>(
 		progress,
@@ -129,6 +138,17 @@ function ProjectsDeck({ projects }: ProjectsDeckProps) {
 		setActiveIndex((current) => (current === value ? current : value));
 	});
 
+	/**
+	 * Cierra el lightbox al llegar al final del recorrido.
+	 * `useMotionValueEvent` reacciona a cada cambio de `progress` (el scroll),
+	 * no a un re-render, así que funciona con el modal abierto.
+	 */
+	useMotionValueEvent(progress, "change", (value) => {
+		if (value >= END_EPSILON) {
+			setLightboxOpen((open) => (open ? false : open));
+		}
+	});
+
 	useLayoutEffect(() => {
 		if (reduceMotion) return;
 
@@ -155,6 +175,34 @@ function ProjectsDeck({ projects }: ProjectsDeckProps) {
 		};
 	}, [progress, reduceMotion]);
 
+	/**
+	 * El lightbox NO bloquea el scroll: queremos seguir scrolleando para ver
+	 * el resto de fotos. Solo gestionamos Escape y el foco.
+	 */
+	useEffect(() => {
+		if (!lightboxOpen) return;
+
+		const previouslyFocused =
+			document.activeElement instanceof HTMLElement
+				? document.activeElement
+				: null;
+
+		const onKeyDown = (event: KeyboardEvent) => {
+			if (event.key === "Escape") {
+				event.preventDefault();
+				setLightboxOpen(false);
+			}
+		};
+
+		document.addEventListener("keydown", onKeyDown);
+		closeButtonRef.current?.focus();
+
+		return () => {
+			document.removeEventListener("keydown", onKeyDown);
+			(previouslyFocused ?? triggerRef.current)?.focus();
+		};
+	}, [lightboxOpen]);
+
 	if (projects.length === 0) {
 		return null;
 	}
@@ -166,6 +214,7 @@ function ProjectsDeck({ projects }: ProjectsDeckProps) {
 	const deckPosition = reduceMotion ? staticPosition : smoothedPosition;
 	/** Cada proyecto aporta una pantalla de scroll; el último no deja hueco. */
 	const scrollLength = Math.max(total - 1, 1) * 100;
+	const activeTitle = t(projectTitleKey(activeProject.id));
 
 	const goTo = (index: number) => {
 		if (reduceMotion) {
@@ -275,10 +324,7 @@ function ProjectsDeck({ projects }: ProjectsDeckProps) {
 
 					{/* Canvas: the active project, with a hairline mat. */}
 					<div className="relative mx-auto aspect-square w-full max-w-[min(100%,36vh)] rounded-[2px] bg-negro-500/[0.03] p-2 ring-1 ring-rojo-200 dark:bg-blanco/[0.03] dark:ring-naranja-200 xl:col-span-6 xl:max-w-[min(100%,calc(100vh-9rem))] xl:p-3">
-						<div
-							className="relative h-full w-full overflow-hidden rounded-[1px] bg-negro-500/5 dark:bg-blanco/5"
-							aria-hidden="true"
-						>
+						<div className="relative h-full w-full overflow-hidden rounded-[1px] bg-negro-500/5 dark:bg-blanco/5">
 							{projects.map((project, index) => (
 								<CanvasImage
 									key={project.id}
@@ -287,6 +333,17 @@ function ProjectsDeck({ projects }: ProjectsDeckProps) {
 									position={deckPosition}
 								/>
 							))}
+							{/* Overlay clicable: abre el lightbox con la imagen activa. */}
+							<button
+								ref={triggerRef}
+								type="button"
+								onClick={() => {
+									if (progress.get() >= END_EPSILON) return;
+									setLightboxOpen(true);
+								}}
+								className="absolute inset-0 z-[999] cursor-zoom-in rounded-[1px] focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-blanco"
+								aria-label={t("projects.openImage", "Ver imagen completa")}
+							/>
 						</div>
 					</div>
 
@@ -312,6 +369,41 @@ function ProjectsDeck({ projects }: ProjectsDeckProps) {
 					</div>
 				</div>
 			</div>
+
+			{/* Lightbox: solo la imagen, fondo oscuro semitransparente.
+			    No bloquea el scroll → la imagen cambia sola al scrollear. */}
+			<AnimatePresence>
+				{lightboxOpen && (
+					<motion.div
+						key="project-lightbox"
+						className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm sm:p-8"
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						transition={{ duration: reduceMotion ? 0 : 0.2 }}
+						onClick={() => setLightboxOpen(false)}
+						role="dialog"
+						aria-modal="true"
+						aria-label={activeTitle}
+					>
+						{/* La key hace que la imagen haga un fade al pasar de proyecto
+						    mientras se scrollea con el modal abierto. */}
+						<motion.img
+							key={activeProject.id}
+							src={activeProject.image}
+							alt={activeTitle}
+							className="relative max-h-full max-w-full rounded-[2px] object-contain shadow-2xl"
+							initial={{ opacity: 0, scale: 0.98 }}
+							animate={{ opacity: 1, scale: 1 }}
+							transition={{
+								duration: reduceMotion ? 0 : 0.18,
+								ease: "easeOut",
+							}}
+							onClick={(event) => event.stopPropagation()}
+						/>
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 }
