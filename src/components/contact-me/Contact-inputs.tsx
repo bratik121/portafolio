@@ -28,7 +28,7 @@ function ContactInputs({
 		<div>
 			<label
 				htmlFor={inputId}
-				className="text-xs text-gris-500 dark:text-gris-200"
+				className="block text-xs font-medium text-gris-500 dark:text-gris-200"
 			>
 				{label}
 			</label>

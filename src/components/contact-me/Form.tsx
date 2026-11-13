@@ -78,7 +78,12 @@ function Form({ onSuccess }: FormProps) {
 		event.preventDefault();
 		const flags = validateName() + validateEmail() + validateText();
 
-		if (flags !== 3) return;
+		if (flags !== 3) {
+			requestAnimationFrame(() => {
+				form.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
+			});
+			return;
+		}
 
 		sendEmail()
 			.then(() => {
@@ -99,7 +104,7 @@ function Form({ onSuccess }: FormProps) {
 			ref={form}
 			onSubmit={sendMessage}
 			noValidate
-			className="flex max-w-xl flex-col gap-6"
+			className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-7 sm:grid-cols-2"
 		>
 			<ContactInputs
 				type="text"
@@ -122,17 +127,17 @@ function Form({ onSuccess }: FormProps) {
 				autoComplete="email"
 			/>
 
-			<div>
+			<div className="sm:col-span-2">
 				<label
 					htmlFor="contact-message"
-					className="text-xs text-gris-500 dark:text-gris-200"
+					className="block text-xs font-medium text-gris-500 dark:text-gris-200"
 				>
 					{t("contact.form.message")}
 				</label>
 				<textarea
 					id="contact-message"
 					name="message"
-					rows={6}
+					rows={5}
 					ref={texto}
 					aria-invalid={Boolean(errorTexto)}
 					aria-describedby={errorTexto ? "contact-message-error" : undefined}
@@ -153,8 +158,13 @@ function Form({ onSuccess }: FormProps) {
 				) : null}
 			</div>
 
-			<div>
-				<Button type="submit" label={t("contact.form.send")} variant="primary" />
+			<div className="sm:col-span-2">
+				<Button
+					type="submit"
+					label={t("contact.form.send")}
+					variant="primary"
+					className="w-full sm:w-auto"
+				/>
 			</div>
 		</form>
 	);

@@ -133,11 +133,14 @@
 	"contact": {
 		"title": "Contacta conmigo",
 		"telegram": "Escríbeme por Telegram",
+		"telegramName": "Telegram",
 		"whatsapp": "Escríbeme por WhatsApp",
+		"whatsappName": "WhatsApp",
+		"directMessage": "Mensaje directo",
 		"form": {
 			"name": "Nombre",
 			"email": "Correo",
-			"message": "Contenido",
+			"message": "Mensaje",
 			"send": "Enviar"
 		},
 		"errors": {
@@ -145,7 +148,7 @@
 			"nameRequired": "Introduzca un nombre.",
 			"invalidEmail": "Correo inválido",
 			"emailRequired": "Introduzca un correo.",
-			"messageRequired": "Introduzca un contenido."
+			"messageRequired": "Introduzca un mensaje."
 		}
 	},
 	"modal": {

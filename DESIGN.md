@@ -94,11 +94,11 @@ components:
     rounded: "{rounded.arch-soft}"
     padding: "0px"
   contact-arch:
-    backgroundColor: "{colors.rojo-200}"
-    textColor: "{colors.blanco}"
+    backgroundColor: "transparent"
+    textColor: "{colors.rojo-200}"
     rounded: "{rounded.arch}"
-    height: "160px"
-    width: "96px"
+    height: "112px"
+    width: "80px"
   modal:
     backgroundColor: "{colors.blanco}"
     textColor: "{colors.negro-500}"
@@ -180,7 +180,7 @@ A two-theme palette of warm paper, near-black ink, and one saturated signal per 
 
 The page runs on a 12-column grid inside a 1280px shell, with 24px column gaps and responsive shell padding of 20px, 32px, and 48px. Sections breathe on a 96px vertical rhythm, widening to 128px on desktop.
 
-The hero is an 8/4 split: the name occupies columns 1-8 at display scale, the second line shifts right by 12%, and the portrait occupies columns 9-12 inside an upright arch. About places a four-column portrait on the left and a seven-column text block starting at column 6, creating a deliberate gutter. Projects use three columns with the middle card dropped 96px and the third card dropped 40px; the middle column carries a subtle vertical parallax on desktop. Contact mirrors About with a four-column arch pair and a seven-column form starting at column 6.
+The hero is an 8/4 split: the name occupies columns 1-8 at display scale, the second line shifts right by 12%, and the portrait occupies columns 9-12 inside an upright arch. About places a four-column portrait on the left and a seven-column text block starting at column 6, creating a deliberate gutter. Projects use three columns with the middle card dropped 96px and the third card dropped 40px; the middle column carries a subtle vertical parallax on desktop. Contact mirrors About with a four-column direct-channel directory of arch marks and a seven-column form starting at column 6.
 
 Breakpoints follow the implementation: 640px for stacked actions, 768px for the 12-column layout and desktop navigation, and 1024px for the widest shell padding.
 
@@ -233,9 +233,9 @@ The upright arch is the signature: a full semicircular top over a rectangular ba
 - **Links:** Visit and repository links are underlined with a 4px offset and only render when a URL exists.
 
 ### Contact Arch Links
-- **Shape:** 96x160px upright arch, 1px border, 30px icon centered.
-- **Treatment:** One link is filled with the active accent; the other is outlined. Hover inverts the fill and text.
-- **Access:** Each link has a translated `aria-label`; the icon is hidden from assistive technology.
+- **Shape:** A 64x96px upright arch mark (80x112px at 640px and above) with a 1px hairline border and a 24px icon centered. Each mark sits inside a full-width directory row with the channel name, a 12px direct-message descriptor, and a trailing arrow on wide screens.
+- **Treatment:** Both links stay outlined at rest so the form's submit button remains the only filled accent. The icon carries the accent; hover fills the arch with the accent and inverts the icon. Hairline rules separate the rows.
+- **Access:** Each link has a translated `aria-label`; the icon and arrow are hidden from assistive technology. The global accent focus ring wraps the entire row.
 
 ### Success Modal
 - **Shape:** A flat paper or carbon panel with a hairline border, no radius, 24px padding, and a maximum width of 384px.

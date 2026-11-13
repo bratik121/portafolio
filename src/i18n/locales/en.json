@@ -133,11 +133,14 @@
 	"contact": {
 		"title": "Contact me",
 		"telegram": "Message me on Telegram",
+		"telegramName": "Telegram",
 		"whatsapp": "Message me on WhatsApp",
+		"whatsappName": "WhatsApp",
+		"directMessage": "Direct message",
 		"form": {
 			"name": "Name",
 			"email": "Email",
-			"message": "Content",
+			"message": "Message",
 			"send": "Send"
 		},
 		"errors": {
